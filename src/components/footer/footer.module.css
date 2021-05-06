@@ -1,0 +1,5 @@
+.footer_wrapper{
+    grid-area: footer;
+    padding: 15px;
+    background-color: #77608d;
+}

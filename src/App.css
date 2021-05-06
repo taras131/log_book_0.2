@@ -1,0 +1,11 @@
+.app_wrapper {
+    margin: 0 auto;
+    width: 1140px;
+    min-height: 100vh;
+    display: grid;
+    grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
+    grid-template-areas:
+            "header"
+            "main"
+            "footer";
+}

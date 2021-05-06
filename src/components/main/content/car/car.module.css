@@ -1,0 +1,8 @@
+.car_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+.car_info_item{
+
+}

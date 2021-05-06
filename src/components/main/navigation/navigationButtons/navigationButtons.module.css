@@ -1,0 +1,17 @@
+.buttons_wrapper {
+
+}
+
+.button_item {
+    margin-top: 10px;
+    width: 100%;
+    height: 70px;
+    border: solid 2px lavenderblush;
+    border-radius: 5px;
+    color: lavenderblush;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
