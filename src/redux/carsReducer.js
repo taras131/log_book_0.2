@@ -2,9 +2,9 @@ const ADD_CAR = "ADD_CAR",
     DELETE_CAR = "DELETE_CAR"
 const initialState = {
     carsList: [
-        {id: 1, brand: "Газ", model: "330202", yearManufacture: 2012},
-        {id: 2, brand: "Тойота", model: "Camry", yearManufacture: 2006},
-        {id: 3, brand: "Фольцваген", model: "Caravelle", yearManufacture: 2018}
+        {id: `1`, brand: "Газ", model: "330202", yearManufacture: 2012},
+        {id: `2`, brand: "Тойота", model: "Camry", yearManufacture: 2006},
+        {id: `3`, brand: "Фольцваген", model: "Caravelle", yearManufacture: 2018}
     ]
 }
 const carsReducer = (state = initialState, action) => {

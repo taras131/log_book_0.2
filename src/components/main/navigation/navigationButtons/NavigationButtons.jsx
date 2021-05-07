@@ -1,7 +1,7 @@
 import style from "./navigationButtons.module.css"
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {getCars} from "../../../../store/carsSelector";
+import {getCars} from "../../../../redux/carsSelector";
 import {ButtonItem} from "./buttonItem/ButtonItem";
 
 export const NavigationButtons = () => {

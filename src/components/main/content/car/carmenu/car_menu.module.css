@@ -1,0 +1,20 @@
+.car_menu_wrapper {
+
+}
+
+.car_menu_item {
+    color: floralwhite;
+    height: 70px;
+    width: 200px;
+    border-bottom: solid 1px  floralwhite;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.car_delete{
+    margin-top: 300px;
+    background-color: #77608d;
+}

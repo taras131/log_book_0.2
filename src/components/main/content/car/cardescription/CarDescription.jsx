@@ -1,6 +1,6 @@
 import style from "../car.module.css";
 
-export const CarDiscription = (props) => {
+export const CarDescription = (props) => {
     return(
         <div>
             <div className={style.car_info_item}>
