@@ -1,5 +1,8 @@
+import {APICars} from "../api/api";
+
 const ADD_CAR = "ADD_CAR",
-    DELETE_CAR = "DELETE_CAR"
+    DELETE_CAR = "DELETE_CAR",
+    SET_CARS = "SET_CARS"
 const initialState = {
     carsList: [
         {id: `1`, brand: "Газ", model: "330202", yearManufacture: 2012},
@@ -17,10 +20,20 @@ const carsReducer = (state = initialState, action) => {
             return state
     }
 }
+export const setCars = (carsList) => {
+    return {type: SET_CARS}
+}
 export const addCar = (car) => {
     return {type: ADD_CAR, car}
 }
 export const deleteCar = (id) => {
     return {type: DELETE_CAR, id}
+}
+export const getCars = () => async (dispatch) => {
+    console.log("thunk create ")
+    let response = await APICars.getCars();
+    dispatch(setCars(response));
+    console.log(response)
+
 }
 export default carsReducer
