@@ -1,7 +1,7 @@
 import style from "./addNewCar.module.css"
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {addCar} from "../../../../redux/carsReducer";
+import {addNewCar} from "../../../../redux/carsReducer";
 
 export const AddNewCar = () => {
     let [brandNewCar, setBrandNewCar] = useState("")
@@ -20,7 +20,7 @@ export const AddNewCar = () => {
     const dispatch = useDispatch()
     const onAddClick = () => {
         if (validationForm()) {
-            dispatch(addCar({
+            dispatch(addNewCar({
                 id: "" + new Date().valueOf(), brand: brandNewCar,
                 model: modelNewCar, yearManufacture: yearNewCar
             }))
