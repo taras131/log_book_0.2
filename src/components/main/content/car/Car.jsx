@@ -2,7 +2,7 @@ import style from "./car.module.css"
 import {Redirect, Route, useLocation} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getCarById} from "../../../../redux/carsSelector";
-import {deleteCar} from "../../../../redux/carsReducer";
+import {deleteCar, deleteCarThunk} from "../../../../redux/carsReducer";
 import {CarDescription} from "./cardescription/CarDescription";
 import {CarMenu} from "./carmenu/CarMenu";
 import {MaintenanceRecord} from "./maintenancerecord/MaintenanceRecord";
@@ -15,7 +15,7 @@ export const Car = () => {
     const car = useSelector(state => getCarById(state, id))
     const dispatch = useDispatch()
     const onDeleteCarClick = () => {
-        dispatch(deleteCar(id))
+        dispatch(deleteCarThunk(id))
     }
     if (!car) {
         return (

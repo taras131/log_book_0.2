@@ -1,6 +1,5 @@
 .main_wrapper{
     grid-area: main;
-
     display: grid;
     grid-template-columns: minmax(250px, 1fr) 4fr;
     grid-template-areas: "navigation content";

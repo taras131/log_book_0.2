@@ -1,10 +1,10 @@
 import style from "./navigation.module.css"
 import {NavigationButtons} from "./navigationButtons/NavigationButtons";
 
-export const Navigation = () => {
+export const Navigation = (props) => {
     return(
         <div className={style.navigation_wrapper}>
-            <NavigationButtons/>
+            {props.isAuthentication && <NavigationButtons/>}
         </div>
     )
 }

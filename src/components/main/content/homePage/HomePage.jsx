@@ -1,7 +1,11 @@
+import style from "../../main.module.css";
+
 export const HomePage = () =>{
     return(
         <div>
-            стартовая страница
+            <div className={style.main_wrapper}>
+              Home Page
+            </div>
         </div>
     )
 }

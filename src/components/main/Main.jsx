@@ -1,12 +1,15 @@
 import style from "./main.module.css"
-import {Content} from "./content/Content";
 import {Navigation} from "./navigation/Navigation";
+import {Content} from "./content/Content";
+import {Redirect} from "react-router";
 
-export const Main = () => {
-    return(
+export const Main = (props) => {
+    if (!props.isAuthentication) return <Redirect to = "/login"/>
+    return (
         <div className={style.main_wrapper}>
-            <Navigation/>
-            <Content/>
+            <Navigation isAuthentication = {props.isAuthentication}/>
+            <Content isAuthentication = {props.isAuthentication}/>
         </div>
     )
 }
+

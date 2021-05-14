@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const host = "http://localhost"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars() {
         return (
-            fetch("http://localhost", {
+            fetch(`${host}/getCars.php`, {
                 method: "GET",
                 header: {
                     'Content-Type': 'application/json'
@@ -14,18 +16,28 @@ export const APICars = {
         )
     },
     addCar(newCar) {
-        axios.post('http://localhost/addCar.php', {
-            id: newCar.id,
-            brand: newCar.brand,
-            model: newCar.model,
-            yearManufacture: newCar.yearManufacture
-        })
-            .then(function (response) {
-                console.log(response);
+        return  axios.post(`${host}/addCar.php`, {
+                id: newCar.id,
+                brand: newCar.brand,
+                model: newCar.model,
+                yearManufacture: newCar.yearManufacture,
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(response => response.data)
+    },
+    deleteCar(id) {
+        return  axios.post(`${host}/deleteCar.php`, {
+            id: id,
+        })
+            .then(response => response.data)
+    },
+}
 
+export const APIAuthentication ={
+    registration(login,password) {
+        return  (axios.post(`${host}/registration.php`, {
+            login: login,
+            password: password,
+        })
+            .then(response => response.data))
     }
 }
