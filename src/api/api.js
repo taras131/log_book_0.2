@@ -39,5 +39,14 @@ export const APIAuthentication ={
             password: password,
         })
             .then(response => response.data))
+    },
+    entrance(login, password) {
+
+        return  (axios.post(`${host}/entrence.php`, {
+            login: login,
+            password: password,
+        })
+            .then(response => response.data)
+        )
     }
 }

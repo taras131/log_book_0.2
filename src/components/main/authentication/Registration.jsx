@@ -1,7 +1,7 @@
 import style from "./authentication.module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {registrationNewUser, setMessage} from "../../../redux/authenticationReducer";
+import {authentication, registrationNewUser, setAuthentication, setMessage} from "../../../redux/authenticationReducer";
 import {getMessage} from "../../../redux/authenticationSelector";
 import {Redirect} from "react-router";
 
@@ -20,8 +20,8 @@ export const Registration = (props) => {
     const onRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value)
     }
-    const onAddClick = () => {
-
+    const onEntranceClick = () => {
+    dispatch(authentication(name, password))
     }
     const onRegistranionClick = () =>{
         dispatch(setMessage(""))
@@ -29,9 +29,13 @@ export const Registration = (props) => {
             dispatch(setMessage("Введены некоректные данные"))
         } else {
             dispatch(registrationNewUser(name,password))
+            setName("")
+            setPassword("")
+            setRepeatPassword("")
         }
     }
     if(props.isAuthentication) {return <Redirect to="/"/>}
+
     return (
         <div className={style.entrance_wrapper}>
 
@@ -49,7 +53,7 @@ export const Registration = (props) => {
 
             <span className={style.errormessage}>{message}</span>
             {props.isEntrance
-                ? <button onClick={onAddClick}>Войти</button>
+                ? <button onClick={onEntranceClick}>Войти</button>
                 : <button onClick={onRegistranionClick}>Заригистрироваться</button>}
 
         </div>
