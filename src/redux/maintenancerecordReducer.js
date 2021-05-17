@@ -1,24 +1,42 @@
+import {APIMaintenanceRecord} from "../api/api";
+
+const SET_MAINTENANCE = "SET_MAINTENANCE"
 const ADD_RECORD = "ADD_RECORD"
 const initialState = {
     maintenanceList: [
-        {carId: "1", number: 0, date: "11/04/2020", odometer: 115300, list: "махнули масло"},
-        {carId: "1", number: 1, date: "13/02/2021", odometer: 130300, list: "махнули масло и ещё что то "},
-        {carId: "2", number: 0, date: "11/04/2015", odometer: 5300, list: "махнули масло"},
-        {carId: "2", number: 1, date: "13/02/2021", odometer: 13000, list: "махнули масло и ещё что то "},
     ]
 }
 const maintenancerecordReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_MAINTENANCE:
+            return {...state, maintenanceList: action.payload}
         case ADD_RECORD:
-            return {...state, maintenanceList: [...state.maintenanceList, action.list]}
+            return {...state, maintenanceList: [...state.maintenanceList, action.payload]}
         default:
             return state
     }
-
 }
-export const addMaintenanceRecord = (list) => {
-    console.log(list)
-    return {type: ADD_RECORD, list}
+export const setMaintenance = (payload) => {
+    return {type: SET_MAINTENANCE, payload}
+}
+export const addMaintenance = (payload) => {
+    console.log(payload)
+    return {type: ADD_RECORD, payload}
+}
+
+export const getMaintenanceRecord = (carId) => async (dispatch) => {
+    let response = await APIMaintenanceRecord.getMaintenance(carId)
+    console.log(response)
+    if(response){
+        dispatch(setMaintenance(response))
+    }
+}
+export const addMaintenanceRecord = (maintenanceRecord) => async (dispatch) => {
+    let response = await APIMaintenanceRecord.addMaintenance(maintenanceRecord)
+    console.log(response)
+    if(response){
+        dispatch(addMaintenance(maintenanceRecord))
+    }
 }
 
 export default maintenancerecordReducer

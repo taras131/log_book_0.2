@@ -6,7 +6,6 @@ import {ButtonItem} from "./buttonItem/ButtonItem";
 
 export const NavigationButtons = () => {
     const carsList = useSelector(state => getCars(state))
-    console.log(carsList)
     const buttonsList = carsList.map(item => <ButtonItem key={item.id} {...item} />)
     return (
         <div>

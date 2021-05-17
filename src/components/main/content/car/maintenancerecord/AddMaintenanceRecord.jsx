@@ -4,7 +4,6 @@ import {useDispatch} from "react-redux";
 import {addMaintenanceRecord} from "../../../../../redux/maintenancerecordReducer";
 
 export const AddMaintenanceRecord = (props) => {
-    console.log(props)
     const dispatch = useDispatch()
     const [odometer, setOdometer] = useState("")
     const [date, setDate] = useState("")
@@ -22,10 +21,9 @@ export const AddMaintenanceRecord = (props) => {
     const onAddClick = () => {
         dispatch(addMaintenanceRecord({
             carId: props.id,
-            number: 2,
             date: date,
             odometer: odometer,
-            list: list
+            text: list
         }))
         setOdometer("")
         setDate("")

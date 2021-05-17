@@ -1,7 +1,8 @@
 import style from "./addNewCar.module.css"
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addNewCar} from "../../../../redux/carsReducer";
+import {getMyId} from "../../../../redux/authenticationSelector";
 
 export const AddNewCar = () => {
     let [brandNewCar, setBrandNewCar] = useState("")
@@ -18,9 +19,10 @@ export const AddNewCar = () => {
         setYearNewCar(e.target.value)
     }
     const dispatch = useDispatch()
+    const userId = useSelector(state => getMyId(state))
     const onAddClick = () => {
         if (validationForm()) {
-            dispatch(addNewCar({
+            dispatch(addNewCar({ userId: userId,
                 id: "" + new Date().valueOf(), brand: brandNewCar,
                 model: modelNewCar, yearManufacture: yearNewCar
             }))

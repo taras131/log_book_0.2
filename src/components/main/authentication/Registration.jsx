@@ -1,7 +1,7 @@
 import style from "./authentication.module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {authentication, registrationNewUser, setAuthentication, setMessage} from "../../../redux/authenticationReducer";
+import {authentication, registrationNewUser, setMessage} from "../../../redux/authenticationReducer";
 import {getMessage} from "../../../redux/authenticationSelector";
 import {Redirect} from "react-router";
 

@@ -5,7 +5,8 @@ const ADD_CAR = "ADD_CAR",
     SET_CARS = "SET_CARS"
 const initialState = {
     carsList: [
-    ]
+    ],
+    isLoading: false
 }
 const carsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -28,9 +29,12 @@ export const addCar = (car) => {
 export const deleteCar = (id) => {
     return {type: DELETE_CAR, id}
 }
-export const getCars = () => async (dispatch) => {
-    let response = await APICars.getCars();
-    dispatch(setCars(response));
+export const getCars = (userId) => async (dispatch) => {
+    let response = await APICars.getCars(userId);
+    if(response.length>0){
+        dispatch(setCars(response));
+    }
+
 }
 export const addNewCar = (newCar) => async (dispatch) => {
     let response = await APICars.addCar(newCar);

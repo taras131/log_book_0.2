@@ -1,22 +1,24 @@
 import style from "./header.module.css"
-import {useDispatch} from "react-redux";
-import {setAuthentication} from "../../redux/authenticationReducer";
+import {useDispatch, useSelector} from "react-redux";
+import { setUser} from "../../redux/authenticationReducer";
 import {NavLink} from "react-router-dom";
 import {useLocation} from "react-router";
+import {getMyName} from "../../redux/authenticationSelector";
 
 export const Header = (props) => {
     const path = useLocation().pathname.split("/").pop()
+    const name = useSelector(state => getMyName(state))
     let isRegistration = false
     let isLogin = false
     if (path === "registration" && !props.isAuthentication){ isLogin = true}
     if (path === "login" && !props.isAuthentication){ isRegistration = true}
     const dispatch = useDispatch()
     const onExitClick = () => {
-        dispatch(setAuthentication(false))
+        sessionStorage.setItem("userId", '')
+        sessionStorage.setItem("userName", '')
+        dispatch(setUser({id:"", name:""}))
     }
-    const onEntranceClick = () => {
-       // props.history.push("/registration")
-    }
+
     return (
         <header className={style.header_wrapper}>
             <div className={style.header_logo}>
@@ -26,17 +28,21 @@ export const Header = (props) => {
                 <h1>Бортовой журнал</h1>
             </div>
             {props.isAuthentication &&
-            <div className={style.header_button} onClick={onExitClick}>
-                    выйти
-                </div>}
-
-
+                <>
+                    <div className={style.header_name}>
+                        {name}
+                    </div>
+                    <div className={style.header_button} onClick={onExitClick}>
+                        выйти
+                    </div>
+                </>
+           }
             {isLogin &&
-             <NavLink to = "/login" className={style.header_button} onClick={onEntranceClick}>
+             <NavLink to = "/login" className={style.header_button} >
                         Ввход
                     </NavLink>}
             {isRegistration &&
-            <NavLink to = "/registration" className={style.header_button} onClick={onEntranceClick}>
+            <NavLink to = "/registration" className={style.header_button}>
                 Регистрация
             </NavLink>
             }

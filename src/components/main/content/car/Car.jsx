@@ -9,11 +9,19 @@ import {MaintenanceRecord} from "./maintenancerecord/MaintenanceRecord";
 import {Insurance} from "./insurance/Insurance";
 import {Notice} from "./notice/Notice";
 import {TechnicalInspection} from "./technicalinspection/TechnicalInspection";
+import {getMaintenanceRecordList} from "../../../../redux/maintenancerecordSelector";
+import {getMaintenanceRecord} from "../../../../redux/maintenancerecordReducer";
+import {useEffect} from "react";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
     const car = useSelector(state => getCarById(state, id))
+    const maintenanceList = useSelector(state => getMaintenanceRecordList(state))
     const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getMaintenanceRecord(id))
+    },[id])
+
     const onDeleteCarClick = () => {
         dispatch(deleteCarThunk(id))
     }
@@ -30,7 +38,8 @@ export const Car = () => {
     return (
         <div className={style.car_wrapper}>
             <Route exact path={pathDescription} render={() => <CarDescription {...car}/>}/>
-            <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord {...car}/>}/>
+            <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
+                id ={id} maintenanceList = {maintenanceList}/>}/>
             <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
             <Route exact path={pathNotice} render={() => <TechnicalInspection {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <Notice {...car} />}/>
