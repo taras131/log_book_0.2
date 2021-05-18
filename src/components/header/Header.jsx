@@ -1,9 +1,11 @@
 import style from "./header.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import { setUser} from "../../redux/authenticationReducer";
+import { setUser} from "../../redux/authentication/authenticationReducer";
 import {NavLink} from "react-router-dom";
 import {useLocation} from "react-router";
-import {getMyName} from "../../redux/authenticationSelector";
+import {getMyName} from "../../redux/authentication/authenticationSelector";
+import icon from "../../icons/car.png"
+import exit from "../../icons/logout.png"
 
 export const Header = (props) => {
     const path = useLocation().pathname.split("/").pop()
@@ -22,18 +24,17 @@ export const Header = (props) => {
     return (
         <header className={style.header_wrapper}>
             <div className={style.header_logo}>
-
+                <img src={icon} alt="cars"/>
             </div>
             <div className={style.header_title}>
                 <h1>Бортовой журнал</h1>
             </div>
             {props.isAuthentication &&
                 <>
-                    <div className={style.header_name}>
-                        {name}
-                    </div>
+
                     <div className={style.header_button} onClick={onExitClick}>
-                        выйти
+                        {name}
+                        <img src={exit} alt="exit"/>
                     </div>
                 </>
            }

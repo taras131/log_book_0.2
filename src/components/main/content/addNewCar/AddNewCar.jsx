@@ -1,8 +1,8 @@
 import style from "./addNewCar.module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addNewCar} from "../../../../redux/carsReducer";
-import {getMyId} from "../../../../redux/authenticationSelector";
+import {addNewCar} from "../../../../redux/cars/carsReducer";
+import {getMyId} from "../../../../redux/authentication/authenticationSelector";
 
 export const AddNewCar = () => {
     let [brandNewCar, setBrandNewCar] = useState("")
@@ -24,15 +24,16 @@ export const AddNewCar = () => {
         if (validationForm()) {
             dispatch(addNewCar({ userId: userId,
                 id: "" + new Date().valueOf(), brand: brandNewCar,
-                model: modelNewCar, yearManufacture: yearNewCar
+                model: modelNewCar, yearManufacture: ""+yearNewCar
             }))
             setBrandNewCar("")
             setModelNewCar("")
+            setYearNewCar("")
         }
     }
     const validationForm = () => {
         setErrorMessage("")
-        if (brandNewCar.length < 2 || modelNewCar.length < 2 || yearNewCar < 4) {
+        if (brandNewCar.length < 2 || modelNewCar.length < 2 || yearNewCar < 1900 || yearNewCar > 2021) {
             setErrorMessage("Все поля должны быть корректно заполнены")
             return false
         } else {
@@ -46,7 +47,7 @@ export const AddNewCar = () => {
                    placeholder="Марка"/>
             <input type="text" value={modelNewCar} onChange={onModelChange}
                    placeholder="Модель"/>
-            <input type="text" value={yearNewCar} onChange={onYearChange}
+            <input type="number" value={yearNewCar} onChange={onYearChange}
                    placeholder="Год выпуска"/>
             <span className={style.errormessage}>{errorMessage}</span>
             <button onClick={onAddClick}>Добавить</button>

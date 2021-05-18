@@ -1,4 +1,4 @@
-import {APIMaintenanceRecord} from "../api/api";
+import {APIMaintenanceRecord} from "../../api/api";
 
 const SET_MAINTENANCE = "SET_MAINTENANCE"
 const ADD_RECORD = "ADD_RECORD"
@@ -6,7 +6,7 @@ const initialState = {
     maintenanceList: [
     ]
 }
-const maintenancerecordReducer = (state = initialState, action) => {
+const technicalMaintenanceReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_MAINTENANCE:
             return {...state, maintenanceList: action.payload}
@@ -38,5 +38,9 @@ export const addMaintenanceRecord = (maintenanceRecord) => async (dispatch) => {
         dispatch(addMaintenance(maintenanceRecord))
     }
 }
+export const deleteMaintenanceRecord = (id, carId) => async (dispatch) =>{
+    let response = await APIMaintenanceRecord.deleteMaintenance(id, carId)
+    console.log(response)
+}
 
-export default maintenancerecordReducer
+export default technicalMaintenanceReducer

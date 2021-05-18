@@ -1,7 +1,7 @@
 .header_wrapper {
     grid-area: header;
     padding: 15px;
-    background-color: #794f45;
+    background-color: #89043d;
     display: grid;
     grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 300px) minmax(auto, 300px)  1fr;
     align-items: center;
@@ -12,8 +12,10 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: #fff;
     grid-column: 2/3;
+}
+img{
+    width: 60px;
 }
 
 .header_title {
@@ -27,7 +29,7 @@
     width: 170px;
     height: 60px;
     border-radius: 5px;
-    background-color: darkslateblue;
+    background-color: #48EAE2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,8 +38,16 @@
     cursor:pointer;
     text-decoration: none;
 }
+.header_button:hover {
+    background-color: #15b7af;
+}
 
 .header_name{
     color: whitesmoke;
     font-size: 20px;
+}
+.header_button img {
+    width: 40px;
+    margin-left: 20px;
+    color: lightyellow;
 }

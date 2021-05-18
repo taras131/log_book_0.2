@@ -3,16 +3,52 @@
 }
 
 .maintenance_item_wrapper{
-    margin-top: 15px;
+    margin: 5px;
     border-radius: 5px;
-    min-height: 100px;
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    align-items: start;
     color: lightyellow;
     font-size: 20px;
     font-weight: 500;
+    background-color: #7ff0ea;
+    padding: 10px;
+    position: relative;
+    transition: all 0.3s;
+}
+.maintenance_item_wrapper:hover{
+    background-color: #abc6aa;
+}
+.maintenance_item_wrapper:hover .delete {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.maintenance_addnewrecord{
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: lightyellow;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #7ff0ea;
+    padding: 10px;
+    position: relative;
+    transition: all 0.3s;
+}
+.delete {
     background-color: #82aa82;
+    width: 20px;
+    padding: 10px;
+    color: white;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
 }
 span{
     margin-top: 7px;
@@ -20,3 +56,24 @@ span{
 .errormessage{
 
 }
+textarea{
+    margin-top: 15px;
+    height: 75px;
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    resize: none;
+}
+input:focus{
+    border: 3px solid blue;
+    box-shadow: 1px 1px 2px 0 blue;
+}
+textarea:focus{
+    border: 3px solid blue;
+    box-shadow: 1px 1px 2px 0 blue;
+}
+.subtitle{
+    color: #007046;
+}
+
+

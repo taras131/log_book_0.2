@@ -1,12 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
-import carsReducer from "./carsReducer";
-import maintenancerecordReducer from "./maintenancerecordReducer";
-import authenticationReducer from "./authenticationReducer";
+import carsReducer from "./cars/carsReducer";
+import authenticationReducer from "./authentication/authenticationReducer";
+import technicalMaintenanceReducer from "./technicalmaintenancerecords/technicalMaintenanceReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
-    maintenanceInfo: maintenancerecordReducer,
+    maintenanceInfo: technicalMaintenanceReducer,
     authInfo: authenticationReducer
 })
 

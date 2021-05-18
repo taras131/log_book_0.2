@@ -1,4 +1,4 @@
-import {APIAuthentication} from "../api/api";
+import {APIAuthentication} from "../../api/api";
 
 const SET_IS_LOADING = "SET_IS_LOADING"
 const SET_MESSAGE = "SET_MESSAGE"

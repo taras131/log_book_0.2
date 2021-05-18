@@ -4,11 +4,11 @@ import {Footer} from "./components/footer/Footer";
 import {Main} from "./components/main/Main";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getCars} from "./redux/carsReducer";
+import {getCars} from "./redux/cars/carsReducer";
 import {Route} from "react-router-dom";
 import {Registration} from "./components/main/authentication/Registration";
-import {authMe, getMyId, getMyName} from "./redux/authenticationSelector";
-import {setUser} from "./redux/authenticationReducer";
+import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
+import {setUser} from "./redux/authentication/authenticationReducer";
 
 function App() {
     const dispatch = useDispatch()

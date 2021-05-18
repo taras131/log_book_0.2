@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = "http://localhost"
-//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+//const host = "http://localhost"
+const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -56,11 +56,21 @@ export const APIMaintenanceRecord = {
         }).then(response => response.data)
     },
     addMaintenance(maintenanceRecord) {
+        console.log(maintenanceRecord)
         return axios.post(`${host}/addmaintenance.php`, {
+            id: maintenanceRecord.id,
             carId: maintenanceRecord.carId,
             date: maintenanceRecord.date,
             odometer: maintenanceRecord.odometer,
             text: maintenanceRecord.text,
+        }).then(response => response.data)
+    },
+    deleteMaintenance(id, carId){
+        console.log(id)
+        return axios.post(`${host}/deletemaintenance.php`, {
+            data: {
+                id: id,
+            }
         }).then(response => response.data)
     }
 }

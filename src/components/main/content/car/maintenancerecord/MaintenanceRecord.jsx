@@ -1,21 +1,24 @@
 import {MaintenanceItem} from "./MaintenanceItem";
 import style from "./maintenanceitemwrapper.module.css"
 import {AddMaintenanceRecord} from "./AddMaintenanceRecord";
+import {deleteMaintenanceRecord} from "../../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
 
 
 export const MaintenanceRecord = (props) => {
-    console.log(props.maintenanceList)
-    if(!props.maintenanceList){
+    if (!props.maintenanceList) {
         return <div>
             Записей пока нет
         </div>
     }
-    const maintenanceItem = props.maintenanceList.map(item => <MaintenanceItem key={item.id} {...item}/>)
+    const onDeleteClick = (id) => {
+        props.dispatch(deleteMaintenanceRecord(id))
+    }
+    const maintenanceItem = props.maintenanceList.map(item => <MaintenanceItem key={item.id} {...item}
+                                                                               onDeleteClick={onDeleteClick}/>)
     return (
         <div className={style.maintenance_wrapper}>
-            MaintenanceRecord
+            <AddMaintenanceRecord id={props.id}/>
             {maintenanceItem}
-            <AddMaintenanceRecord id = {props.id}/>
         </div>
     )
 }

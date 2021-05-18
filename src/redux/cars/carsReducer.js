@@ -1,4 +1,4 @@
-import {APICars} from "../api/api";
+import {APICars} from "../../api/api";
 
 const ADD_CAR = "ADD_CAR",
     DELETE_CAR = "DELETE_CAR",

@@ -1,8 +1,8 @@
 import style from "./authentication.module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {authentication, registrationNewUser, setMessage} from "../../../redux/authenticationReducer";
-import {getMessage} from "../../../redux/authenticationSelector";
+import {authentication, registrationNewUser, setMessage} from "../../../redux/authentication/authenticationReducer";
+import {getMessage} from "../../../redux/authentication/authenticationSelector";
 import {Redirect} from "react-router";
 
 export const Registration = (props) => {
@@ -45,10 +45,10 @@ export const Registration = (props) => {
 
             <input type="text" value={name} onChange={onNameChange}
                    placeholder="Логин"/>
-            <input type="text" value={password} onChange={onPasswordChange}
+            <input type="password" value={password} onChange={onPasswordChange}
                    placeholder="Пароль"/>
             {!props.isEntrance &&
-            <input type="text" value={repeatPassword} onChange={onRepeatPasswordChange}
+            <input type="password" value={repeatPassword} onChange={onRepeatPasswordChange}
                    placeholder="Повторите пароль"/>}
 
             <span className={style.errormessage}>{message}</span>

@@ -13,8 +13,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.4s;
+}
+.car_menu_item:hover {
+    color: whitesmoke;
+    border-bottom: solid 1px #89043d;
 }
 .car_delete{
     margin-top: 300px;
-    background-color: #77608d;
+    background-color: #89043d;
+    border-radius: 5px;
+}
+.car_delete:hover{
+    background-color: #1c3041;
+}
+.active{
+    color: #89043d;
+    border-bottom: solid 1px #89043d;
 }
