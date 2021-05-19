@@ -7,6 +7,7 @@ import {getMyId} from "../../../../redux/authentication/authenticationSelector";
 export const AddNewCar = () => {
     let [brandNewCar, setBrandNewCar] = useState("")
     let [modelNewCar, setModelNewCar] = useState("")
+    let [num, setNum] = useState("")
     let [yearNewCar, setYearNewCar] = useState("")
     let [errorMessage, setErrorMessage] = useState("")
     const onBrandChange = (e) => {
@@ -14,6 +15,9 @@ export const AddNewCar = () => {
     }
     const onModelChange = (e) => {
         setModelNewCar(e.target.value)
+    }
+    const onMumChange = (e) => {
+        setNum(e.target.value)
     }
     const onYearChange = (e) => {
         setYearNewCar(e.target.value)
@@ -24,11 +28,12 @@ export const AddNewCar = () => {
         if (validationForm()) {
             dispatch(addNewCar({ userId: userId,
                 id: "" + new Date().valueOf(), brand: brandNewCar,
-                model: modelNewCar, yearManufacture: ""+yearNewCar
+                model: modelNewCar, yearManufacture: ""+yearNewCar, num: num
             }))
             setBrandNewCar("")
             setModelNewCar("")
             setYearNewCar("")
+            setNum("")
         }
     }
     const validationForm = () => {
@@ -42,11 +47,13 @@ export const AddNewCar = () => {
     }
     return (
         <div className={style.addNewCar_wrapper}>
-            <h2>Добавление нового автомобиля</h2>
+            <h3>Добавление нового автомобиля</h3>
             <input type="text" value={brandNewCar} onChange={onBrandChange}
                    placeholder="Марка"/>
             <input type="text" value={modelNewCar} onChange={onModelChange}
                    placeholder="Модель"/>
+            <input type="text" value={num} onChange={onMumChange}
+                   placeholder="Номер"/>
             <input type="number" value={yearNewCar} onChange={onYearChange}
                    placeholder="Год выпуска"/>
             <span className={style.errormessage}>{errorMessage}</span>

@@ -3,21 +3,21 @@
 }
 
 .maintenance_item_wrapper{
-    margin: 5px;
-    border-radius: 5px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: start;
-    color: lightyellow;
+    color: #2d73bc;
     font-size: 20px;
     font-weight: 500;
-    background-color: #7ff0ea;
+    background-color: #fff;
     padding: 10px;
     position: relative;
     transition: all 0.3s;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
 }
 .maintenance_item_wrapper:hover{
-    background-color: #abc6aa;
+    background-color: lightyellow;
 }
 .maintenance_item_wrapper:hover .delete {
   display: flex;
@@ -25,21 +25,21 @@
     align-items: center;
 }
 .maintenance_addnewrecord{
-    margin: 5px;
-    border-radius: 5px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: lightyellow;
     font-size: 20px;
     font-weight: 500;
-    background-color: #7ff0ea;
+    background-color: #fff;
     padding: 10px;
     position: relative;
     transition: all 0.3s;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
 }
 .delete {
-    background-color: #82aa82;
+    background-color: #2d73bc;
     width: 20px;
     padding: 10px;
     color: white;

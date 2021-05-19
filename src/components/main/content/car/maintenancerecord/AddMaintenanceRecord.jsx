@@ -1,7 +1,8 @@
 import style from "./maintenanceitemwrapper.module.css"
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addMaintenanceRecord} from "../../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
+import {getMyId} from "../../../../../redux/authentication/authenticationSelector";
 
 export const AddMaintenanceRecord = (props) => {
     const SetDate = () => {
@@ -18,6 +19,7 @@ export const AddMaintenanceRecord = (props) => {
     const [date, setDate] = useState(SetDate())
     const [text, setText] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
+    const userId = useSelector(state=>getMyId(state) )
     const onOdometerChange = (event) => {
         setOdometer(event.target.value)
     }
@@ -40,9 +42,10 @@ export const AddMaintenanceRecord = (props) => {
             dispatch(addMaintenanceRecord({
                 id: "" + new Date().valueOf(),
                 carId: props.id,
-                date: date,
+                datecommission: date,
                 odometer: odometer,
-                text: text
+                text: text,
+                userId: userId
             }))
             setOdometer("")
             setDate("")

@@ -38,7 +38,8 @@ export const getCars = (userId) => async (dispatch) => {
 }
 export const addNewCar = (newCar) => async (dispatch) => {
     let response = await APICars.addCar(newCar);
-    if (response) {
+    console.log(response)
+    if (response === "New car created successfully") {
         dispatch(addCar(newCar));
     } else {
         console.log("Не удалось добавить автомобиль")

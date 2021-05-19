@@ -7,8 +7,6 @@ export const CarMenu = (props) => {
     const path = `/car/${props.id}`
     const pathDescription = `/car/${props.id}`
     const pathType = useLocation().pathname.split("/")[2]
-    console.log(pathType)
-    console.log(props.pathMaintenanceRecord)
     return(
         <div className={style.car_menu_wrapper}>
             <NavLink to= {pathDescription} style={{ textDecoration: 'none' }}>

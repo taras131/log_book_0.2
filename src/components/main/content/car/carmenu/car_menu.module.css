@@ -1,12 +1,15 @@
 .car_menu_wrapper {
-
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+    height: 97%;
 }
 
 .car_menu_item {
-    color: floralwhite;
+    color: #38bafe;
     height: 70px;
     width: 200px;
-    border-bottom: solid 1px  floralwhite;
+    border-bottom: solid 1px #38bafe;
     cursor: pointer;
     margin-top: 10px;
     font-size: 20px;
@@ -16,18 +19,18 @@
     transition: all 0.4s;
 }
 .car_menu_item:hover {
-    color: whitesmoke;
-    border-bottom: solid 1px #89043d;
+    color: #3a75c4;
+    border-bottom: solid 1px #3a75c4;
 }
 .car_delete{
     margin-top: 300px;
-    background-color: #89043d;
-    border-radius: 5px;
+    background-color: #3a75c4;
 }
 .car_delete:hover{
-    background-color: #1c3041;
+    background-color: #2d73bc;
+    color: white;
 }
 .active{
-    color: #89043d;
-    border-bottom: solid 1px #89043d;
+    color: #2d73bc;
+    border-bottom: solid 1px #2d73bc;
 }

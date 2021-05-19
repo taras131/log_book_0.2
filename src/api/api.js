@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const host = "http://localhost"
-const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+const host = "http://localhost"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -12,12 +12,14 @@ export const APICars = {
         }).then(response => response.data)
     },
     addCar(newCar) {
+        console.log(newCar)
         return axios.post(`${host}/addCar.php`, {
             userId: newCar.userId,
             id: newCar.id,
             brand: newCar.brand,
             model: newCar.model,
             yearManufacture: newCar.yearManufacture,
+            num: newCar.num
         })
             .then(response => response.data)
     },
@@ -48,10 +50,10 @@ export const APIAuthentication = {
 }
 
 export const APIMaintenanceRecord = {
-    getMaintenance(carId) {
-        return axios.get(`${host}/getmaintenance.php?carId=${carId}`, {
+    getMaintenance(userId) {
+        return axios.get(`${host}/getmaintenance.php?userId=${userId}`, {
             params: {
-                carId: carId
+                userId: userId
             }
         }).then(response => response.data)
     },
@@ -60,17 +62,17 @@ export const APIMaintenanceRecord = {
         return axios.post(`${host}/addmaintenance.php`, {
             id: maintenanceRecord.id,
             carId: maintenanceRecord.carId,
-            date: maintenanceRecord.date,
+            datecommission: maintenanceRecord.datecommission,
             odometer: maintenanceRecord.odometer,
             text: maintenanceRecord.text,
+            userId:  maintenanceRecord.userId,
         }).then(response => response.data)
     },
     deleteMaintenance(id, carId){
         console.log(id)
         return axios.post(`${host}/deletemaintenance.php`, {
-            data: {
                 id: id,
-            }
-        }).then(response => response.data)
+                carId: carId
+        }).then(response => response)
     }
 }

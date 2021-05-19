@@ -1,6 +1,15 @@
 .main_wrapper{
     grid-area: main;
+    min-height: 100vh;
+    background: url("../../img/bg4.png") center center/cover no-repeat;
+
+}
+.container{
     display: grid;
     grid-template-columns: minmax(250px, 1fr) 4fr;
     grid-template-areas: "navigation content";
+    width: 1140px;
+    margin: 10px auto;
+    height:98%;
+    padding-bottom: 10px;
 }

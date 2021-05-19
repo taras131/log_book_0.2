@@ -14,12 +14,12 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.4s;
-    background-color: #6deee7;
+    background-color: #38bafe;
     border: none;
 }
 .button_item:hover {
-    background-color: #15b7af;
+    background-color: #3a75c4;
 }
 .active{
-    background-color: #1adbd1;
+    background-color: #2d73bc;
 }

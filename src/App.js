@@ -9,6 +9,7 @@ import {Route} from "react-router-dom";
 import {Registration} from "./components/main/authentication/Registration";
 import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
 import {setUser} from "./redux/authentication/authenticationReducer";
+import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function App() {
     }
     useEffect(() => {
         dispatch(getCars(userId))
+        dispatch(getMaintenanceRecord(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">

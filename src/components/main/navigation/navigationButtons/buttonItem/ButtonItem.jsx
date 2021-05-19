@@ -20,7 +20,7 @@ export const ButtonItem = (props) => {
             <div className={classNames(style.button_item,{
                 [style.active]: id === props.id
             })}>
-                {props.brand}</div>
+                {props.brand} {props.num}</div>
         </NavLink>
     )
 }

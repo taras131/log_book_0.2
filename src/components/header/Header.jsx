@@ -4,7 +4,7 @@ import { setUser} from "../../redux/authentication/authenticationReducer";
 import {NavLink} from "react-router-dom";
 import {useLocation} from "react-router";
 import {getMyName} from "../../redux/authentication/authenticationSelector";
-import icon from "../../icons/car.png"
+import icon from "../../icons/open-book.png"
 import exit from "../../icons/logout.png"
 
 export const Header = (props) => {
@@ -27,7 +27,10 @@ export const Header = (props) => {
                 <img src={icon} alt="cars"/>
             </div>
             <div className={style.header_title}>
-                <h1>Бортовой журнал</h1>
+                <NavLink to = "/" style={{ textDecoration: 'none' }} >
+                    <h1>Бортовой журнал</h1>
+                </NavLink>
+
             </div>
             {props.isAuthentication &&
                 <>

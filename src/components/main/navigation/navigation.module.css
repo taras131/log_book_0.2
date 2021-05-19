@@ -1,5 +1,8 @@
 .navigation_wrapper{
     grid-area: navigation;
-    background-color: #18f2b2;
+    background-color: #fff;
     padding: 30px 15px;
+    margin-top: 30px;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
 }
