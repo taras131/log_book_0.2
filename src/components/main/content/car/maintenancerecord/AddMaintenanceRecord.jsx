@@ -3,20 +3,12 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addMaintenanceRecord} from "../../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
 import {getMyId} from "../../../../../redux/authentication/authenticationSelector";
+import {getCurrentDate} from "../../../../../common/getCurrentDate";
 
 export const AddMaintenanceRecord = (props) => {
-    const SetDate = () => {
-        let date = new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
-        return day + "." + month + "." + year;
-    }
     const dispatch = useDispatch()
     const [odometer, setOdometer] = useState("")
-    const [date, setDate] = useState(SetDate())
+    const [date, setDate] = useState(getCurrentDate())
     const [text, setText] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const userId = useSelector(state=>getMyId(state) )
