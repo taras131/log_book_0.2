@@ -19,6 +19,11 @@ export const CarMenu = (props) => {
                     [style.active]: pathType === props.pathMaintenanceRecord.split("/")[2]
                 })}>Записи ТО</div>
             </NavLink>
+            <NavLink to= {props.pathRepairs} style={{ textDecoration: 'none' }}>
+                <div className={classNames(style.car_menu_item, {
+                    [style.active]: pathType === props.pathMaintenanceRecord.split("/")[2]
+                })}>Ремонты</div>
+            </NavLink>
             <NavLink to= {props.pathInsurance} style={{ textDecoration: 'none' }}>
                 <div className={classNames(style.car_menu_item, {
                     [style.active]: pathType === props.pathInsurance.split("/")[2]

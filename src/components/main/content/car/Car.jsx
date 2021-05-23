@@ -11,12 +11,15 @@ import {Notice} from "./notice/Notice";
 import {TechnicalInspection} from "./technicalinspection/TechnicalInspection";
 import {getMaintenanceRecordList} from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceSelector";
 import {getMyId} from "../../../../redux/authentication/authenticationSelector";
+import {getInsuranceDateValidById} from "../../../../redux/Insurance/InsuranceSelector";
+import {Repairs} from "./repairs/Repairs";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
     const car = useSelector(state => getCarById(state, id))
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state ,id))
     const lastRecording  = maintenanceList[maintenanceList.length-1]
+    const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
     const userId = useSelector(state=>getMyId(state))
     const dispatch = useDispatch()
     const onDeleteCarClick = () => {
@@ -32,17 +35,22 @@ export const Car = () => {
     const pathInsurance = `/car/insurance/${id}`
     const pathNotice = `/car/notice/${id}`
     const pathTechnicalInspection = `/car/technicalinspection/${id}`
+    const pathRepairs = `/car/repairs/${id}`
     return (
         <div className={style.car_wrapper}>
-            <Route exact path={pathDescription} render={() => <CarDescription lastRecording ={lastRecording} {...car}/>}/>
+            <Route exact path={pathDescription} render={() => <CarDescription lastRecording ={lastRecording}
+                                                                              dateInsuranceIsValid={dateInsuranceIsValid} {...car}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
                 id ={id} maintenanceList = {maintenanceList} dispatch = {dispatch}/>}/>
+            <Route exact path={pathRepairs} render={() => <Repairs
+                carId ={id}  dispatch = {dispatch} userId ={userId}/>}/>
             <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
             <Route exact path={pathNotice} render={() => <TechnicalInspection {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <Notice {...car} />}/>
             <CarMenu onDeleteCarClick={onDeleteCarClick} {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance = {pathInsurance} pathNotice = {pathNotice}
-                     pathTechnicalInspection ={pathTechnicalInspection}/>
+                     pathTechnicalInspection ={pathTechnicalInspection}
+                     pathRepairs = {pathRepairs} />
         </div>
     )
 }

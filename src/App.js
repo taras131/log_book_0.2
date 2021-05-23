@@ -10,11 +10,11 @@ import {Registration} from "./components/main/authentication/Registration";
 import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
 import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
+import {getInsuranceDate} from "./redux/Insurance/InsuranceReducer";
 
 function App() {
     const dispatch = useDispatch()
     const isAuthentication = useSelector(state => authMe(state))
-    console.log(isAuthentication)
     const userId = useSelector(state => getMyId(state))
     const userName = useSelector(state => getMyName(state))
     if (isAuthentication) {
@@ -30,6 +30,7 @@ function App() {
     useEffect(() => {
         dispatch(getCars(userId))
         dispatch(getMaintenanceRecord(userId))
+        dispatch(getInsuranceDate(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">

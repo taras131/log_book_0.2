@@ -4,10 +4,12 @@
     grid-template-rows: 1fr;
 }
 .car_info_item{
+    margin-top: 10px;
 display: flex;
 }
 .subtitle{
     color: #007046;
+    margin-right: 10px;
 }
 .maintenance_item_wrapper{
     background-color: #fff;
@@ -18,11 +20,11 @@ display: flex;
     color: #2d73bc;
     font-size: 20px;
     font-weight: 500;
-    padding: 10px;
     position: relative;
     transition: all 0.3s;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     margin-bottom: 20px;
+    padding: 20px;
 }
 h3{
     margin: 0 auto;

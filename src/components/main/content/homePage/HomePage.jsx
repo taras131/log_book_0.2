@@ -5,7 +5,7 @@ import {getCars} from "../../../../redux/cars/carsSelector";
 
 export const HomePage = () => {
    const carsList = useSelector(state=> getCars(state))
-    const tabList = carsList.map(item=><HomePageItem {...item}/>)
+    const tabList = carsList.map(item=><HomePageItem key ={item.id} {...item}/>)
     return (
         <div>
             <div className={style.homepage_wrapper}>

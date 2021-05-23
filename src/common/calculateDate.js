@@ -10,7 +10,8 @@ export const calculateDate = (startDate, period) => {
                 newMonths = +Months-6
                 return day+"."+Months-6+"."+Year+1
             } else{
-                return day+"."+Months+6+"."+Year+1
+                newMonths = +Months+6
+                return day+"."+newMonths+"."+Year
             }
         case "oneYear":
            [day,Months,Year] = startDate.split('.')
