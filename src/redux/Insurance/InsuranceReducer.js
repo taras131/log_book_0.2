@@ -26,7 +26,6 @@ export const addInsurance = (newRecord) => {
 
 export const getInsuranceDate = (userId) => async(dispatch) => {
     const result = await APIInsurance.getInsurance(userId)
-    console.log(result)
     dispatch(setInsurance(result))
 }
 export const addNewInsurance = (dateIsValid, carId, userId) => async (dispatch) =>{
@@ -39,7 +38,6 @@ export const addNewInsurance = (dateIsValid, carId, userId) => async (dispatch) 
         }
         dispatch(addInsurance(newRecord))
     }
-    console.log(result)
 }
 
 export default InsuranceReducer

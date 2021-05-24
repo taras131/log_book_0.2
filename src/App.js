@@ -11,6 +11,7 @@ import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationS
 import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
 import {getInsuranceDate} from "./redux/Insurance/InsuranceReducer";
+import {getRepairRecord} from "./redux/repairs/repairsReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -31,6 +32,7 @@ function App() {
         dispatch(getCars(userId))
         dispatch(getMaintenanceRecord(userId))
         dispatch(getInsuranceDate(userId))
+        dispatch(getRepairRecord(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">

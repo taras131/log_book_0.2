@@ -2,13 +2,15 @@ import {APICars} from "../../api/api";
 
 const ADD_CAR = "ADD_CAR",
     DELETE_CAR = "DELETE_CAR",
-    SET_CARS = "SET_CARS"
+    SET_CARS = "SET_CARS",
+    UPDATE_CAR = "UPDATE_CAR"
 const initialState = {
     carsList: [
     ],
     isLoading: false
 }
 const carsReducer = (state = initialState, action) => {
+    console.log(action)
     switch (action.type) {
         case ADD_CAR:
             return {...state, carsList: [...state.carsList, action.car]}
@@ -16,6 +18,8 @@ const carsReducer = (state = initialState, action) => {
             return {...state, carsList: [...state.carsList.filter(item => item.id !== action.id)]}
         case SET_CARS:
             return {...state, carsList: action.carsList}
+        case UPDATE_CAR:
+            return {...state, carsList: [...state.carsList.filter(item=> item.id !== action.upCar.id),action.upCar]}
         default:
             return state
     }
@@ -29,12 +33,15 @@ export const addCar = (car) => {
 export const deleteCar = (id) => {
     return {type: DELETE_CAR, id}
 }
+const updateCar = (upCar) =>{
+    console.log(upCar)
+    return({type: UPDATE_CAR, upCar})
+}
 export const getCars = (userId) => async (dispatch) => {
     let response = await APICars.getCars(userId);
     if(response.length>0){
         dispatch(setCars(response));
     }
-
 }
 export const addNewCar = (newCar) => async (dispatch) => {
     let response = await APICars.addCar(newCar);
@@ -51,6 +58,12 @@ export const deleteCarThunk = (id) => async (dispatch) => {
         dispatch(deleteCar(id));
     } else {
         console.log("Не удалось удалить автомобиль")
+    }
+}
+export const updateCarThunk = (upCar) => async (dispatch) => {
+    let response = await APICars.updateCar(upCar);
+    if(response === "car update successfully"){
+        dispatch(updateCar(upCar))
     }
 }
 export default carsReducer

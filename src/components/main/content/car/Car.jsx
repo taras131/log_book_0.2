@@ -13,14 +13,17 @@ import {getMaintenanceRecordList} from "../../../../redux/technicalmaintenancere
 import {getMyId} from "../../../../redux/authentication/authenticationSelector";
 import {getInsuranceDateValidById} from "../../../../redux/Insurance/InsuranceSelector";
 import {Repairs} from "./repairs/Repairs";
+import {getRepairsByCarId} from "../../../../redux/repairs/repairsSelector";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
     const car = useSelector(state => getCarById(state, id))
-    const maintenanceList = useSelector(state => getMaintenanceRecordList(state ,id))
-    const lastRecording  = maintenanceList[maintenanceList.length-1]
+    const maintenanceList = useSelector(state => getMaintenanceRecordList(state, id))
+    const repairsList = useSelector(state => getRepairsByCarId(state, id))
+    console.log(repairsList)
+    const lastRecording = maintenanceList[maintenanceList.length - 1]
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
-    const userId = useSelector(state=>getMyId(state))
+    const userId = useSelector(state => getMyId(state))
     const dispatch = useDispatch()
     const onDeleteCarClick = () => {
         dispatch(deleteCarThunk(id))
@@ -38,19 +41,20 @@ export const Car = () => {
     const pathRepairs = `/car/repairs/${id}`
     return (
         <div className={style.car_wrapper}>
-            <Route exact path={pathDescription} render={() => <CarDescription lastRecording ={lastRecording}
+            <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
                                                                               dateInsuranceIsValid={dateInsuranceIsValid} {...car}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
-                id ={id} maintenanceList = {maintenanceList} dispatch = {dispatch}/>}/>
+                id={id} maintenanceList={maintenanceList} dispatch={dispatch}/>}/>
             <Route exact path={pathRepairs} render={() => <Repairs
-                carId ={id}  dispatch = {dispatch} userId ={userId}/>}/>
+                carId={id} dispatch={dispatch} userId={userId}
+                repairsList={repairsList}/>}/>
             <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
-            <Route exact path={pathNotice} render={() => <TechnicalInspection {...car} />}/>
-            <Route exact path={pathTechnicalInspection} render={() => <Notice {...car} />}/>
+            <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspection {...car} />}/>
+            <Route exact path={pathNotice} render={() => <Notice {...car} />}/>
             <CarMenu onDeleteCarClick={onDeleteCarClick} {...car} pathMaintenanceRecord={pathMaintenanceRecord}
-                     pathInsurance = {pathInsurance} pathNotice = {pathNotice}
-                     pathTechnicalInspection ={pathTechnicalInspection}
-                     pathRepairs = {pathRepairs} />
+                     pathInsurance={pathInsurance} pathNotice={pathNotice}
+                     pathTechnicalInspection={pathTechnicalInspection}
+                     pathRepairs={pathRepairs}/>
         </div>
     )
 }

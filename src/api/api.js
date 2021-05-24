@@ -5,23 +5,21 @@ const host = "http://localhost"
 
 export const APICars = {
     getCars(userId) {
-        return axios.get(`${host}/getCars.php?userId=${userId}`, {
+        return axios.get(`${host}/cars.php?userId=${userId}`, {
             params: {
                 userId: userId
             }
         }).then(response => response.data)
     },
     addCar(newCar) {
-        console.log(newCar)
-        return axios.post(`${host}/addCar.php`, {
+        return axios.post(`${host}/cars.php`, {
             userId: newCar.userId,
             id: newCar.id,
             brand: newCar.brand,
             model: newCar.model,
             yearManufacture: newCar.yearManufacture,
             num: newCar.num
-        })
-            .then(response => response.data)
+        }).then(response => response.data)
     },
     deleteCar(id) {
         return axios.post(`${host}/deleteCar.php`, {
@@ -29,6 +27,17 @@ export const APICars = {
         })
             .then(response => response.data)
     },
+    updateCar(updateCar){
+        console.log(updateCar)
+        return axios.post(`${host}/updateCar.php`, {
+            userId: updateCar.userId,
+            id: updateCar.id,
+            brand: updateCar.brand,
+            model: updateCar.model,
+            yearManufacture: updateCar.yearManufacture,
+            num: updateCar.num
+        }).then(response => response.data)
+    }
 }
 
 export const APIAuthentication = {
@@ -103,5 +112,12 @@ export const  APIRepair ={
             accomplishedWork: newRecord.data.accomplishedWork,
             result: newRecord.data.result
         }).then(response => response)
+    },
+    getRepairs(userId){
+        return axios.get(`${host}/repairs.php?userId=${userId}`,{
+            params:{
+                userId: userId
+            }
+        }).then(response => response.data)
     }
 }

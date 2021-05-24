@@ -1,11 +1,10 @@
-import style from "../maintenancerecord/maintenanceitemwrapper.module.css";
+import style from "../car.module.css";
 import {useEffect, useState} from "react";
 import {getCurrentDate} from "../../../../../common/getCurrentDate";
 import {useDispatch} from "react-redux";
 import {addNewRepairRecord} from "../../../../../redux/repairs/repairsReducer";
 
 export const AddRepairRecord = (props) => {
-    console.log(props)
     const dispatch = useDispatch()
     const [data, setData] = useState({
         userId: props.userId,
@@ -27,7 +26,7 @@ export const AddRepairRecord = (props) => {
         dispatch(addNewRepairRecord({data}))
     }
     return(
-        <div className={style.maintenance_addnewrecord}>
+        <div className={style.car_add_newrecord}>
             <h3>Добавление нового ремонта:</h3>
             <input type="number" value={data.odometer} onChange={onDataChange}
                    placeholder="Показания спидометра:" name="odometer"/>

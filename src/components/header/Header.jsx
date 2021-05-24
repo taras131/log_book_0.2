@@ -34,7 +34,6 @@ export const Header = (props) => {
             </div>
             {props.isAuthentication &&
                 <>
-
                     <div className={style.header_button} onClick={onExitClick}>
                         {name}
                         <img src={exit} alt="exit"/>

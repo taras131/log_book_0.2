@@ -9,7 +9,6 @@ export const HomePageItem = (props) => {
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state ,props.id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, props.id))
     const lastRecording  = maintenanceList[maintenanceList.length-1]
-    console.log(lastRecording)
     return (
         <tr>
             <td>{props.brand}</td>

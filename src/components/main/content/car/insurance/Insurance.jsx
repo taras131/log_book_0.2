@@ -1,4 +1,4 @@
-import style from "./insurance.module.css"
+import style from "../car.module.css"
 import {useState} from "react";
 import {getCurrentDate} from "../../../../../common/getCurrentDate";
 import {calculateDate} from "../../../../../common/calculateDate";
@@ -36,7 +36,7 @@ export const Insurance = (props) => {
         }
     }
     return (
-        <div className={style.insurance_wrapper}>
+        <div className={style.car_item_wrapper}>
             <div className={style.insurance_info}>
                 <div>
                     Страховка действует до: {dateInsuranceIsValid}

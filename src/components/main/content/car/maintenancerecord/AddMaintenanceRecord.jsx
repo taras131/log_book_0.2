@@ -1,4 +1,4 @@
-import style from "./maintenanceitemwrapper.module.css"
+import style from "../car.module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addMaintenanceRecord} from "../../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
@@ -47,7 +47,7 @@ export const AddMaintenanceRecord = (props) => {
         }
     }
     return (
-        <div className={style.maintenance_addnewrecord}>
+        <div className={style.car_add_newrecord}>
             <h3>Добавление новой записи</h3>
             <input type="number" value={odometer} onChange={onOdometerChange}
                    placeholder="Показания спидометра"/>
