@@ -21,7 +21,7 @@ export const CarMenu = (props) => {
             </NavLink>
             <NavLink to= {props.pathRepairs} style={{ textDecoration: 'none' }}>
                 <div className={classNames(style.car_menu_item, {
-                    [style.active]: pathType === props.pathMaintenanceRecord.split("/")[2]
+                    [style.active]: pathType === props.pathRepairs.split("/")[2]
                 })}>Ремонты</div>
             </NavLink>
             <NavLink to= {props.pathInsurance} style={{ textDecoration: 'none' }}>
@@ -38,10 +38,6 @@ export const CarMenu = (props) => {
                 <div className={classNames(style.car_menu_item, {
                     [style.active]: pathType === props.pathNotice.split("/")[2]
                 })}>Заметки</div>
-            </NavLink>
-            <NavLink to= {path} style={{ textDecoration: 'none' }}>
-                <div className = {classNames(style.car_menu_item, style.car_delete)}
-                onClick={props.onDeleteCarClick}>Удалить</div>
             </NavLink>
         </div>
     )

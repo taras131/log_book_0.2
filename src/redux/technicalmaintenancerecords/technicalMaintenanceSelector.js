@@ -1,7 +1,12 @@
 export const getMaintenanceRecordList = (state, id) => {
     return state.maintenanceInfo.maintenanceList.filter(item => item.carId === id)
 }
-export const getLastRecording = (state) =>{
-    return state.maintenanceInfo.maintenanceList[state.maintenanceInfo.maintenanceList.length-1]
+export const getLastMaintenanceRecording = (state, id) =>{
+    if(state.maintenanceInfo.maintenanceList){
+        return [...state.maintenanceInfo.maintenanceList.filter(item => item.carId === id)].pop()
+    } else {
+        return null
+    }
+
 
 }

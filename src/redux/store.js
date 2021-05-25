@@ -5,6 +5,7 @@ import authenticationReducer from "./authentication/authenticationReducer";
 import technicalMaintenanceReducer from "./technicalmaintenancerecords/technicalMaintenanceReducer";
 import InsuranceReducer from "./Insurance/InsuranceReducer";
 import repairsReducer from "./repairs/repairsReducer";
+import answerWindowReducer from "./answerwindow/answerWindowReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
@@ -12,6 +13,7 @@ const reducersList = combineReducers({
     authInfo: authenticationReducer,
     insuranceInfo: InsuranceReducer,
     repairsInfo: repairsReducer,
+    answerInfo: answerWindowReducer,
 })
 
 let store = createStore(reducersList, applyMiddleware(thunk))

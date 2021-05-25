@@ -1,23 +1,28 @@
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {
+    getLastMaintenanceRecording,
     getLastRecording,
     getMaintenanceRecordList
 } from "../../../../../redux/technicalmaintenancerecords/technicalMaintenanceSelector";
 import {getInsuranceDateValidById} from "../../../../../redux/Insurance/InsuranceSelector";
+import {getLastRepairsByCarId} from "../../../../../redux/repairs/repairsSelector";
 
 export const HomePageItem = (props) => {
-    const maintenanceList = useSelector(state => getMaintenanceRecordList(state ,props.id))
+    const lastMaintenanceRecording = useSelector(state => getLastMaintenanceRecording(state, props.id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, props.id))
-    const lastRecording  = maintenanceList[maintenanceList.length-1]
+    const lastRepairRecording = useSelector(state =>  getLastRepairsByCarId(state, props.id))
+
     return (
         <tr>
             <td>{props.brand}</td>
             <td>{props.model}</td>
             <td>{props.num}</td>
-            <td>{lastRecording
-            ? lastRecording.odometer +" - "+lastRecording.datecommission
+            <td>{lastMaintenanceRecording
+                ? lastMaintenanceRecording.odometer + " - " + lastMaintenanceRecording.datecommission
                 : "нет данных"}</td>
-            <td>нет данных</td>
+            <td>{lastRepairRecording
+                ? lastRepairRecording.odometer + " - " + lastRepairRecording.date
+                : "нет данных"}</td>
             <td>нет данных</td>
             <td>{dateInsuranceIsValid}</td>
         </tr>

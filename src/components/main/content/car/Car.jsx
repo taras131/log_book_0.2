@@ -20,14 +20,10 @@ export const Car = () => {
     const car = useSelector(state => getCarById(state, id))
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state, id))
     const repairsList = useSelector(state => getRepairsByCarId(state, id))
-    console.log(repairsList)
     const lastRecording = maintenanceList[maintenanceList.length - 1]
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
     const userId = useSelector(state => getMyId(state))
     const dispatch = useDispatch()
-    const onDeleteCarClick = () => {
-        dispatch(deleteCarThunk(id))
-    }
     if (!car) {
         return (
             <Redirect to={"/"}/>
@@ -44,14 +40,14 @@ export const Car = () => {
             <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
                                                                               dateInsuranceIsValid={dateInsuranceIsValid} {...car}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
-                id={id} maintenanceList={maintenanceList} dispatch={dispatch}/>}/>
+                maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId}/>}/>
             <Route exact path={pathRepairs} render={() => <Repairs
                 carId={id} dispatch={dispatch} userId={userId}
                 repairsList={repairsList}/>}/>
             <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspection {...car} />}/>
             <Route exact path={pathNotice} render={() => <Notice {...car} />}/>
-            <CarMenu onDeleteCarClick={onDeleteCarClick} {...car} pathMaintenanceRecord={pathMaintenanceRecord}
+            <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}
                      pathTechnicalInspection={pathTechnicalInspection}
                      pathRepairs={pathRepairs}/>

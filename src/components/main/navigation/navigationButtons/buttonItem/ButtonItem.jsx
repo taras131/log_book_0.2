@@ -6,10 +6,6 @@ import classNames from "classnames";
 export const ButtonItem = (props) => {
     const id = useLocation().pathname.split("/").pop()
     const path = `/car/${props.id}`
-
-    const classnames = classNames('button_item', {
-        active: id === props.id
-    })
     if (!props.id){
         return (
             <div></div>

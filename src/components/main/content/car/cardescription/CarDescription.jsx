@@ -2,9 +2,13 @@ import style from "../car.module.css";
 import editIcon from "../../../../../icons/edit.png"
 import backIcon from "../../../../../icons/back.png"
 import saveIcon from "../../../../../icons/save.png"
+import deleteIcon from "../../../../../icons/delete.png"
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {updateCarThunk} from "../../../../../redux/cars/carsReducer";
+import {deleteCarThunk, updateCarThunk} from "../../../../../redux/cars/carsReducer";
+import {NavLink} from "react-router-dom";
+import {setAnswer} from "../../../../../redux/answerwindow/answerWindowReducer";
+import {MaintenanceItem} from "../maintenancerecord/MaintenanceItem";
 
 export const CarDescription = (props) => {
     const [edit, setEdit] = useState(false)
@@ -31,8 +35,7 @@ export const CarDescription = (props) => {
         setEdit(!edit)
     }
     const onSaveClick = () => {
-        setEdit(false)
-        dispatch(updateCarThunk({
+        const upCar = (updateCarThunk({
             userId: props.userId,
             id: props.id,
             brand: data.brand,
@@ -40,13 +43,23 @@ export const CarDescription = (props) => {
             yearManufacture: data.yearManufacture,
             num: data.num
         }))
+        dispatch(setAnswer("сохранить изменения", upCar))
+        setEdit(false)
+    }
+    const onDeleteCarClick = () => {
+        const delCar = (deleteCarThunk(props.id))
+        dispatch(setAnswer("удалить автомобиль", delCar))
     }
     return (
         <div className={style.car_section_wrapper}>
             <div className={style.car_item_wrapper}>
                 <div className={style.car_item_subheader}>
                     <div className={style.car_icon_wrapper}>
-                        {edit && <img onClick={onSaveClick} src={saveIcon} alt="save"/>}
+                        {edit
+                            ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
+                            : <NavLink to="/" style={{textDecoration: 'none'}}>
+                                <img onClick={onDeleteCarClick} src={deleteIcon} alt="back"/>
+                            </NavLink>}
                     </div>
                     <h3>Общие свединия:</h3>
                     <div className={style.car_icon_wrapper}>
@@ -59,7 +72,7 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>Марка:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input value={data.brand} type="text" name="brand" onChange={onDataChange}/>}
+                        <input style={{marginTop: 0}} value={data.brand} type="text" name="brand" onChange={onDataChange}/>}
                         {props.brand && !edit && props.brand}
                         {!props.brand && !edit && "данные не были внесены"}
                     </div>
@@ -77,7 +90,7 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>Номер:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input value={data.num} type="text" name="num" onChange={onDataChange}/>}
+                        <input style={{marginTop: 0}} value={data.num} type="text" name="num" onChange={onDataChange}/>}
                         {props.num && !edit && props.num}
                         {!props.num && !edit && "данные не были внесены"}
                     </div>
@@ -86,7 +99,7 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>Год выпуска:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input value={data.yearManufacture} type="text" name="yearManufacture"
+                        <input style={{marginTop: 0}} value={data.yearManufacture} type="text" name="yearManufacture"
                                onChange={onDataChange}/>}
                         {props.yearManufacture && !edit && props.yearManufacture}
                         {!props.yearManufacture && !edit && "данные не были внесены"}
@@ -101,27 +114,17 @@ export const CarDescription = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={style.car_item_wrapper}>
-                <h3>Последнее ТО:</h3>
-                {props.lastRecording
-                    ? <>
-                        <div className={style.car_item_info}>
-                            <div className={style.subtitle}>Дата:</div>
-                            <div className={style.car_item_data}>
-                                {props.lastRecording.datecommission}
-                            </div>
+            {props.lastRecording
+                ? <MaintenanceItem {...props.lastRecording} title="Последнее ТО:"/>
+                : <div className={style.car_item_wrapper}>
+                    <h3>Последнее ТО:</h3>
+                    <div className={style.hr}></div>
+                    <div className={style.car_item_info}>
+                        <div className={style.car_item_subheader}>
+                            <div><div className={style.subtitle}></div> ТО не проводилось </div>
                         </div>
-                        <div className={style.car_item_info}>
-                            <div className={style.subtitle}>Пробег:</div>
-                            <div className={style.car_item_data}>
-                                {props.lastRecording.odometer}
-                            </div>
-                        </div>
-                    </>
-                    : <span className={style.car_item_info}>
-                        ТО не проводилось
-                    </span>}
-            </div>
+                    </div>
+                </div>}
             <div className={style.car_item_wrapper}>
                 <h3>Последняя заметка:</h3>
             </div>

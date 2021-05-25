@@ -3,6 +3,7 @@
     padding: 10px;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     height: 97%;
+    min-height: 100vh;
 }
 
 .car_menu_item {
@@ -21,14 +22,6 @@
 .car_menu_item:hover {
     color: #3a75c4;
     border-bottom: solid 1px #3a75c4;
-}
-.car_delete{
-    margin-top: 300px;
-    background-color: #3a75c4;
-}
-.car_delete:hover{
-    background-color: #2d73bc;
-    color: white;
 }
 .active{
     color: #2d73bc;

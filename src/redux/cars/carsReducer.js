@@ -10,7 +10,6 @@ const initialState = {
     isLoading: false
 }
 const carsReducer = (state = initialState, action) => {
-    console.log(action)
     switch (action.type) {
         case ADD_CAR:
             return {...state, carsList: [...state.carsList, action.car]}
@@ -34,7 +33,6 @@ export const deleteCar = (id) => {
     return {type: DELETE_CAR, id}
 }
 const updateCar = (upCar) =>{
-    console.log(upCar)
     return({type: UPDATE_CAR, upCar})
 }
 export const getCars = (userId) => async (dispatch) => {
@@ -45,7 +43,6 @@ export const getCars = (userId) => async (dispatch) => {
 }
 export const addNewCar = (newCar) => async (dispatch) => {
     let response = await APICars.addCar(newCar);
-    console.log(response)
     if (response === "New car created successfully") {
         dispatch(addCar(newCar));
     } else {

@@ -36,15 +36,20 @@ export const getMaintenanceRecord = (userId) => async (dispatch) => {
 }
 export const addMaintenanceRecord = (maintenanceRecord) => async (dispatch) => {
     let response = await APIMaintenanceRecord.addMaintenance(maintenanceRecord)
-    console.log(response)
     if(response === "New record created successfully"){
         dispatch(addMaintenance(maintenanceRecord))
     }
 }
 export const deleteMaintenanceRecord = (id, carId) => async (dispatch) =>{
     let response = await APIMaintenanceRecord.deleteMaintenance(id, carId)
-    if(response){
+    if(response === "delete record successfully"){
         dispatch(deleteMaintenance(id))
+    }
+}
+export const updateMaintenanceRecord = (maintenanceRecord) => async (dispatch) =>{
+    let response = await APIMaintenanceRecord.updateMaintenance(maintenanceRecord)
+    if(response === "maintenance record update successfully"){
+        dispatch(getMaintenanceRecord(maintenanceRecord.userId))
     }
 }
 

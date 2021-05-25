@@ -36,14 +36,14 @@ export const Insurance = (props) => {
         }
     }
     return (
-        <div className={style.car_item_wrapper}>
-            <div className={style.insurance_info}>
-                <div>
-                    Страховка действует до: {dateInsuranceIsValid}
+        <div className={style.car_section_wrapper}>
+            <div className={style.car_item_wrapper}>
+                <div className={style.car_item_subheader}>
+                    <div>Страховка действует до: {dateInsuranceIsValid}</div>
                 </div>
             </div>
             <div>
-                <form>
+                <div className={style.car_add_newrecord}>
                     <h3>Установить новую дату:</h3>
                     <label htmlFor="date">Застрахована:</label>
                     <input className = {error ? style.input_error : ""} onChange={onChangeInsuranceDate}  type="text" name="date"
@@ -55,8 +55,8 @@ export const Insurance = (props) => {
                         <option value="sixMonths">6 месяцев</option>
                         <option value="oneYear">1 год</option>
                     </select>
-                    <div className={style.add_button} onClick={onAddClick}>Обновить данные</div>
-                </form>
+                    <button onClick={onAddClick}>Обновить данные</button>
+                </div>
             </div>
         </div>
     )

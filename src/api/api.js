@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = "http://localhost"
-//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+//const host = "http://localhost"
+const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -28,7 +28,6 @@ export const APICars = {
             .then(response => response.data)
     },
     updateCar(updateCar){
-        console.log(updateCar)
         return axios.post(`${host}/updateCar.php`, {
             userId: updateCar.userId,
             id: updateCar.id,
@@ -60,14 +59,15 @@ export const APIAuthentication = {
 
 export const APIMaintenanceRecord = {
     getMaintenance(userId) {
-        return axios.get(`${host}/getmaintenance.php?userId=${userId}`, {
+        return axios.get(`${host}/maintenance.php?userId=${userId}`, {
             params: {
                 userId: userId
             }
         }).then(response => response.data)
     },
     addMaintenance(maintenanceRecord) {
-        return axios.post(`${host}/addmaintenance.php`, {
+        console.log(maintenanceRecord.userId)
+        return axios.post(`${host}/maintenance.php`, {
             id: maintenanceRecord.id,
             carId: maintenanceRecord.carId,
             datecommission: maintenanceRecord.datecommission,
@@ -80,12 +80,22 @@ export const APIMaintenanceRecord = {
         return axios.post(`${host}/deletemaintenance.php`, {
             id: id,
             carId: carId
-        }).then(response => response)
+        }).then(response => response.data)
+    },
+    updateMaintenance(maintenanceRecord) {
+        console.log(maintenanceRecord)
+        return axios.post(`${host}/updatemaintenance.php`, {
+            id: maintenanceRecord.id,
+            carId: maintenanceRecord.carId,
+            datecommission: maintenanceRecord.datecommission,
+            odometer: maintenanceRecord.odometer,
+            text: maintenanceRecord.text,
+            userId: maintenanceRecord.userId,
+        }).then(response => response.data)
     }
 }
 export const APIInsurance = {
     addInsurance(date, carId, userId) {
-        console.log(userId)
         return axios.post(`${host}/insurance.php`, {
             date: date,
             carId: carId,
@@ -111,7 +121,7 @@ export const  APIRepair ={
             usedParts: newRecord.data.usedParts,
             accomplishedWork: newRecord.data.accomplishedWork,
             result: newRecord.data.result
-        }).then(response => response)
+        }).then(response => response.data)
     },
     getRepairs(userId){
         return axios.get(`${host}/repairs.php?userId=${userId}`,{
@@ -119,5 +129,23 @@ export const  APIRepair ={
                 userId: userId
             }
         }).then(response => response.data)
-    }
+    },
+    updateRepair(newRecord){
+        return axios.post(`${host}/updaterepair.php`,{
+            userId: newRecord.userId,
+            carId: newRecord.carId,
+            id: newRecord.id,
+            date: newRecord.date,
+            odometer: newRecord.odometer,
+            reasonsRepair: newRecord.reasonsRepair,
+            usedParts: newRecord.usedParts,
+            accomplishedWork: newRecord.accomplishedWork,
+            result: newRecord.result
+        }).then(response => response.data)
+    },
+    deleteRepair(id){
+        return axios.post(`${host}/deleterepair.php`,{
+            id: id
+        }).then(response => response.data)
+    },
 }

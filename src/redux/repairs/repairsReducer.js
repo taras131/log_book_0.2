@@ -16,20 +16,33 @@ const repairsReducer = (state = initialState, action) =>{
     }
 }
 const setRepairs = (payload) => {
-    console.log(payload)
     return ({type: SET_REPAIRS, payload})
 }
-
 export const addNewRepairRecord = (newRecord) => async (dispatch) => {
-let response = await APIRepair.addRepair(newRecord)
-    console.log(response)
+    let response = await APIRepair.addRepair(newRecord)
+    if(response === "New date created successfully"){
+        dispatch(getRepairRecord(newRecord.data.userId))
+    }
 }
 export const getRepairRecord = (userId) => async (dispatch) => {
     let response = await APIRepair.getRepairs(userId)
     if(response.length>0){
         dispatch(setRepairs(response))
     }
-    console.log(response)
+}
+export const updateRepairRecord = (newRecord) => async (dispatch) =>{
+    let response = await APIRepair.updateRepair(newRecord)
+    if(response === "repair record update successfully"){
+        dispatch(getRepairRecord(newRecord.userId))
+    }
+}
+export const deleteRepairRecord = (id, userId) => async (dispatch) =>{
+    let response = await APIRepair.deleteRepair(id)
+    if(response === "delete record successfully"){
+        dispatch(getRepairRecord(userId))
+    } else{
+        console.log(response)
+    }
 }
 
 export default repairsReducer

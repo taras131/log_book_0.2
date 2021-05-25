@@ -12,6 +12,7 @@ import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
 import {getInsuranceDate} from "./redux/Insurance/InsuranceReducer";
 import {getRepairRecord} from "./redux/repairs/repairsReducer";
+import {AnswerWindow} from "./components/answerwindow/AnswerWindow";
 
 function App() {
     const dispatch = useDispatch()
@@ -25,7 +26,6 @@ function App() {
     if (!isAuthentication) {
         const id = sessionStorage.getItem("userId")
         const name = sessionStorage.getItem("userName")
-        console.log(id)
         dispatch(setUser({id: id, name: name}))
     }
     useEffect(() => {
@@ -42,6 +42,7 @@ function App() {
                                                                    isAuthentication={isAuthentication}/>}/>
             <Route exact path="/registration" render={() => <Registration/>}/>
             <Footer/>
+            <AnswerWindow/>
         </div>
     );
 }
