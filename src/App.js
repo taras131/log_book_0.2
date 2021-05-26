@@ -13,6 +13,7 @@ import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technica
 import {getInsuranceDate} from "./redux/Insurance/InsuranceReducer";
 import {getRepairRecord} from "./redux/repairs/repairsReducer";
 import {AnswerWindow} from "./components/answerwindow/AnswerWindow";
+import {getNoticeRecords} from "./redux/notice/noticeReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
         dispatch(getMaintenanceRecord(userId))
         dispatch(getInsuranceDate(userId))
         dispatch(getRepairRecord(userId))
+        dispatch(getNoticeRecords(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">

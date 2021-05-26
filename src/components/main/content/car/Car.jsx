@@ -14,13 +14,16 @@ import {getMyId} from "../../../../redux/authentication/authenticationSelector";
 import {getInsuranceDateValidById} from "../../../../redux/Insurance/InsuranceSelector";
 import {Repairs} from "./repairs/Repairs";
 import {getRepairsByCarId} from "../../../../redux/repairs/repairsSelector";
+import {getLastNoticeRecord, getNoticeRecordByCarId} from "../../../../redux/notice/noticeSelector";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
     const car = useSelector(state => getCarById(state, id))
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state, id))
     const repairsList = useSelector(state => getRepairsByCarId(state, id))
+    const noticeList = useSelector(state => getNoticeRecordByCarId(state,id))
     const lastRecording = maintenanceList[maintenanceList.length - 1]
+    const lastNoticeRecord =  useSelector(state =>getLastNoticeRecord(state,id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
     const userId = useSelector(state => getMyId(state))
     const dispatch = useDispatch()
@@ -38,7 +41,8 @@ export const Car = () => {
     return (
         <div className={style.car_wrapper}>
             <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
-                                                                              dateInsuranceIsValid={dateInsuranceIsValid} {...car}/>}/>
+                                                                              dateInsuranceIsValid={dateInsuranceIsValid}
+                                                                              {...car} lastNoticeRecord = {lastNoticeRecord}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
                 maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId}/>}/>
             <Route exact path={pathRepairs} render={() => <Repairs
@@ -46,7 +50,7 @@ export const Car = () => {
                 repairsList={repairsList}/>}/>
             <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspection {...car} />}/>
-            <Route exact path={pathNotice} render={() => <Notice {...car} />}/>
+            <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}
                      pathTechnicalInspection={pathTechnicalInspection}

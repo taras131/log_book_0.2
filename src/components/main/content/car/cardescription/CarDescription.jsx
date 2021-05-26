@@ -9,6 +9,7 @@ import {deleteCarThunk, updateCarThunk} from "../../../../../redux/cars/carsRedu
 import {NavLink} from "react-router-dom";
 import {setAnswer} from "../../../../../redux/answerwindow/answerWindowReducer";
 import {MaintenanceItem} from "../maintenancerecord/MaintenanceItem";
+import {NoticeItem} from "../notice/NoticeItem";
 
 export const CarDescription = (props) => {
     const [edit, setEdit] = useState(false)
@@ -72,7 +73,8 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>Марка:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input style={{marginTop: 0}} value={data.brand} type="text" name="brand" onChange={onDataChange}/>}
+                        <input style={{marginTop: 0}} value={data.brand} type="text" name="brand"
+                               onChange={onDataChange}/>}
                         {props.brand && !edit && props.brand}
                         {!props.brand && !edit && "данные не были внесены"}
                     </div>
@@ -121,13 +123,14 @@ export const CarDescription = (props) => {
                     <div className={style.hr}></div>
                     <div className={style.car_item_info}>
                         <div className={style.car_item_subheader}>
-                            <div><div className={style.subtitle}></div> ТО не проводилось </div>
+                            <div>
+                                <div className={style.subtitle}></div>
+                                ТО не проводилось
+                            </div>
                         </div>
                     </div>
                 </div>}
-            <div className={style.car_item_wrapper}>
-                <h3>Последняя заметка:</h3>
-            </div>
+            <NoticeItem{...props.lastNoticeRecord} title="Последняя заметка:"/>
             <div className={style.car_item_wrapper}>
                 <h3>Техосмотр:</h3>
             </div>

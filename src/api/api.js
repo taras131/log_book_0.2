@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const host = "http://localhost"
-const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+const host = "http://localhost"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -146,6 +146,41 @@ export const  APIRepair ={
     deleteRepair(id){
         return axios.post(`${host}/deleterepair.php`,{
             id: id
+        }).then(response => response.data)
+    },
+}
+export const ApiNotice ={
+    addNotice(newRecord){
+        return axios.post(`${host}/notice.php`,{
+            userId: newRecord.userId,
+            carId: newRecord.carId,
+            date: newRecord.date,
+            odometer: newRecord.odometer,
+            text: newRecord.text
+        }).then(response => response.data)
+    },
+    getNotice(userId){
+        return axios.get(`${host}/notice.php?userId=${userId}`,{
+            params:{
+                userId: userId
+            }
+        }).then(response => response.data)
+    },
+    updateNotice(upRecord){
+        console.log(upRecord)
+        return axios.post(`${host}/updatenotice.php}`,{
+            id: +upRecord.id,
+            userId: upRecord.userId,
+            carId: upRecord.carId,
+            date: upRecord.date,
+            odometer: upRecord.odometer,
+            text: upRecord.text
+        }).then(response => response.data)
+    },
+    deleteNotice(id){
+        console.log(id)
+        return axios.post(`${host}/deletenotice.php}`,{
+            id: +id
         }).then(response => response.data)
     },
 }
