@@ -10,10 +10,11 @@ import {Registration} from "./components/main/authentication/Registration";
 import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
 import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
-import {getInsuranceDate} from "./redux/Insurance/InsuranceReducer";
+import {getInsuranceDate} from "./redux/insurance/insuranceReducer";
 import {getRepairRecord} from "./redux/repairs/repairsReducer";
 import {AnswerWindow} from "./components/answerwindow/AnswerWindow";
 import {getNoticeRecords} from "./redux/notice/noticeReducer";
+import {getTechnicalInspection} from "./redux/technicalinspection/technicalInspectionReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -35,6 +36,7 @@ function App() {
         dispatch(getInsuranceDate(userId))
         dispatch(getRepairRecord(userId))
         dispatch(getNoticeRecords(userId))
+        dispatch(getTechnicalInspection(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">

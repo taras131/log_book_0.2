@@ -13,13 +13,13 @@ export const HomePage = () => {
                 <table className={style.tab_wrapper}>
                     <tbody>
                     <tr>
-                        <td>Марка</td>
-                        <td>Модель</td>
-                        <td>Номер</td>
-                        <td>ТО</td>
-                        <td>Ремонт</td>
-                        <td>Тех осмотр</td>
-                        <td>Страховка</td>
+                        <td align="center">Марка</td>
+                        <td align="center">Модель</td>
+                        <td align="center">Номер</td>
+                        <td align="center">ТО</td>
+                        <td align="center">Ремонт</td>
+                        <td align="center">Тех осмотр</td>
+                        <td align="center">Страховка</td>
                     </tr>
                     {tabList}
                     </tbody>

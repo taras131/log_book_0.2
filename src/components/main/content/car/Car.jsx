@@ -2,19 +2,19 @@ import style from "./car.module.css"
 import {Redirect, Route, useLocation} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getCarById} from "../../../../redux/cars/carsSelector";
-import {deleteCarThunk} from "../../../../redux/cars/carsReducer";
 import {CarDescription} from "./cardescription/CarDescription";
 import {CarMenu} from "./carmenu/CarMenu";
 import {MaintenanceRecord} from "./maintenancerecord/MaintenanceRecord";
-import {Insurance} from "./insurance/Insurance";
 import {Notice} from "./notice/Notice";
-import {TechnicalInspection} from "./technicalinspection/TechnicalInspection";
 import {getMaintenanceRecordList} from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceSelector";
 import {getMyId} from "../../../../redux/authentication/authenticationSelector";
-import {getInsuranceDateValidById} from "../../../../redux/Insurance/InsuranceSelector";
+import {getInsuranceDateValidById} from "../../../../redux/insurance/insuranceSelector";
 import {Repairs} from "./repairs/Repairs";
 import {getRepairsByCarId} from "../../../../redux/repairs/repairsSelector";
 import {getLastNoticeRecord, getNoticeRecordByCarId} from "../../../../redux/notice/noticeSelector";
+import {InsuranceWrapper} from "./insurance/InsuranceWrapper";
+import {TechnicalInspectionWrapper} from "./technicalinspection/TechnicalInspectionWrapper";
+import {getInspectionDateValidById} from "../../../../redux/technicalinspection/technicalInspectionSelector";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
@@ -25,6 +25,7 @@ export const Car = () => {
     const lastRecording = maintenanceList[maintenanceList.length - 1]
     const lastNoticeRecord =  useSelector(state =>getLastNoticeRecord(state,id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
+    const dateTechnicalInspectionValid = useSelector(state => getInspectionDateValidById(state, id))
     const userId = useSelector(state => getMyId(state))
     const dispatch = useDispatch()
     if (!car) {
@@ -42,14 +43,15 @@ export const Car = () => {
         <div className={style.car_wrapper}>
             <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
                                                                               dateInsuranceIsValid={dateInsuranceIsValid}
-                                                                              {...car} lastNoticeRecord = {lastNoticeRecord}/>}/>
+                                                                              {...car} lastNoticeRecord = {lastNoticeRecord}
+                                                                              dateTechnicalInspectionValid={dateTechnicalInspectionValid}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
                 maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId}/>}/>
             <Route exact path={pathRepairs} render={() => <Repairs
                 carId={id} dispatch={dispatch} userId={userId}
                 repairsList={repairsList}/>}/>
-            <Route exact path={pathInsurance} render={() => <Insurance {...car} />}/>
-            <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspection {...car} />}/>
+            <Route exact path={pathInsurance} render={() => <InsuranceWrapper {...car} />}/>
+            <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspectionWrapper {...car} />}/>
             <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}

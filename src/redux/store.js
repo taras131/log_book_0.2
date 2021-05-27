@@ -3,10 +3,11 @@ import thunk from "redux-thunk";
 import carsReducer from "./cars/carsReducer";
 import authenticationReducer from "./authentication/authenticationReducer";
 import technicalMaintenanceReducer from "./technicalmaintenancerecords/technicalMaintenanceReducer";
-import InsuranceReducer from "./Insurance/InsuranceReducer";
+import InsuranceReducer from "./insurance/insuranceReducer";
 import repairsReducer from "./repairs/repairsReducer";
 import answerWindowReducer from "./answerwindow/answerWindowReducer";
 import noticeReducer from "./notice/noticeReducer";
+import technicalInspectionReducer from "./technicalinspection/technicalInspectionReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
@@ -16,6 +17,7 @@ const reducersList = combineReducers({
     repairsInfo: repairsReducer,
     answerInfo: answerWindowReducer,
     noticeInfo: noticeReducer,
+    technicalInspectionInfo: technicalInspectionReducer,
 })
 
 let store = createStore(reducersList, applyMiddleware(thunk))

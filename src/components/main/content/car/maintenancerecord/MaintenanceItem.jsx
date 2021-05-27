@@ -51,31 +51,32 @@ export const MaintenanceItem = (props) => {
     }
     return (
         <div className={style.car_item_wrapper}>
-            {props.title
-            ?<h3>{props.title}</h3>
-            : <div className={style.car_item_subheader}>
-                    <div className={style.car_icon_wrapper}>
-                        {edit
-                            ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
-                            : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
-                    </div>
+            {props.title && <h3>{props.title}</h3>}
+            <div className={style.car_item_subheader}>
+                {!props.title &&
+                <div className={style.car_icon_wrapper}>
                     {edit
-                        ? <>
-                            <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
-                                   onChange={onDataChange}/>
-                            <input style={{width: 170, marginTop: 0}} value={data.odometer} placeholder="Пробег"
-                                   name="odometer" onChange={onDataChange}/>
-                        </>
-                        : <>
-                            <div>Дата: {props.datecommission}</div>
-                            <div>Пробег: {props.odometer}</div>
-                        </>}
-                    <div className={style.car_icon_wrapper}>
-                        {edit
-                            ? <img onClick={onEditClick} src={backIcon} alt="edit"/>
-                            : <img onClick={onEditClick} src={editIcon} alt="back"/>}
-                    </div>
+                        ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
+                        : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
                 </div>}
+                {edit
+                    ? <>
+                        <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
+                               onChange={onDataChange}/>
+                        <input style={{width: 170, marginTop: 0}} value={data.odometer} placeholder="Пробег"
+                               name="odometer" onChange={onDataChange}/>
+                    </>
+                    : <>
+                        <div>Дата: {props.datecommission}</div>
+                        <div>Пробег: {props.odometer}</div>
+                    </>}
+                {!props.title &&
+                <div className={style.car_icon_wrapper}>
+                    {edit
+                        ? <img onClick={onEditClick} src={backIcon} alt="edit"/>
+                        : <img onClick={onEditClick} src={editIcon} alt="back"/>}
+                </div>}
+            </div>
             <div className={style.hr}></div>
             <div className={style.car_item_info}>
                 <div className={style.subtitle}>Проведённые работы:</div>

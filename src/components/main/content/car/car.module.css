@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     padding-right: 25px;
+    color: #2d73bc;
 }
 
 .car_item_wrapper {
@@ -39,6 +40,7 @@
     height: 50px;
     justify-content: space-between;
     align-items: center;
+    color: #2d73bc;
 }
 .car_item_info{
     margin-top: 10px;
@@ -66,7 +68,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    color: lightyellow;
+    color: #2d73bc;
     font-size: 20px;
     font-weight: 500;
     background-color: #fff;
@@ -149,6 +151,7 @@ button{
     justify-content: center;
     align-items: center;
     color: white;
+    margin-top: 20px;
 }
 .add_form{
    display: flex;
@@ -162,4 +165,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+label{
+    margin-top: 15px;
 }

@@ -115,6 +115,14 @@ export const CarDescription = (props) => {
                         {props.dateInsuranceIsValid}
                     </div>
                 </div>
+                <div className={style.car_item_info}>
+                    <div className={style.subtitle}>
+                        Техосмотр до:
+                    </div>
+                    <div className={style.car_item_data}>
+                        {props.dateTechnicalInspectionValid}
+                    </div>
+                </div>
             </div>
             {props.lastRecording
                 ? <MaintenanceItem {...props.lastRecording} title="Последнее ТО:"/>
@@ -131,9 +139,6 @@ export const CarDescription = (props) => {
                     </div>
                 </div>}
             <NoticeItem{...props.lastNoticeRecord} title="Последняя заметка:"/>
-            <div className={style.car_item_wrapper}>
-                <h3>Техосмотр:</h3>
-            </div>
         </div>
     )
 }
