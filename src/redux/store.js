@@ -8,6 +8,7 @@ import repairsReducer from "./repairs/repairsReducer";
 import answerWindowReducer from "./answerwindow/answerWindowReducer";
 import noticeReducer from "./notice/noticeReducer";
 import technicalInspectionReducer from "./technicalinspection/technicalInspectionReducer";
+import MessageInfoReducer from "./messageinfo/MessageInfoReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
@@ -18,6 +19,7 @@ const reducersList = combineReducers({
     answerInfo: answerWindowReducer,
     noticeInfo: noticeReducer,
     technicalInspectionInfo: technicalInspectionReducer,
+    messageInfo:MessageInfoReducer,
 })
 
 let store = createStore(reducersList, applyMiddleware(thunk))

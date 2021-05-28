@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import classNames from "classnames";
 import style from "./answerwindow.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {getAnswer} from "../../redux/answerwindow/answerWindowSelector";
 import {resetAnswer} from "../../redux/answerwindow/answerWindowReducer";
 
 export const AnswerWindow =(props)=> {
