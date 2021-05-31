@@ -1,4 +1,5 @@
 import {APICars} from "../../api/api";
+import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
 
 const ADD_CAR = "ADD_CAR",
     DELETE_CAR = "DELETE_CAR",
@@ -45,22 +46,28 @@ export const addNewCar = (newCar) => async (dispatch) => {
     let response = await APICars.addCar(newCar);
     if (response === "New car created successfully") {
         dispatch(addCar(newCar));
+        dispatch(setMessageInfo("Автомобиль успешно добавлен"))
     } else {
-        console.log("Не удалось добавить автомобиль")
+        dispatch(setMessageInfo("Не удалось добавить автомобиль, попробуйте позже", "negative"))
+
     }
 }
 export const deleteCarThunk = (id) => async (dispatch) => {
     let response = await APICars.deleteCar(id);
     if (response) {
         dispatch(deleteCar(id));
+        dispatch(setMessageInfo("Автомобиль успешно удалён"))
     } else {
-        console.log("Не удалось удалить автомобиль")
+        dispatch(setMessageInfo("Не удалось удалить автомобиль, попробуйте позже", "negative"))
     }
 }
 export const updateCarThunk = (upCar) => async (dispatch) => {
     let response = await APICars.updateCar(upCar);
     if(response === "car update successfully"){
         dispatch(updateCar(upCar))
+        dispatch(setMessageInfo("Данные успешно обновлены"))
+    } else {
+        dispatch(setMessageInfo("Не удалось обновить данные, попробуйте позже", "negative"))
     }
 }
 export default carsReducer

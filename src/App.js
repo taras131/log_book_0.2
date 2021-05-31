@@ -16,14 +16,13 @@ import {AnswerWindow} from "./components/answerwindow/AnswerWindow";
 import {getNoticeRecords} from "./redux/notice/noticeReducer";
 import {getTechnicalInspection} from "./redux/technicalinspection/technicalInspectionReducer";
 import {MessageInfo} from "./components/messageinfo/MessageInfo";
-import {getMessageInfo} from "./redux/messageinfo/MessageInfoSelector";
 
 function App() {
     const dispatch = useDispatch()
     const isAuthentication = useSelector(state => authMe(state))
     const userId = useSelector(state => getMyId(state))
     const userName = useSelector(state => getMyName(state))
-    const messageInfo = useSelector(state => getMessageInfo(state))
+
     if (isAuthentication) {
         sessionStorage.setItem("userId", userId)
         sessionStorage.setItem("userName", userName)
@@ -50,7 +49,7 @@ function App() {
             <Route exact path="/registration" render={() => <Registration/>}/>
             <Footer/>
             <AnswerWindow/>
-            <MessageInfo message = {messageInfo}/>
+            <MessageInfo  />
         </div>
     );
 }

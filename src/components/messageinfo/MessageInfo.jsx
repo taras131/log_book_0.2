@@ -1,23 +1,27 @@
-import style from "../answerwindow/answerwindow.module.css";
+import style from "./messageinfo.module.css";
 import classNames from "classnames";
-import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {resetMessageInfo} from "../../redux/messageinfo/MessageInfoReducer";
 
 export const MessageInfo = (props) => {
+    const messageInfo = useSelector(state => state.messageInfo.message)
+    const sort = useSelector(state => state.messageInfo.sort)
+    const isShow = useSelector(state => state.messageInfo.isShow)
     const dispatch = useDispatch()
-    const [isShow, setIsShow] = useState(false)
-    if (props.message) {
-        setIsShow(true)
-    }
-    setTimeout(dispatch(resetMessageInfo()), 500)
+    useEffect(()=> {
+        if(isShow){
+            setTimeout(()=>{
+                dispatch(resetMessageInfo())
+            }, 4000)
+        }
+    },[isShow])
     return (
-        <div className={classNames(style.answer_window_wrapper, {
-            [style.answer_window_hidden]: !isShow
+        <div className={classNames(style.message_window_wrapper, {
+            [style.message_window_hidden]: !isShow || !messageInfo,
+            [style.negative]: sort === "negative"
         })}>
-            <div className={style.answer_window_content}>
-                <div>{props.message}</div>
-            </div>
+            <div className={style.message_window_content}>{messageInfo}</div>
         </div>
     )
 }

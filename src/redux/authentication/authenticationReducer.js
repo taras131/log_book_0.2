@@ -1,4 +1,5 @@
 import {APIAuthentication} from "../../api/api";
+import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
 
 const SET_IS_LOADING = "SET_IS_LOADING"
 const SET_MESSAGE = "SET_MESSAGE"
@@ -37,11 +38,10 @@ export const registrationNewUser = (login, password) => async (dispatch) => {
     dispatch(setIsLoading(true))
     dispatch(setMessage(""))
     let response = await APIAuthentication.registration(login, password)
-    console.log(response)
     if (response) {
-        dispatch(setMessage("Вы успешно зарегистрированы"))
+        dispatch(setMessageInfo("Вы успешно зарегистрированы"))
     } else {
-        dispatch(setMessage("Пользователь с таким именем уже существует"))
+        dispatch(setMessageInfo("Пользователь с таким именем уже существует", "negative"))
     }
     dispatch(setIsLoading(false))
 }
@@ -49,7 +49,7 @@ export const authentication = (login, password) => async (dispatch) => {
     dispatch(setMessage(""))
     let response = await APIAuthentication.entrance(login, password)
     if (response === "Пользователя не существует") {
-        dispatch(setMessage(response))
+        dispatch(setMessageInfo(response, "negative"))
     } else {
         dispatch(setUser({id: response, name: login}))
     }

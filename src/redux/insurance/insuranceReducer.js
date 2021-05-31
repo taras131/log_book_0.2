@@ -1,4 +1,5 @@
 import {APIInsurance} from "../../api/api";
+import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
 
 const SET_INSURANCE = "SET_INSURANCE"
 const ADD_INSURANCE = "ADD_INSURANCE"
@@ -40,6 +41,9 @@ export const addNewInsurance = (dateIsValid, carId, userId) => async (dispatch) 
             userId: userId
         }
         dispatch(addInsurance(newRecord))
+        dispatch(setMessageInfo("Данные о сроке страхования успешно установлены"))
+    } else {
+        dispatch(setMessageInfo("Не удалось установить данные, попробуйте позже", "negative"))
     }
 }
 

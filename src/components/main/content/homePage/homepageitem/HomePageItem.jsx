@@ -7,15 +7,16 @@ import {getInspectionDateValidById} from "../../../../../redux/technicalinspecti
 import {checkDate} from "../../../../../common/checkDate";
 import classNames from "classnames";
 import {NavLink} from "react-router-dom";
+import {getCountNoticeByCarId} from "../../../../../redux/notice/noticeSelector";
 
 export const HomePageItem = (props) => {
     const lastMaintenanceRecording = useSelector(state => getLastMaintenanceRecording(state, props.id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, props.id))
     const lastRepairRecording = useSelector(state => getLastRepairsByCarId(state, props.id))
     const dateTechnicalInspectionValid = useSelector(state => getInspectionDateValidById(state, props.id))
+    const noticeCount = useSelector(state => getCountNoticeByCarId(state, props.id))
     let maintenanceStatus = null
     if (lastMaintenanceRecording) {
-        console.log(lastMaintenanceRecording.datecommission)
         maintenanceStatus = checkDate(lastMaintenanceRecording.datecommission, 365)
     }
     const insuranceStatus = checkDate(dateInsuranceIsValid)
@@ -23,19 +24,14 @@ export const HomePageItem = (props) => {
     const pathDescription = `car/${props.id}`
     const pathMaintenanceRecord = `/car/maintenancerecord/${props.id}`
     const pathInsurance = `/car/insurance/${props.id}`
-    const pathNotice = `/car/notice/${props.id}`
     const pathTechnicalInspection = `/car/technicalinspection/${props.id}`
     const pathRepairs = `/car/repairs/${props.id}`
+    const pathNotice = `/car/notice/${props.id}`
     return (
         <tr>
             <td align="center">
                 <NavLink to={pathDescription} style={{textDecoration: 'none'}}>
                     {props.brand}
-                </NavLink>
-            </td>
-            <td align="center">
-                <NavLink to={pathDescription} style={{textDecoration: 'none'}}>
-                    {props.model}
                 </NavLink>
             </td>
             <td align="center">
@@ -62,7 +58,7 @@ export const HomePageItem = (props) => {
                     [style.warning]: maintenanceStatus === "warning",
                     [style.danger]: maintenanceStatus === "danger",
                 })}>
-                    {lastRepairRecording
+                    {lastRepairRecording.odometer
                         ? lastRepairRecording.odometer + " - " + lastRepairRecording.date
                         : "нет данных"}
                 </NavLink>
@@ -74,7 +70,7 @@ export const HomePageItem = (props) => {
                     [style.danger]: technicalInspectionStatus === "danger",
                 })}>
                     {dateTechnicalInspectionValid
-                        ? "до " + dateTechnicalInspectionValid
+                        ? "до: " + dateTechnicalInspectionValid
                         : "нет данных"}
                 </NavLink>
             </td>
@@ -84,7 +80,12 @@ export const HomePageItem = (props) => {
                     [style.warning]: insuranceStatus === "warning",
                     [style.danger]: insuranceStatus === "danger",
                 })}>
-                    {"до " + dateInsuranceIsValid}
+                    {"до: " + dateInsuranceIsValid}
+                </NavLink>
+            </td>
+            <td align="center">
+                <NavLink to={pathNotice} style={{textDecoration: 'none'}}>
+                    {noticeCount}
                 </NavLink>
             </td>
         </tr>

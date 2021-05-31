@@ -1,4 +1,5 @@
 import {ApiNotice} from "../../api/api";
+import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
 const SET_NOTICE = "SET_NOTICE"
 const  DELETE_RECORD =  "DELETE_RECORD"
 const initialState = {
@@ -32,18 +33,27 @@ export const addNewNoticeRecord = (newRecord) => async (dispatch) =>{
     let response = await ApiNotice.addNotice(newRecord)
     if(response === "New notice record created successfully"){
         dispatch(getNoticeRecords(newRecord.userId))
+        dispatch(setMessageInfo("Напоминание успешно создано"))
+    } else {
+        dispatch(setMessageInfo("Не удалось добавить напоминание попробуйте позднее ", "negative"))
     }
 }
 export const deleteNoticeRecord = (id, userId) => async (dispatch) => {
     let response = await ApiNotice.deleteNotice(id)
     if(response === "delete record successfully"){
         dispatch(deleteRecord(id))
+        dispatch(setMessageInfo("Напоминание успешно удалено"))
+    } else {
+        dispatch(setMessageInfo("Не удалось удалить напоминание попробуйте позднее", "negative"))
     }
 }
 export const updateNoticeRecord = (newRecord) => async (dispatch) =>{
     let response = await ApiNotice.updateNotice(newRecord)
     if(response === "update notice record successfully"){
         dispatch(getNoticeRecords(newRecord.userId))
+        dispatch(setMessageInfo("Напоминание успешно обновлено"))
+    } else {
+        dispatch(setMessageInfo("Не удалось отредактировать напоминание попробуйте позднее", "negative"))
     }
 }
 export default noticeReducer

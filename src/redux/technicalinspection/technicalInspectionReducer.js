@@ -1,4 +1,5 @@
 import {APITechnicalInspection} from "../../api/api";
+import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
 
 const SET_INSPECTION = "SET_INSPECTION"
 const ADD_INSPECTION = " ADD_INSPECTION"
@@ -39,6 +40,9 @@ export const addTechnicalInspection = (dateIsValid, carId, userId) => async (dis
             userId: userId
         }
         dispatch(addInspection(newRecord))
+        dispatch(setMessageInfo("Новые сроки техосмотра установлены"))
+    } else {
+        dispatch(setMessageInfo("Не удалось установить новые сроки техосмотра, попробуйте позже", "negative"))
     }
 }
 export default technicalInspectionReducer

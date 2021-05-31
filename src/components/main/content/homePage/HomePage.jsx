@@ -14,12 +14,12 @@ export const HomePage = () => {
                     <tbody>
                     <tr>
                         <td align="center">Марка</td>
-                        <td align="center">Модель</td>
                         <td align="center">Номер</td>
                         <td align="center">ТО</td>
                         <td align="center">Ремонт</td>
                         <td align="center">Тех осмотр</td>
                         <td align="center">Страховка</td>
+                        <td align="center">Заметки</td>
                     </tr>
                     {tabList}
                     </tbody>
