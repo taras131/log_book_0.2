@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = "http://localhost"
-//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+//const host = "http://localhost"
+const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {

@@ -16,6 +16,7 @@ import {AnswerWindow} from "./components/answerwindow/AnswerWindow";
 import {getNoticeRecords} from "./redux/notice/noticeReducer";
 import {getTechnicalInspection} from "./redux/technicalinspection/technicalInspectionReducer";
 import {MessageInfo} from "./components/messageinfo/MessageInfo";
+import {Preloader} from "./components/preloader/Preloader";
 
 function App() {
     const dispatch = useDispatch()
@@ -49,7 +50,8 @@ function App() {
             <Route exact path="/registration" render={() => <Registration/>}/>
             <Footer/>
             <AnswerWindow/>
-            <MessageInfo  />
+            <MessageInfo />
+            <Preloader/>
         </div>
     );
 }

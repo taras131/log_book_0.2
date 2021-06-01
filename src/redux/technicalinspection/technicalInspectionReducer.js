@@ -1,5 +1,6 @@
 import {APITechnicalInspection} from "../../api/api";
 import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
+import {setPreloader} from "../preloader/preloaderReducer";
 
 const SET_INSPECTION = "SET_INSPECTION"
 const ADD_INSPECTION = " ADD_INSPECTION"
@@ -26,12 +27,15 @@ const addInspection = (newRecord) => {
     return {type: ADD_INSPECTION, newRecord}
 }
 export const getTechnicalInspection = (userId) => async (dispatch) => {
+    dispatch(setPreloader(true))
     const result = await APITechnicalInspection.getInspection(userId)
     if (result.length > 0) {
         dispatch(setInspection(result))
     }
+    dispatch(setPreloader(false))
 }
 export const addTechnicalInspection = (dateIsValid, carId, userId) => async (dispatch) => {
+    dispatch(setPreloader(true))
     const result = await APITechnicalInspection.addInspection(dateIsValid, carId, userId)
     if (result === "New date created successfully") {
         const newRecord = {
@@ -44,5 +48,6 @@ export const addTechnicalInspection = (dateIsValid, carId, userId) => async (dis
     } else {
         dispatch(setMessageInfo("Не удалось установить новые сроки техосмотра, попробуйте позже", "negative"))
     }
+    dispatch(setPreloader(false))
 }
 export default technicalInspectionReducer

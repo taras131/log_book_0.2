@@ -9,6 +9,7 @@ import answerWindowReducer from "./answerwindow/answerWindowReducer";
 import noticeReducer from "./notice/noticeReducer";
 import technicalInspectionReducer from "./technicalinspection/technicalInspectionReducer";
 import MessageInfoReducer from "./messageinfo/MessageInfoReducer";
+import preloaderReducer from "./preloader/preloaderReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
@@ -20,6 +21,7 @@ const reducersList = combineReducers({
     noticeInfo: noticeReducer,
     technicalInspectionInfo: technicalInspectionReducer,
     messageInfo:MessageInfoReducer,
+    preloaderInfo: preloaderReducer,
 })
 
 let store = createStore(reducersList, applyMiddleware(thunk))

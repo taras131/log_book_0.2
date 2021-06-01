@@ -1,5 +1,6 @@
 import {APICars} from "../../api/api";
 import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
+import {setPreloader} from "../preloader/preloaderReducer";
 
 const ADD_CAR = "ADD_CAR",
     DELETE_CAR = "DELETE_CAR",
@@ -43,16 +44,18 @@ export const getCars = (userId) => async (dispatch) => {
     }
 }
 export const addNewCar = (newCar) => async (dispatch) => {
+    dispatch(setPreloader(true))
     let response = await APICars.addCar(newCar);
     if (response === "New car created successfully") {
         dispatch(addCar(newCar));
         dispatch(setMessageInfo("Автомобиль успешно добавлен"))
     } else {
         dispatch(setMessageInfo("Не удалось добавить автомобиль, попробуйте позже", "negative"))
-
     }
+    dispatch(setPreloader(false))
 }
 export const deleteCarThunk = (id) => async (dispatch) => {
+    dispatch(setPreloader(true))
     let response = await APICars.deleteCar(id);
     if (response) {
         dispatch(deleteCar(id));
@@ -60,8 +63,10 @@ export const deleteCarThunk = (id) => async (dispatch) => {
     } else {
         dispatch(setMessageInfo("Не удалось удалить автомобиль, попробуйте позже", "negative"))
     }
+    dispatch(setPreloader(false))
 }
 export const updateCarThunk = (upCar) => async (dispatch) => {
+    dispatch(setPreloader(true))
     let response = await APICars.updateCar(upCar);
     if(response === "car update successfully"){
         dispatch(updateCar(upCar))
@@ -69,5 +74,6 @@ export const updateCarThunk = (upCar) => async (dispatch) => {
     } else {
         dispatch(setMessageInfo("Не удалось обновить данные, попробуйте позже", "negative"))
     }
+    dispatch(setPreloader(false))
 }
 export default carsReducer

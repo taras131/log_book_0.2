@@ -10,7 +10,7 @@ const MessageInfoReducer = (state = initialState, action) => {
         case SET_MESSAGE:
             return {...state, message: action.message , isShow: true, sort: action.sort}
         case RESET_MESSAGE:
-            return {...state, message: "", isShow: false, sort: ""}
+            return {...state, isShow: false, sort: ""}
         default:
             return state
     }
