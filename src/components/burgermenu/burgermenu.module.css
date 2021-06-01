@@ -1,0 +1,26 @@
+.burger_menu_wrapper{
+    min-width: 350px;
+    min-height: 600px;
+    background-color: grey;
+    position: fixed;
+    top:150px;
+    left: 50%;
+    z-index: 1;
+    padding: 25px;
+    transition: all 1s;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.message_window_content{
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+.burger_menu_hidden{
+    left: -400px
+}
+.negative{
+    background-color: grey;
+}

@@ -1,39 +1,27 @@
-.authentication_wrapper {
-
-    width: 100%;
-}
-
-.registration_wrapper {
-    background-color: gray;
+.addNewCar_wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
-
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+    padding: 20px;
 }
-
-.entrance_wrapper {
-    background-color: darkseagreen;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-}
-
-h2 {
-    margin-top: 150px;
+h3{
     font-size: 25px;
-    color: lightyellow;
+    color: #3a75c4;
 }
-
-input {
+input{
     margin-top: 15px;
     height: 25px;
     width: 300px;
     padding: 5px;
     border-radius: 5px;
 }
-
+input:focus{
+    border: 3px solid #3a75c4;
+    box-shadow: 1px 1px 2px 0 blue;
+}
 button {
     margin-top: 15px;
     height: 70px;
@@ -42,12 +30,16 @@ button {
     border-radius: 5px;
     color: lavenderblush;
     font-size: 20px;
-    background-color: darkslateblue;
+    background-color: #3a75c4;
     cursor: pointer;
 }
-
-.errormessage {
-    margin-top: 15px;
+button:hover {
+    background-color: #3a75c4 ;
+    color: white;
+}
+.errormessage{
+    margin: 20px;
     color: red;
     font-size: 20px;
+    text-align: center;
 }

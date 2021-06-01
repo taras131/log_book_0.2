@@ -6,6 +6,7 @@ import {useLocation} from "react-router";
 import {getMyName} from "../../redux/authentication/authenticationSelector";
 import icon from "../../icons/open-book.png"
 import exit from "../../icons/logout.png"
+import classNames from "classnames";
 
 export const Header = (props) => {
     const path = useLocation().pathname.split("/").pop()
@@ -31,6 +32,14 @@ export const Header = (props) => {
                 <NavLink to="/" style={{textDecoration: 'none'}}>
                     <img src={icon} alt="open book"/>
                 </NavLink>
+            </div>
+            <div onClick={props.onBurgerClick}
+                 className={classNames(style.header_burger, {
+                     [style.burger_active]: props.isShowBurgerMenu
+                 })}>
+                <span className={style.child_1}></span>
+                <span className={style.child_2}></span>
+                <span className={style.child_3}></span>
             </div>
             <div className={style.header_title}>
                 <NavLink to="/" style={{textDecoration: 'none'}}>
