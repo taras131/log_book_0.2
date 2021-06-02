@@ -17,7 +17,8 @@ export const CarDescription = (props) => {
         brand: '',
         model: '',
         num: '',
-        yearManufacture: ''
+        yearManufacture: '',
+        vin: ''
     })
     const dispatch = useDispatch()
     useEffect(() => {
@@ -26,7 +27,8 @@ export const CarDescription = (props) => {
             brand: props.brand,
             model: props.model,
             num: props.num,
-            yearManufacture: props.yearManufacture
+            yearManufacture: props.yearManufacture,
+            vin: props.vin
         })
     }, [props.id])
     const onDataChange = (e) => {
@@ -42,7 +44,8 @@ export const CarDescription = (props) => {
             brand: data.brand,
             model: data.model,
             yearManufacture: data.yearManufacture,
-            num: data.num
+            num: data.num,
+            vin: data.vin
         }))
         dispatch(setAnswer("сохранить изменения", upCar))
         setEdit(false)
@@ -58,9 +61,8 @@ export const CarDescription = (props) => {
                     <div className={style.car_icon_wrapper}>
                         {edit
                             ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
-                            : <NavLink to="/" style={{textDecoration: 'none'}}>
-                                <img onClick={onDeleteCarClick} src={deleteIcon} alt="back"/>
-                            </NavLink>}
+                            : <img onClick={onDeleteCarClick} src={deleteIcon} alt="back"/>
+                        }
                     </div>
                     <h3>Общие свединия:</h3>
                     <div className={style.car_icon_wrapper}>
@@ -69,45 +71,61 @@ export const CarDescription = (props) => {
                             : <img onClick={onEditClick} src={editIcon} alt="back"/>}
                     </div>
                 </div>
-                <div className={style.car_item_info}>
-                    <div className={style.subtitle}>Марка:</div>
+                <div className={style.car_description_section}>
+                    <div className={style.car_description_item}>
+                        <div className={style.subtitle}>Марка:</div>
+                        <div className={style.car_item_data}>
+                            {edit &&
+                            <input style={{marginTop: 0}} value={data.brand} type="text" name="brand"
+                                   onChange={onDataChange}/>}
+                            {props.brand && !edit && props.brand}
+                            {!props.brand && !edit && "нет данных"}
+                        </div>
+                    </div>
+                    <div className={style.car_description_item}>
+                        <div className={style.subtitle}>Модель:</div>
+                        <div className={style.car_item_data}>
+                            {edit &&
+                            <input value={data.model} type="text" name="model" onChange={onDataChange}/>}
+                            {props.model && !edit && props.model}
+                            {!props.model && !edit && "нет данных"}
+                        </div>
+                    </div>
+                </div>
+                <div className={style.car_description_section}>
+                    <div className={style.car_description_item}>
+                        <div className={style.subtitle}>Номер:</div>
+                        <div className={style.car_item_data}>
+                            {edit &&
+                            <input style={{marginTop: 0}} value={data.num} type="text" name="num"
+                                   onChange={onDataChange}/>}
+                            {props.num && !edit && props.num}
+                            {!props.num && !edit && "нет данных"}
+                        </div>
+                    </div>
+                    <div className={style.car_description_item}>
+                        <div className={style.subtitle}>Год:</div>
+                        <div className={style.car_item_data}>
+                            {edit &&
+                            <input style={{marginTop: 0}} value={data.yearManufacture} type="text"
+                                   name="yearManufacture"
+                                   onChange={onDataChange}/>}
+                            {props.yearManufacture && !edit && props.yearManufacture}
+                            {!props.yearManufacture && !edit && "нет данных"}
+                        </div>
+                    </div>
+                </div>
+                <div className={style.car_description_item}>
+                    <div className={style.subtitle}>VIN:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input style={{marginTop: 0}} value={data.brand} type="text" name="brand"
+                        <input style={{marginTop: 0, maxWidth:130}} value={data.vin} type="text" name="vin"
                                onChange={onDataChange}/>}
-                        {props.brand && !edit && props.brand}
-                        {!props.brand && !edit && "данные не были внесены"}
+                        {props.vin && !edit && props.vin}
+                        {!props.vin && !edit && "нет данных"}
                     </div>
                 </div>
-                <div className={style.car_item_info}>
-                    <div className={style.subtitle}>Модель:</div>
-                    <div className={style.car_item_data}>
-                        {edit &&
-                        <input value={data.model} type="text" name="model" onChange={onDataChange}/>}
-                        {props.model && !edit && props.model}
-                        {!props.model && !edit && "данные не были внесены"}
-                    </div>
-                </div>
-                <div className={style.car_item_info}>
-                    <div className={style.subtitle}>Номер:</div>
-                    <div className={style.car_item_data}>
-                        {edit &&
-                        <input style={{marginTop: 0}} value={data.num} type="text" name="num" onChange={onDataChange}/>}
-                        {props.num && !edit && props.num}
-                        {!props.num && !edit && "данные не были внесены"}
-                    </div>
-                </div>
-                <div className={style.car_item_info}>
-                    <div className={style.subtitle}>Год выпуска:</div>
-                    <div className={style.car_item_data}>
-                        {edit &&
-                        <input style={{marginTop: 0}} value={data.yearManufacture} type="text" name="yearManufacture"
-                               onChange={onDataChange}/>}
-                        {props.yearManufacture && !edit && props.yearManufacture}
-                        {!props.yearManufacture && !edit && "данные не были внесены"}
-                    </div>
-                </div>
-                <div className={style.car_item_info}>
+                <div className={style.car_item_subheader}>
                     <div className={style.subtitle}>
                         Застрахована до:
                     </div>
@@ -115,7 +133,7 @@ export const CarDescription = (props) => {
                         {props.dateInsuranceIsValid}
                     </div>
                 </div>
-                <div className={style.car_item_info}>
+                <div className={style.car_item_subheader}>
                     <div className={style.subtitle}>
                         Техосмотр до:
                     </div>
@@ -124,6 +142,7 @@ export const CarDescription = (props) => {
                     </div>
                 </div>
             </div>
+
             {props.lastRecording
                 ? <MaintenanceItem {...props.lastRecording} title="Последнее ТО:"/>
                 : <div className={style.car_item_wrapper}>

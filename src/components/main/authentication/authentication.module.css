@@ -13,6 +13,7 @@
 }
 
 .entrance_wrapper {
+    height: 100%;
     background-color: darkseagreen;
     display: flex;
     flex-direction: column;

@@ -38,7 +38,7 @@ export const AddNoticeRecord = (props) => {
             setEdit(!edit)
         }
     return(
-        <div className={style.car_add_newrecord}>
+        <div className={style.car_add_new_record}>
             <div className={style.car_item_subheader}>
                 <h3>Добавление новой заметки:</h3>
                 <div className={style.car_icon_wrapper}>

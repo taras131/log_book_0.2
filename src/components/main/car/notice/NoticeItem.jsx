@@ -64,13 +64,13 @@ export const NoticeItem = (props) => {
                         ? <>
                             <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
                                    onChange={onDataChange}/>
-                            <input style={{width: 170, marginTop: 0}} value={data.odometer} placeholder="Пробег"
+                            <input value={data.odometer} placeholder="Пробег"
                                    name="odometer" onChange={onDataChange}/>
                         </>
-                        : <>
+                        : <div className={style.date_odometer_wrapper}>
                             <div>Дата: {props.date}</div>
                             <div>Пробег: {props.odometer}</div>
-                        </>}
+                        </div>}
                     <div className={style.car_icon_wrapper}>
                         {edit
                             ? <img onClick={onEditClick} src={backIcon} alt="edit"/>

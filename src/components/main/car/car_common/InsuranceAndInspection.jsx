@@ -32,7 +32,7 @@ export const InsuranceAndInspection = (props) => {
     }
     return (
         <div className={style.car_section_wrapper}>
-                <div className={style.car_add_newrecord}>
+                <div className={style.car_add_new_record}>
                     <div className={style.car_item_subheader}>{props.title} до: {props.dateIsValid}</div>
                     <div className={style.hr}></div>
                     <h4>Установить новую дату:</h4>

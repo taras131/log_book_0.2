@@ -27,41 +27,84 @@ export const Header = (props) => {
     }
 
     return (
-        <header className={style.header_wrapper}>
-            <div className={style.header_logo}>
-                <NavLink to="/" style={{textDecoration: 'none'}}>
-                    <img src={icon} alt="open book"/>
+        <header>
+            <div className={style.header_wrapper}>
+                <div className={style.header_logo}>
+                    <NavLink to="/" style={{textDecoration: 'none'}}>
+                        <img src={icon} alt="open book"/>
+                    </NavLink>
+                </div>
+                <div onClick={props.onBurgerClick}
+                     className={classNames(style.header_burger, {
+                         [style.burger_active]: props.isShowBurgerMenu
+                     })}>
+                    <span className={style.child_1}></span>
+                    <span className={style.child_2}></span>
+                    <span className={style.child_3}></span>
+                </div>
+                <div className={style.header_title}>
+                    <NavLink to="/" style={{textDecoration: 'none'}}>
+                        <h1>Бортовой журнал</h1>
+                    </NavLink>
+                </div>
+                {props.isAuthentication &&
+                <>
+                    <div className={style.header_button} onClick={onExitClick}>
+                        {name}
+                        <img src={exit} alt="exit"/>
+                    </div>
+                </>
+                }
+                {isLogin &&
+                <NavLink to="/login" className={style.header_button}>
+                    Ввход
+                </NavLink>}
+                {isRegistration &&
+                <NavLink to="/registration" className={style.header_button}>
+                    Регистрация
                 </NavLink>
-            </div>
-            <div onClick={props.onBurgerClick}
-                 className={classNames(style.header_burger, {
-                     [style.burger_active]: props.isShowBurgerMenu
-                 })}>
-                <span className={style.child_1}></span>
-                <span className={style.child_2}></span>
-                <span className={style.child_3}></span>
-            </div>
-            <div className={style.header_title}>
-                <NavLink to="/" style={{textDecoration: 'none'}}>
-                    <h1>Бортовой журнал</h1>
-                </NavLink>
+                }
             </div>
             {props.isAuthentication &&
-            <>
-                <div className={style.header_button} onClick={onExitClick}>
-                    {name}
-                    <img src={exit} alt="exit"/>
+            <div className={style.subheader_wrapper}>
+                <div className={style.subheader_container}>
+                    <div className={style.subheader_item}>
+                        <NavLink to="/" className={classNames(style.subheader_item, {
+                            [style.active]: path === ""
+                        })}>
+                            Список
+                        </NavLink>
+                    </div>
+                    <div className={style.subheader_item}>
+                        <NavLink to="/0" className={classNames(style.subheader_item, {
+                            [style.active]: path === "0"
+                        })}>
+                            Легковые
+                        </NavLink>
+                    </div>
+                    <div className={style.subheader_item}>
+                        <NavLink to="/1" className={classNames(style.subheader_item, {
+                            [style.active]: path === "1"
+                        })}>
+                            Грузовые
+                        </NavLink>
+                    </div>
+                    <div className={style.subheader_item}>
+                        <NavLink to="/2" className={classNames(style.subheader_item, {
+                            [style.active]: path === "2"
+                        })}>
+                            Спецтехника
+                        </NavLink>
+                    </div>
+                    <div>
+                        <NavLink to="/add_new_car" className={classNames(style.subheader_item, {
+                            [style.active]: path === "add_new_car"
+                        })}>
+                            Добавить
+                        </NavLink>
+                    </div>
                 </div>
-            </>
-            }
-            {isLogin &&
-            <NavLink to="/login" className={style.header_button}>
-                Ввход
-            </NavLink>}
-            {isRegistration &&
-            <NavLink to="/registration" className={style.header_button}>
-                Регистрация
-            </NavLink>
+            </div>
             }
         </header>
     )

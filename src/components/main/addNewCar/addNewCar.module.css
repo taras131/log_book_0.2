@@ -11,6 +11,11 @@ h3{
     font-size: 25px;
     color: #3a75c4;
 }
+@media(max-width: 460px){
+    h3{
+        font-size: 20px;
+    }
+}
 input{
     margin-top: 15px;
     height: 25px;

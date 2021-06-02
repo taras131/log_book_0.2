@@ -1,6 +1,6 @@
 .car_wrapper {
     display: grid;
-    grid-template-columns: 6fr 2fr;
+    grid-template-columns: 3fr minmax(90px, 1fr);
     grid-template-rows: 1fr;
 }
 
@@ -10,10 +10,21 @@
     padding-right: 15px;
     color: #2d73bc;
 }
+@media (max-width: 767px) {
+    .car_section_wrapper{
+        padding-right: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .car_section_wrapper{
+        padding-right: 7px;
+    }
+}
 
 .car_item_wrapper {
     background-color: #fff;
-    min-height: 170px;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     color: #2d73bc;
@@ -24,6 +35,28 @@
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     margin-bottom: 20px;
     padding: 25px;
+}
+
+@media (max-width: 767px) {
+    .car_item_wrapper {
+        padding: 12px;
+        font-size: 12px;
+        margin-bottom: 14px;
+    }
+    .car_item_wrapper h3{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .car_item_wrapper {
+        padding: 7px;
+        font-size: 10px;
+        margin-bottom: 7px;
+    }
+    .car_item_wrapper h3{
+        font-size: 12px;
+    }
 }
 
 .car_item_wrapper:hover {
@@ -38,6 +71,40 @@
     align-items: center;
 }
 
+@media (max-width: 767px) {
+    .car_icon_wrapper {
+        height: 35px;
+        width: 35px;
+    }
+
+    .car_icon_wrapper img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .car_icon_wrapper img:hover {
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media (max-width: 400px) {
+    .car_icon_wrapper {
+        height: 30px;
+        width: 30px;
+    }
+
+    .car_icon_wrapper img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .car_icon_wrapper img:hover {
+        height: 30px;
+        width: 30px;
+    }
+}
+
 .car_item_subheader {
     display: flex;
     width: 100%;
@@ -47,6 +114,64 @@
     color: #2d73bc;
 }
 
+@media (max-width: 767px) {
+    .car_item_subheader h3 {
+        font-size: 16px;
+    }
+}
+@media (max-width: 500px) {
+    .car_item_subheader h3 {
+        font-size: 14px;
+    }
+}
+@media (max-width: 400px) {
+    .car_item_subheader h3 {
+        font-size: 12px;
+    }
+}
+
+.car_item_subheader input {
+    width: 170px;
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .car_item_subheader {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .car_item_subheader input {
+        width: 100px;
+    }
+}
+
+.date_odometer_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .date_odometer_wrapper {
+        flex-direction: column;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px) {
+    .date_odometer_wrapper {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .date_odometer_wrapper {
+        font-size: 10px;
+    }
+}
+
 .car_item_info {
     margin-top: 10px;
     display: grid;
@@ -54,6 +179,18 @@
     grid-template-rows: 1fr;
     width: 100%;
     min-height: 50px;
+}
+
+@media (max-width: 767px) {
+    .car_item_info {
+        min-height: 0px
+    }
+}
+
+@media (max-width: 400px) {
+    .car_item_info {
+
+    }
 }
 
 .delete {
@@ -69,7 +206,7 @@
     border-radius: 5px;
 }
 
-.car_add_newrecord {
+.car_add_new_record {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -83,6 +220,32 @@
     position: relative;
     transition: all 0.3s;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+}
+
+@media (max-width: 767px) {
+    .car_add_new_record {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .car_add_new_record h3 {
+        font-size: 14px;
+    }
+
+    .car_add_new_record h4 {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .car_add_new_record {
+        padding: 7px;
+        margin-bottom: 10px;
+    }
+
+    .car_add_new_record h3 {
+        font-size: 12px;
+    }
 }
 
 .car_add_hidden {
@@ -140,6 +303,11 @@ h3 {
     height: 2px;
     width: 100%;
     background-color: darkseagreen;
+}
+@media(max-width: 500px){
+    .hr{
+        margin: 5px auto;
+    }
 }
 
 img {
@@ -204,17 +372,21 @@ label {
     h3 {
         font-size: 16px;
     }
-    .car_icon_wrapper{
+
+    .car_icon_wrapper {
         height: 40px;
         width: 40px;
     }
-    img{
+
+    img {
         width: 35px;
     }
+
     img:hover {
         width: 40px;
     }
-    .car_item_info{
+
+    .car_item_info {
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -226,17 +398,21 @@ label {
     h3 {
         font-size: 14px;
     }
-    .car_icon_wrapper{
+
+    .car_icon_wrapper {
         height: 35px;
         width: 35px;
     }
-    img{
+
+    img {
         width: 30px;
     }
+
     img:hover {
         width: 35px;
     }
-    .car_item_info{
+
+    .car_item_info {
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -248,20 +424,60 @@ label {
     h3 {
         font-size: 12px;
     }
-    .car_icon_wrapper{
+
+    .car_icon_wrapper {
         height: 30px;
         width: 30px;
     }
-    img{
+
+    img {
         width: 25px;
     }
+
     img:hover {
         width: 30px;
     }
-    .car_item_info{
+
+    .car_item_info {
         display: flex;
         flex-direction: column;
         justify-content: start;
         align-items: start;
+    }
+}
+.car_description_section {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+}
+.car_description_section input{
+    width: 170px;
+}
+.car_description_item{
+    margin-top: 15px;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5px;
+}
+@media(max-width: 767px){
+    .car_description_item{
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .car_description_section input{
+        width: 100px;
+    }
+}
+@media(max-width: 685px){
+    .car_description_section{
+        font-size: 12px;
+    }
+    .car_description_section input{
+        width: 80px;
+    }
+}
+@media(max-width: 600px){
+    .car_description_section{
+        font-size: 10px;
     }
 }

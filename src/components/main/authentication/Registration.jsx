@@ -38,7 +38,6 @@ export const Registration = (props) => {
 
     return (
         <div className={style.entrance_wrapper}>
-
             {props.isEntrance
                 ? <h2>Вход</h2>
                 : <h2>Регистрация</h2>}
@@ -51,7 +50,7 @@ export const Registration = (props) => {
             <input type="password" value={repeatPassword} onChange={onRepeatPasswordChange}
                    placeholder="Повторите пароль"/>}
 
-            <span className={style.errormessage}>{message}</span>
+            <div className={style.errormessage}>{message}</div>
             {props.isEntrance
                 ? <button onClick={onEntranceClick}>Войти</button>
                 : <button onClick={onRegistranionClick}>Заригистрироваться</button>}

@@ -1,6 +1,6 @@
 .burger_menu_wrapper{
-    min-width: 350px;
-    min-height: 600px;
+    width: 250px;
+    min-height: 300px;
     background-color: grey;
     position: fixed;
     top:150px;

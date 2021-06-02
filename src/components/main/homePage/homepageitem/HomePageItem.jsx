@@ -53,11 +53,7 @@ export const HomePageItem = (props) => {
                 </NavLink>
             </td>
             <td align="center">
-                <NavLink to={pathRepairs} className={classNames(style.just, {
-                    [style.ok]: maintenanceStatus === "ok",
-                    [style.warning]: maintenanceStatus === "warning",
-                    [style.danger]: maintenanceStatus === "danger",
-                })}>
+                <NavLink to={pathRepairs} className={classNames(style.just)}>
                     {lastRepairRecording.odometer
                         ? lastRepairRecording.odometer + " - " + lastRepairRecording.date
                         : "нет данных"}
@@ -70,7 +66,7 @@ export const HomePageItem = (props) => {
                     [style.danger]: technicalInspectionStatus === "danger",
                 })}>
                     {dateTechnicalInspectionValid
-                        ? "до: " + dateTechnicalInspectionValid
+                        ? dateTechnicalInspectionValid
                         : "нет данных"}
                 </NavLink>
             </td>
@@ -80,7 +76,7 @@ export const HomePageItem = (props) => {
                     [style.warning]: insuranceStatus === "warning",
                     [style.danger]: insuranceStatus === "danger",
                 })}>
-                    {"до: " + dateInsuranceIsValid}
+                    {dateInsuranceIsValid}
                 </NavLink>
             </td>
             <td align="center">

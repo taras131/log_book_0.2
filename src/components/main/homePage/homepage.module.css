@@ -23,3 +23,18 @@ table.tab_wrapper th {
 tr:hover{
 
 }
+@media(max-width: 767px){
+    .homepage_wrapper{
+        padding: 15px;
+    }
+}
+@media(max-width: 500px){
+    .homepage_wrapper{
+        padding: 10px;
+    }
+}
+@media(max-width: 400px){
+    .homepage_wrapper{
+        padding: 5px;
+    }
+}
