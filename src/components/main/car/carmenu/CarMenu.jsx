@@ -35,6 +35,11 @@ export const CarMenu = (props) => {
                 })}>
                     Техосмотр
                 </NavLink>
+                <NavLink to={props.pathOrder} className={classNames(style.car_menu_item, {
+                    [style.active]: pathType === props.pathOrder.split("/")[2]
+                })}>
+                    Заявки
+                </NavLink>
                 <NavLink to={props.pathNotice} className={classNames(style.car_menu_item, {
                     [style.active]: pathType === props.pathNotice.split("/")[2]
                 })}>

@@ -18,6 +18,9 @@ import {getTechnicalInspection} from "./redux/technicalinspection/technicalInspe
 import {MessageInfo} from "./components/messageinfo/MessageInfo";
 import {Preloader} from "./components/preloader/Preloader";
 import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
+import {Setting} from "./components/setting/Setting";
+import {getSetting} from "./redux/setting/settingReducer";
+import {getEmailList} from "./redux/setting/settingSelector";
 
 function App() {
     const dispatch = useDispatch()
@@ -44,17 +47,18 @@ function App() {
         dispatch(getRepairRecord(userId))
         dispatch(getNoticeRecords(userId))
         dispatch(getTechnicalInspection(userId))
+        dispatch(getSetting(userId))
     }, [isAuthentication])
     return (
         <div className="app_wrapper">
             <Header isAuthentication={isAuthentication} onBurgerClick ={onBurgerClick} isShowBurgerMenu = {isShowBurgerMenu} />
             <Route path="/" render={() => <Main isAuthentication={isAuthentication}/>}/>
-            <Route exact path="/login" render={() => <Registration isEntrance={true}
-                                                                   isAuthentication={isAuthentication}/>}/>
+            <Route exact path="/login" render={() => <Registration isEntrance={true} isAuthentication={isAuthentication}/>}/>
             <Route exact path="/registration" render={() => <Registration/>}/>
             <Footer/>
             <AnswerWindow/>
             <MessageInfo />
+            <Setting userId = {userId}/>
             <Preloader/>
             <BurgerMenu onBurgerClick={onBurgerClick} isAuthentication={isAuthentication} isShowBurgerMenu ={isShowBurgerMenu}/>
         </div>

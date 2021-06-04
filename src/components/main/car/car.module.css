@@ -193,19 +193,6 @@
     }
 }
 
-.delete {
-    background-color: #2d73bc;
-    width: 20px;
-    padding: 10px;
-    color: white;
-    display: none;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 5px;
-}
-
 .car_add_new_record {
     margin-bottom: 20px;
     display: flex;
@@ -480,4 +467,16 @@ label {
     .car_description_section{
         font-size: 10px;
     }
+}
+.input_block{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+}
+.input_block input{
+   height: 20px;
+    font-size: 14px;
+    margin-left: 3px;
 }

@@ -15,6 +15,7 @@ import {getLastNoticeRecord, getNoticeRecordByCarId} from "../../../redux/notice
 import {InsuranceWrapper} from "./insurance/InsuranceWrapper";
 import {TechnicalInspectionWrapper} from "./technicalinspection/TechnicalInspectionWrapper";
 import {getInspectionDateValidById} from "../../../redux/technicalinspection/technicalInspectionSelector";
+import {Order} from "./order/Order";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
@@ -39,6 +40,7 @@ export const Car = () => {
     const pathNotice = `/car/notice/${id}`
     const pathTechnicalInspection = `/car/technicalinspection/${id}`
     const pathRepairs = `/car/repairs/${id}`
+    const pathOrder = `/car/order/${id}`
     return (
         <div className={style.car_wrapper}>
             <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
@@ -53,10 +55,11 @@ export const Car = () => {
             <Route exact path={pathInsurance} render={() => <InsuranceWrapper {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspectionWrapper {...car} />}/>
             <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
+            <Route exact path={pathOrder} render={() => <Order {...car} noticeList ={noticeList}/>}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}
                      pathTechnicalInspection={pathTechnicalInspection}
-                     pathRepairs={pathRepairs}/>
+                     pathRepairs={pathRepairs} pathOrder = {pathOrder}/>
         </div>
     )
 }

@@ -7,7 +7,6 @@ import downIcon from "../../../../icons/down-arrow.png";
 import {addNewNoticeRecord} from "../../../../redux/notice/noticeReducer";
 
 export const AddNoticeRecord = (props) => {
-    console.log(props)
         const dispatch = useDispatch()
         const [edit, setEdit] = useState(false)
         const [data, setData] = useState({

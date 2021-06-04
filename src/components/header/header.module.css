@@ -3,37 +3,89 @@
     padding: 15px;
     background: linear-gradient(
             138.4deg, #38bafe 26.49%, #2d73bc 79.45%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
     color: white;
+}
+.container{
+    margin: 0 auto;
+    width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+.first_header_section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_logo {
 
 }
-.first_header_section{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.header_logo{
 
+.icon_wrapper {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
 }
-.second_header_section{
+@media (max-width: 867px) {
+    .icon_wrapper {
+        margin-right: 15px;
+    }
+}
+
+.second_header_section {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.third_header_section{
+
+.second_header_section h1 {
+    color: white;
+}
+
+.third_header_section {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.right_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_section_icon {
+    margin: 25px;
+    cursor: pointer;
+}
+
+.right_section_mame {
+    margin-right: 15px;
+}
+
 .header_wrapper img {
-    width: 60px;
+    width: 50px;
     filter: invert(100%);
     -webkit-filter: invert(100%);
+}
+
+.header_wrapper img:hover {
+    width: 55px;
+}
+
+@media (max-width: 867px) {
+    .header_wrapper img {
+        width: 40px;
+    }
 }
 
 .header_burger {
@@ -66,12 +118,6 @@
 .header_name {
     color: whitesmoke;
     font-size: 20px;
-}
-
-.header_button img {
-    width: 40px;
-    margin-left: 20px;
-    color: lightyellow;
 }
 
 @media (max-width: 1087px) {
@@ -191,11 +237,13 @@
     cursor: pointer;
     text-decoration: none;
 }
-@media(max-width: 500px){
+
+@media (max-width: 500px) {
     .subheader_item {
         font-size: 12px;
     }
 }
-.active{
+
+.active {
     border-bottom: #157fc4 2px solid;
 }

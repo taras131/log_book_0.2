@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const host = "http://localhost"
-const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+const host = "http://localhost"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -202,4 +202,21 @@ export const APITechnicalInspection = {
             }
         }).then(response => response.data)
     }
+}
+export const APISetting = {
+    getSetting(userId){
+        return axios.get(`${host}/setting.php?userId=${userId}`, {
+            params: {
+                userId: userId
+            }
+        }).then(response => response.data)
+    },
+    updateSetting(emailList){
+        return axios.post(`${host}/setting.php`, {
+            userId: emailList.userId,
+            email_1: emailList.email_1,
+            email_2: emailList.email_2,
+            email_3: emailList.email_3,
+        }).then(response => response.data)
+    } ,
 }
