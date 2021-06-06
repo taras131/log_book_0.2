@@ -4,7 +4,7 @@ import {AddNewOrder} from "./add_new_order/AddNewOrder";
 export const Order = (props) =>{
     return(
         <div className={style.car_section_wrapper}>
-            <AddNewOrder/>
+            <AddNewOrder {...props}/>
             order
         </div>
     )

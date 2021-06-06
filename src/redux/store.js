@@ -11,6 +11,7 @@ import technicalInspectionReducer from "./technicalinspection/technicalInspectio
 import MessageInfoReducer from "./messageinfo/MessageInfoReducer";
 import preloaderReducer from "./preloader/preloaderReducer";
 import settingReducer from "./setting/settingReducer";
+import orderReducer from "./order/orderReducer";
 
 const reducersList = combineReducers({
     carsInfo: carsReducer,
@@ -24,6 +25,7 @@ const reducersList = combineReducers({
     messageInfo:MessageInfoReducer,
     preloaderInfo: preloaderReducer,
     settingInfo: settingReducer,
+    orderInfo: orderReducer,
 })
 
 let store = createStore(reducersList, applyMiddleware(thunk))

@@ -2,16 +2,15 @@ import style from "../../car.module.css";
 import upIcon from "../../../../../icons/up-arrow.png";
 import downIcon from "../../../../../icons/down-arrow.png";
 import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
-import {getCurrentDate} from "../../../../../common/getCurrentDate";
-import {addNewNoticeRecord} from "../../../../../redux/notice/noticeReducer";
+import {useState} from "react";
 import {OrderInputBlock} from "./OrderInputBlock";
+import {addOrder} from "../../../../../redux/order/orderReducer";
 
 export const AddNewOrder = (props) => {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState(false)
     const [inputCount, setInputCount] = useState(1)
-    console.log(inputCount)
+    console.log(props)
     const inputList = [...Array(inputCount)].map((item, index) => <OrderInputBlock {...props}
                                                                                    key={index}
                                                                                    setInputCount={setInputCount}
@@ -23,7 +22,9 @@ export const AddNewOrder = (props) => {
     const onEditClick = () => {
         setEdit(!edit)
     }
-
+    const onAddClick = () => {
+        dispatch(addOrder(props.userId, props.id))
+    }
     return (
         <div className={style.car_add_new_record}>
             <div className={style.car_item_subheader}>
@@ -38,7 +39,7 @@ export const AddNewOrder = (props) => {
 
                 {inputList}
 
-                <button>Добавить запись</button>
+                <button onClick={onAddClick}>Добавить запись</button>
             </div>
         </div>
     )

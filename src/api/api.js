@@ -220,3 +220,12 @@ export const APISetting = {
         }).then(response => response.data)
     } ,
 }
+export const APIOrder = {
+    addOrder(userId, carId){
+        console.log(userId, carId)
+        return axios.post(`${host}/order.php`, {
+            userId: userId,
+            carId: ""+carId,
+        }).then(response => response.data)
+    }
+}
