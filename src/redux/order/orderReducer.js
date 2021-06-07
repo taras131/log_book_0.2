@@ -1,14 +1,12 @@
 import {APIOrder} from "../../api/api";
 
-const ADD_ORDER = "ADD_ORDER"
-const ON_PART_LIST_CHANGE = "ON_PART_LIST_CHANGE"
-const CHANGE_PART_NAME = "CHANGE_PART_NAME"
+const SET_NEW_INPUT_BLOCK = "SET_NEW_INPUT_BLOCK"
+const CHANGE_NAME = "CHANGE_NAME"
 const initialState = {
     userId: "",
     carId: "",
-    partList: [
+    inputList: [
         {
-            itemNumber: "1",
             partName: "",
             catalogNumber: "",
             partCount: "1"
@@ -16,48 +14,44 @@ const initialState = {
     ],
 }
 const orderReducer = (state = initialState, action) => {
-    let isFindItem
     switch (action.type) {
-        case CHANGE_PART_NAME:
-            isFindItem = state.partList.find(item => item.itemNumber === action.itemNumber);
-            if (isFindItem) {
-                return state
-                //  return {...state,partList: [...state.partList, state.partList[action.itemNumber].partName: action.value]}
-            } else {
-                return {
-                    ...state,
-                    partList: [...state.partList, {
-                        itemNumber: action.itemNumber,
-                        partName: action.partName,
-                        catalogNumber: "",
-                        partCount: "1"
-                    }]
-                }
+        case SET_NEW_INPUT_BLOCK:
+            return {
+                ...state, inputList: [...state.inputList, {
+                    partName: "",
+                    catalogNumber: "",
+                    partCount: "1"
+                }]
             }
-        case ADD_ORDER:
-            return {...state}
-        case ON_PART_LIST_CHANGE:
-            isFindItem = state.partList.find(item => item.itemNumber === action.itemNumber);
-            if (isFindItem) {
-                return state
-            } else {
-                return {
-                    ...state,
-                    partList: [...state.partList, {itemNumber: action.itemNumber, [action.name]: action.value}]
+        case CHANGE_NAME:
+            return {...state,inputList: [...state.inputList].map((item,index)=> {
+                if(index === action.index){
+                    return {...item,[action.name]: action.value}
+                } else {
+                    return item
                 }
-            }
+                })}
         default:
             return state
     }
 }
-export const changePartName = (itemNumber, value) => {
-    return {type: CHANGE_PART_NAME, itemNumber, value}
+export const setNewInputBlock = () => {
+    return {type: SET_NEW_INPUT_BLOCK}
 }
-export const onPartListChange = (itemNumber, name, value) => {
-    return {type: ON_PART_LIST_CHANGE, itemNumber, name, value}
+export const inputBlockChangeName = (name, value, index) => {
+    return {type: CHANGE_NAME, name, value, index}
 }
-export const addOrder = (userId, carId) => async (dispatch) => {
-    const result = await APIOrder.addOrder(userId, carId)
+export const addOrder = (userId, carId, inputList) => async (dispatch) => {
+    const inputs = inputList.map(item=>JSON.stringify(item))
+    const inputsString = JSON.stringify(inputs)
+    const result = await APIOrder.addOrder(userId, carId, inputsString)
     console.log(result)
+}
+export const getOrders = (userId) => async(dispatch) => {
+    const result = await APIOrder.getOrders(userId)
+//    const inputs = JSON.parse(result[0].arr_data)
+    console.log(result[0].arr_data)
+   // const result1 = JSON.parse(result[0].arr_data)
+  //  console.log(JSON.parse(result1))
 }
 export default orderReducer

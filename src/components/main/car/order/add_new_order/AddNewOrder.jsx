@@ -1,29 +1,22 @@
 import style from "../../car.module.css";
 import upIcon from "../../../../../icons/up-arrow.png";
 import downIcon from "../../../../../icons/down-arrow.png";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {OrderInputBlock} from "./OrderInputBlock";
 import {addOrder} from "../../../../../redux/order/orderReducer";
+import {getInputList} from "../../../../../redux/order/orderSelector";
 
 export const AddNewOrder = (props) => {
     const dispatch = useDispatch()
     const [edit, setEdit] = useState(false)
-    const [inputCount, setInputCount] = useState(1)
-    console.log(props)
-    const inputList = [...Array(inputCount)].map((item, index) => <OrderInputBlock {...props}
-                                                                                   key={index}
-                                                                                   setInputCount={setInputCount}
-                                                                                   index={index+1}
-                                                                                   inputCount={inputCount}/>)
-    //   useEffect(() => {
-    //       setData({...data, date: getCurrentDate()})
-    //  }, [props.id])
+    const inputList = useSelector(state => getInputList(state))
+    const inputs = inputList.map((item, index) => <OrderInputBlock key ={index} {...item} index={index}/>)
     const onEditClick = () => {
         setEdit(!edit)
     }
     const onAddClick = () => {
-        dispatch(addOrder(props.userId, props.id))
+        dispatch(addOrder(props.userId, props.id, inputList))
     }
     return (
         <div className={style.car_add_new_record}>
@@ -36,9 +29,7 @@ export const AddNewOrder = (props) => {
                 </div>
             </div>
             <div className={!edit ? style.car_add_hidden : style.add_form}>
-
-                {inputList}
-
+                {inputs}
                 <button onClick={onAddClick}>Добавить запись</button>
             </div>
         </div>

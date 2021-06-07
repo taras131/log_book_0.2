@@ -1,36 +1,27 @@
 import style from "../../car.module.css";
 import {useState} from "react";
-import {useSelector} from "react-redux";
-import {getPartListItemByItemNumber} from "../../../../../redux/order/orderSelector";
-import {onPartListChange} from "../../../../../redux/order/orderReducer";
+import {inputBlockChangeName, setNewInputBlock} from "../../../../../redux/order/orderReducer";
+import {useDispatch} from "react-redux";
 
 export const OrderInputBlock = (props) => {
-    console.log(props.index)
     const [firstChange, setFirstChange] = useState(true)
-    const [data, setData] = useState({
-        namePart: ``,
-        catalogNumber: ``,
-        countPart: '1'
-    })
-    const onDataChange = (event) => {
-        if(firstChange){
+    const dispatch = useDispatch()
+    const onInputChange = (e) => {
+        if (firstChange) {
+            dispatch(setNewInputBlock())
             setFirstChange(false)
-            props.setInputCount(props.inputCount+1)
         }
-        setData({...data, [event.target.name]: event.target.value})
-        onPartListChange(props.index, event.target.name, event.target.value)
+        dispatch(inputBlockChangeName(e.target.name, e.target.value, props.index))
     }
-    const partListItem = useSelector(state=>getPartListItemByItemNumber(state, props.index))
-    console.log(partListItem)
-    return(
+    return (
         <div className={style.input_block}>
-            <input style={{width: 15, marginTop: 0}} value={partListItem.itemNumber} name="itemNumber"/>
-            <input style={{width: 170, marginTop: 0}} value={partListItem.partName} placeholder="наименование"
-                   name="partName" onChange={onDataChange}/>
-            <input style={{width: 170, marginTop: 0}} value={partListItem.catalogNumber} placeholder="каталожный номер"
-                   name="catalogNumber" onChange={onDataChange}/>
-            <input style={{width: 30, marginTop: 0}} value={partListItem.partCount} placeholder="к-во" name="partCount"
-                   onChange={onDataChange}/>
+            <input style={{width: 15, marginTop: 0}} value={props.index + 1} readOnly name="itemNumber"/>
+            <input style={{width: 170, marginTop: 0}} value={props.partName} placeholder="наименование"
+                   name="partName" onChange={onInputChange}/>
+            <input style={{width: 170, marginTop: 0}} value={props.catalogNumber} placeholder="каталожный номер"
+                   name="catalogNumber" onChange={onInputChange}/>
+            <input style={{width: 30, marginTop: 0}} value={props.partCount} placeholder="к-во" name="partCount"
+                   onChange={onInputChange}/>
         </div>
     )
 }

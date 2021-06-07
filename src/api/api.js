@@ -221,11 +221,18 @@ export const APISetting = {
     } ,
 }
 export const APIOrder = {
-    addOrder(userId, carId){
-        console.log(userId, carId)
+    addOrder(userId, carId, inputsString){
         return axios.post(`${host}/order.php`, {
             userId: userId,
             carId: ""+carId,
+            inputsString: inputsString,
+        }).then(response => response.data)
+    },
+    getOrders(userId){
+        return axios.get(`${host}/order.php?userId=${userId}`, {
+            params: {
+                userId: userId
+            }
         }).then(response => response.data)
     }
 }

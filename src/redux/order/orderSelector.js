@@ -1,20 +1,8 @@
-export const getPartListItemByItemNumber = (state, itemNumber) => {
-    const item = state.orderInfo.partList.find(item => item.itemNumber === itemNumber);
-    if(item){
-        return {itemNumber: item.itemNumber ? itemNumber : "",
-            partName: item.partName ? item.partName : "",
-            catalogNumber: item.catalogNumber ? item.catalogNumber : "",
-            partCount: item.partCount ? item.partCount : ""
-        }
+export const getInputList = (state) => {
+    if(state.orderInfo){
+        return [...state.orderInfo.inputList]
     } else {
-        return {itemNumber: "",
-            partName: "",
-            catalogNumber: "",
-            partCount: ""
-        }
+        return ""
     }
 
-}
-export const getNameByItemNumber = (state, itemNumber) => {
-    return {...state.orderInfo.partList.filter(item => item.itemNumber === itemNumber)}
 }

@@ -55,7 +55,7 @@ export const Car = () => {
             <Route exact path={pathInsurance} render={() => <InsuranceWrapper {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspectionWrapper {...car} />}/>
             <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
-            <Route exact path={pathOrder} render={() => <Order {...car} noticeList ={noticeList}/>}/>
+            <Route exact path={pathOrder} render={() => <Order {...car} />}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}
                      pathTechnicalInspection={pathTechnicalInspection}
