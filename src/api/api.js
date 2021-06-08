@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = "http://localhost"
-//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+//const host = "http://localhost"
+const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -204,35 +204,71 @@ export const APITechnicalInspection = {
     }
 }
 export const APISetting = {
-    getSetting(userId){
+    getSetting(userId) {
         return axios.get(`${host}/setting.php?userId=${userId}`, {
             params: {
                 userId: userId
             }
         }).then(response => response.data)
     },
-    updateSetting(emailList){
+    updateSetting(emailList) {
         return axios.post(`${host}/setting.php`, {
             userId: emailList.userId,
             email_1: emailList.email_1,
             email_2: emailList.email_2,
             email_3: emailList.email_3,
         }).then(response => response.data)
-    } ,
+    },
 }
 export const APIOrder = {
-    addOrder(userId, carId, inputsString){
+    addOrder(userId, carId, inputsString, typeOrder, statusOrder, date) {
         return axios.post(`${host}/order.php`, {
             userId: userId,
-            carId: ""+carId,
+            carId: "" + carId,
             inputsString: inputsString,
+            typeOrder: typeOrder,
+            statusOrder: statusOrder,
+            date: date
         }).then(response => response.data)
     },
-    getOrders(userId){
+    getOrders(userId) {
         return axios.get(`${host}/order.php?userId=${userId}`, {
             params: {
                 userId: userId
             }
         }).then(response => response.data)
+    },
+    deleteOrder(id, userId) {
+        console.log(id)
+        return axios.post(`${host}/deleteorder.php`, {
+            id: id,
+            userId: userId
+        }).then(response => response.data)
     }
+}
+export const APISendMail = (email_1,email_2,email_3, title, brand, model, yearManufacture,
+                            num, vin, arr_data) => {
+    const table = arr_data.map((item,index)=>{
+        return(
+            <tr>
+                <td align="center">{index}</td>
+                <td align="center">{item.partName}</td>
+                <td align="center">{item.catalogNumber}</td>
+                <td align="center">{item.partCount}</td>
+            </tr>
+        )
+    })
+    return axios.post(`${host}/sendMail.php`, {
+        email_1: email_1,
+        email_2: email_2,
+        email_3: email_3,
+        title: title,
+        brand: brand,
+        model: model,
+        yearManufacture: yearManufacture,
+        num: num,
+        vin: vin,
+        arr_data: arr_data,
+        table: table,
+    }).then(response => response)
 }

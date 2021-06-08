@@ -16,6 +16,7 @@ import {InsuranceWrapper} from "./insurance/InsuranceWrapper";
 import {TechnicalInspectionWrapper} from "./technicalinspection/TechnicalInspectionWrapper";
 import {getInspectionDateValidById} from "../../../redux/technicalinspection/technicalInspectionSelector";
 import {Order} from "./order/Order";
+import {getOrdersByCarId} from "../../../redux/order/orderSelector";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
@@ -28,6 +29,7 @@ export const Car = () => {
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
     const dateTechnicalInspectionValid = useSelector(state => getInspectionDateValidById(state, id))
     const userId = useSelector(state => getMyId(state))
+    const carOrdersList = useSelector(state => getOrdersByCarId(state, id))
     const dispatch = useDispatch()
     if (!car) {
         return (
@@ -55,7 +57,7 @@ export const Car = () => {
             <Route exact path={pathInsurance} render={() => <InsuranceWrapper {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspectionWrapper {...car} />}/>
             <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
-            <Route exact path={pathOrder} render={() => <Order {...car} />}/>
+            <Route exact path={pathOrder} render={() => <Order {...car} carOrdersList = {carOrdersList}/>}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
                      pathInsurance={pathInsurance} pathNotice={pathNotice}
                      pathTechnicalInspection={pathTechnicalInspection}

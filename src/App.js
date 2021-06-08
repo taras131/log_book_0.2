@@ -21,6 +21,7 @@ import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
 import {Setting} from "./components/setting/Setting";
 import {getSetting} from "./redux/setting/settingReducer";
 import {getEmailList} from "./redux/setting/settingSelector";
+import {getOrders} from "./redux/order/orderReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -41,26 +42,32 @@ function App() {
         dispatch(setUser({id: id, name: name}))
     }
     useEffect(() => {
-        dispatch(getCars(userId))
-        dispatch(getMaintenanceRecord(userId))
-        dispatch(getInsuranceDate(userId))
-        dispatch(getRepairRecord(userId))
-        dispatch(getNoticeRecords(userId))
-        dispatch(getTechnicalInspection(userId))
-        dispatch(getSetting(userId))
+        if(isAuthentication){
+            dispatch(getCars(userId))
+            dispatch(getMaintenanceRecord(userId))
+            dispatch(getInsuranceDate(userId))
+            dispatch(getRepairRecord(userId))
+            dispatch(getNoticeRecords(userId))
+            dispatch(getTechnicalInspection(userId))
+            dispatch(getSetting(userId))
+            dispatch(getOrders(userId))
+        }
     }, [isAuthentication])
     return (
         <div className="app_wrapper">
-            <Header isAuthentication={isAuthentication} onBurgerClick ={onBurgerClick} isShowBurgerMenu = {isShowBurgerMenu} />
+            <Header isAuthentication={isAuthentication} onBurgerClick={onBurgerClick}
+                    isShowBurgerMenu={isShowBurgerMenu}/>
             <Route path="/" render={() => <Main isAuthentication={isAuthentication}/>}/>
-            <Route exact path="/login" render={() => <Registration isEntrance={true} isAuthentication={isAuthentication}/>}/>
+            <Route exact path="/login"
+                   render={() => <Registration isEntrance={true} isAuthentication={isAuthentication}/>}/>
             <Route exact path="/registration" render={() => <Registration/>}/>
             <Footer/>
             <AnswerWindow/>
-            <MessageInfo />
-            <Setting userId = {userId}/>
+            <MessageInfo/>
+            <Setting userId={userId}/>
             <Preloader/>
-            <BurgerMenu onBurgerClick={onBurgerClick} isAuthentication={isAuthentication} isShowBurgerMenu ={isShowBurgerMenu}/>
+            <BurgerMenu onBurgerClick={onBurgerClick} isAuthentication={isAuthentication}
+                        isShowBurgerMenu={isShowBurgerMenu}/>
         </div>
     );
 }
