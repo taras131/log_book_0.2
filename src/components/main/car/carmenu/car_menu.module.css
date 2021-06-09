@@ -25,7 +25,7 @@
     border-bottom: solid 1px #38bafe;
     cursor: pointer;
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +46,8 @@
 
 @media (max-width: 1087px) {
     .car_menu_item {
-        font-size: 16px;
-        height: 60px;
+        font-size: 24px;
+        height: 70px;
     }
 
     .car_menu_wrapper {
@@ -57,8 +57,7 @@
 
 @media (max-width: 767px) {
     .car_menu_item {
-        font-size: 14px;
-        height: 55px;
+        height: 65px;
     }
 
     .car_menu_wrapper {
@@ -68,14 +67,13 @@
 
 @media (max-width: 500px) {
     .car_menu_item {
-        font-size: 12px;
-        height: 50px;
+        font-size: 22px;
     }
 }
 
 @media (max-width: 450px) {
     .car_menu_item {
-        font-size: 10px;
-        height: 45px;
+        font-size: 20px;
+        height: 65px;
     }
 }

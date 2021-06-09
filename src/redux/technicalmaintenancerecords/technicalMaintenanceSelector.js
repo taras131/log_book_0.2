@@ -1,5 +1,5 @@
 export const getMaintenanceRecordList = (state, id) => {
-    return state.maintenanceInfo.maintenanceList.filter(item => item.carId === id)
+    return state.maintenanceInfo.maintenanceList.filter(item => item.carId === id).reverse()
 }
 export const getLastMaintenanceRecording = (state, id) =>{
     if(state.maintenanceInfo.maintenanceList){

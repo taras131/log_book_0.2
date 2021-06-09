@@ -61,7 +61,9 @@ export const Header = (props) => {
                         <div className={style.right_section}>
                             <div className={style.right_section_mame}>{name}</div>
                             <div className={style.icon_wrapper}>
+                                <NavLink to = "/orders_review">
                                 <img className={style.right_section_icon} src={cart} alt="cart"/>
+                                </NavLink>
                             </div>
                             <div className={style.icon_wrapper}>
                                 <img onClick={onSettingClick} className={style.right_section_icon} src={setting} alt="setting"/>

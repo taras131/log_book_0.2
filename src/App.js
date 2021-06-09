@@ -20,7 +20,6 @@ import {Preloader} from "./components/preloader/Preloader";
 import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
 import {Setting} from "./components/setting/Setting";
 import {getSetting} from "./redux/setting/settingReducer";
-import {getEmailList} from "./redux/setting/settingSelector";
 import {getOrders} from "./redux/order/orderReducer";
 
 function App() {

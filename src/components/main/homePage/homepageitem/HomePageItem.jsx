@@ -41,12 +41,12 @@ export const HomePageItem = (props) => {
                     </div>
                 </NavLink>
             </td>
-            <td align="center">
-                <NavLink to={pathMaintenanceRecord} className={classNames(style.just, {
-                    [style.ok]: maintenanceStatus === "ok",
-                    [style.warning]: maintenanceStatus === "warning",
-                    [style.danger]: maintenanceStatus === "danger",
-                })}>
+            <td align="center" className={classNames(style.just, {
+                [style.ok]: maintenanceStatus === "ok",
+                [style.warning]: maintenanceStatus === "warning",
+                [style.danger]: maintenanceStatus === "danger",
+            })}>
+                <NavLink to={pathMaintenanceRecord} className={style.just}>
                     {lastMaintenanceRecording
                         ? lastMaintenanceRecording.odometer + " - " + lastMaintenanceRecording.datecommission
                         : "нет данных"}
@@ -59,23 +59,23 @@ export const HomePageItem = (props) => {
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center">
-                <NavLink to={pathTechnicalInspection} className={classNames(style.just, {
-                    [style.ok]: technicalInspectionStatus === "ok",
-                    [style.warning]: technicalInspectionStatus === "warning",
-                    [style.danger]: technicalInspectionStatus === "danger",
-                })}>
+            <td align="center" className={classNames(style.just, {
+                [style.ok]: technicalInspectionStatus === "ok",
+                [style.warning]: technicalInspectionStatus === "warning",
+                [style.danger]: technicalInspectionStatus === "danger",
+            })}>
+                <NavLink to={pathTechnicalInspection} className={style.just}>
                     {dateTechnicalInspectionValid
                         ? dateTechnicalInspectionValid
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center">
-                <NavLink to={pathInsurance} className={classNames(style.just, {
-                    [style.ok]: insuranceStatus === "ok",
-                    [style.warning]: insuranceStatus === "warning",
-                    [style.danger]: insuranceStatus === "danger",
-                })}>
+            <td align="center" className={classNames(style.just, {
+                [style.ok]: insuranceStatus === "ok",
+                [style.warning]: insuranceStatus === "warning",
+                [style.danger]: insuranceStatus === "danger",
+            })}>
+                <NavLink to={pathInsurance} className={style.just}>
                     {dateInsuranceIsValid}
                 </NavLink>
             </td>

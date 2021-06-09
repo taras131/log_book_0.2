@@ -1,0 +1,9 @@
+.order_review_wrapper {
+    display: grid;
+    grid-template-columns: 3fr minmax(90px, 1fr);
+    grid-template-rows: 1fr;
+
+}
+.orders_wrapper{
+    margin-right: 15px;
+}

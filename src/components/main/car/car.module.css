@@ -531,3 +531,10 @@ tr:hover{
 .type_order select{
     margin-left: 15px;
 }
+.edit_order_subheader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}

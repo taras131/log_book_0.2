@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const host = "http://localhost"
-const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+const host = "http://localhost"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 
 export const APICars = {
     getCars(userId) {
@@ -239,25 +239,26 @@ export const APIOrder = {
         }).then(response => response.data)
     },
     deleteOrder(id, userId) {
-        console.log(id)
         return axios.post(`${host}/deleteorder.php`, {
             id: id,
             userId: userId
         }).then(response => response.data)
+    },
+    updateOrder(id, userId, carId, inputsString, typeOrder, statusOrder, date){
+        return axios.post(`${host}/updateorder.php`, {
+            id: id,
+            userId: userId,
+            carId: "" + carId,
+            inputsString: inputsString,
+            typeOrder: typeOrder,
+            statusOrder: statusOrder,
+            date: date
+        }).then(response => response.data)
     }
 }
 export const APISendMail = (email_1,email_2,email_3, title, brand, model, yearManufacture,
-                            num, vin, arr_data) => {
-    const table = arr_data.map((item,index)=>{
-        return(
-            <tr>
-                <td align="center">{index}</td>
-                <td align="center">{item.partName}</td>
-                <td align="center">{item.catalogNumber}</td>
-                <td align="center">{item.partCount}</td>
-            </tr>
-        )
-    })
+                            num, vin, arr_data1) => {
+    let arr_data = arr_data1.map(item => Object.values(item))
     return axios.post(`${host}/sendMail.php`, {
         email_1: email_1,
         email_2: email_2,
@@ -269,6 +270,5 @@ export const APISendMail = (email_1,email_2,email_3, title, brand, model, yearMa
         num: num,
         vin: vin,
         arr_data: arr_data,
-        table: table,
-    }).then(response => response)
+    }).then(response => response.data)
 }

@@ -134,7 +134,7 @@
 
 @media (max-width: 867px) {
     h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .header_button {
@@ -187,7 +187,7 @@
 
 @media (max-width: 560px) {
     h1 {
-        font-size: 15px;
+        font-size: 22px;
     }
 
     .header_button {
@@ -204,7 +204,7 @@
 
 @media (max-width: 360px) {
     h1 {
-        font-size: 12px;
+        font-size: 20px;
     }
 
     .header_button {
@@ -236,11 +236,12 @@
 .subheader_item {
     cursor: pointer;
     text-decoration: none;
+    font-size: 20px;
 }
 
 @media (max-width: 500px) {
     .subheader_item {
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 
