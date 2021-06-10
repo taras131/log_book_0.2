@@ -1,11 +1,11 @@
-import style from "../../car.module.css";
+import style from "../../car.Module.css";
 import upIcon from "../../../../../icons/up-arrow.png";
 import downIcon from "../../../../../icons/down-arrow.png";
 import backIcon from "../../../../../icons/back.png";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {OrderInputBlock} from "./OrderInputBlock";
-import {addOrder, setNewInputBlock, updateOrder} from "../../../../../redux/order/orderReducer";
+import {addOrder, resetInputList, setNewInputBlock, updateOrder} from "../../../../../redux/order/orderReducer";
 import {getInputList} from "../../../../../redux/order/orderSelector";
 import {getCurrentDate} from "../../../../../common/getCurrentDate";
 import {OrderTitle} from "../../../ordersreview/OrderTitle";
@@ -39,13 +39,14 @@ export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, 
         setTypeOrder(e.target.value)
     }
     const onBackClick = () => {
+        dispatch(resetInputList())
         setEdit(false)
     }
     return (
         <div className={style.car_add_new_record}>
             {!orderEdit &&
             <>
-                <OrderTitle brand={brand} num = {num}/>
+                <OrderTitle brand={brand} num={num}/>
                 <div className={style.car_item_subheader}>
                     <h3 style={{marginTop: 10}}>Добавление новой заявки:</h3>
                     <div className={style.car_icon_wrapper}>
@@ -66,7 +67,9 @@ export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, 
                             <option style={{height: 40}} value="Срочный ремонт">Срочный ремонт</option>
                         </select>
                     </div>
+                    {orderEdit &&
                     <img src={backIcon} alt="backIcon" onClick={onBackClick}/>
+                    }
                 </div>
                 {inputs}
                 <button onClick={onAddClick}>Сохранить запись</button>

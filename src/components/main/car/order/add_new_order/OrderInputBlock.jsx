@@ -1,4 +1,4 @@
-import style from "../../car.module.css";
+import style from "../../car.Module.css";
 import {useState} from "react";
 import {inputBlockChangeName, setNewInputBlock} from "../../../../../redux/order/orderReducer";
 import {useDispatch} from "react-redux";

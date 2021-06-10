@@ -1,4 +1,4 @@
-import style from "../car.module.css"
+import style from "../car.Module.css"
 import {useState} from "react";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
 import {calculateDate} from "../../../../common/calculateDate";

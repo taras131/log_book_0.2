@@ -1,5 +1,6 @@
 .footer_wrapper{
-    grid-area: footer;
+    width: 100%;
+    min-height: 120px;
     padding: 15px;
     background-color: #157fc4;
     display: flex;
@@ -9,11 +10,15 @@
 }
 
 .footer_container{
-    margin: 0 auto;
     width: 1170px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+@media (max-width: 1170px){
+    .footer_container{
+        width: 100%;
+    }
 }
 .footer_item{
     color: white;
@@ -25,13 +30,4 @@
     color: white;
     margin-top: 15px;
     font-size: 12px;
-}
-@media (orientation: portrait) {
-    .footer_wrapper {
-        min-height: 200px;
-    }
-    .footer_support{
-        margin-top: 35px;
-        font-size: 14px;
-    }
 }

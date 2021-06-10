@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import {AddNewOrder} from "./add_new_order/AddNewOrder";
 import {OrderItem} from "./OrderItem";
 

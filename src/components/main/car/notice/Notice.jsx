@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import {AddNoticeRecord} from "./AddNoticeRecord";
 import {NoticeItem} from "./NoticeItem";
 

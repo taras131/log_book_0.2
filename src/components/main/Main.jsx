@@ -1,5 +1,5 @@
 import React, {Suspense, lazy} from 'react';
-import style from "./main.module.css"
+import style from "./main.Module.css"
 import {Navigation} from "./navigation/Navigation";
 import {Redirect, Switch} from "react-router";
 import {Route} from "react-router-dom";
@@ -7,9 +7,8 @@ import {HomePage} from "./homePage/HomePage";
 import {Car} from "./car/Car";
 import {AddNewCar} from "./addNewCar/AddNewCar";
 import {Preloader} from "../preloader/Preloader";
-
-
 const OrdersReview = lazy(() => import('./ordersreview/OrdersReview'))
+
 export const Main = (props) => {
     if (!props.isAuthentication) return <Redirect to="/login"/>
     return (

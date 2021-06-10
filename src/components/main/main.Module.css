@@ -1,0 +1,26 @@
+.main_wrapper {
+    width: 100%;
+    min-height: calc(100vh - 300px);
+    background: url("../../img/bg4.png") center center/cover repeat;
+}
+
+.container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 1170px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+@media (max-width: 1170px ) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 770px ) {
+    .container {
+        padding: 5px;
+    }
+}

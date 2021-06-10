@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import {AddRepairRecord} from "./AddReparsRecord";
 import {RepairItem} from "./RepairItem";
 

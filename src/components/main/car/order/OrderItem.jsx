@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import saveIcon from "../../../../icons/save.png";
 import deleteIcon from "../../../../icons/delete.png";
 import backIcon from "../../../../icons/back.png";
@@ -6,7 +6,7 @@ import editIcon from "../../../../icons/edit.png";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {setAnswer} from "../../../../redux/answerwindow/answerWindowReducer";
-import {deleteOrder, sendOrder, setInputList} from "../../../../redux/order/orderReducer";
+import {deleteOrder, resetInputList, sendOrder, setInputList} from "../../../../redux/order/orderReducer";
 import {OrderItemBlock} from "./OrderItemBlock";
 import {getEmailList} from "../../../../redux/setting/settingSelector";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
@@ -50,13 +50,12 @@ export const OrderItem = (props) => {
                     </div>}
                     <div className={style.date_odometer_wrapper}>
                         <div style={{color: "black"}}>Дата: {props.date}</div>
-                        <div style={{color: "black"}}>Срочность: {props.typeOrder}</div>
+                        <div style={{marginLeft: 45, color: "black"}}>Срочность: {props.typeOrder}</div>
                     </div>
                     {!props.title &&
                     <div className={style.car_icon_wrapper}>
-                        {edit
-                            ? <img onClick={onEditClick} src={backIcon} alt="edit"/>
-                            : <img onClick={onEditClick} src={editIcon} alt="back"/>}
+                        {!edit &&
+                             <img onClick={onEditClick} src={editIcon} alt="back"/>}
                     </div>}
                 </div>
                 <div className={style.hr}></div>
@@ -75,7 +74,7 @@ export const OrderItem = (props) => {
                     <div className={style.date_odometer_wrapper}>
                         <div style={{color: "black"}}>Статус: {props.statusOrder}</div>
                         {props.statusOrder === "не отправлено" &&
-                        <button onClick={onSendClick}>Отправить</button>}
+                        <button style ={{marginLeft: 45}} onClick={onSendClick}>Отправить</button>}
                     </div>
 
 

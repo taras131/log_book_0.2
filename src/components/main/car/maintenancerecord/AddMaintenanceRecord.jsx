@@ -1,4 +1,4 @@
-import style from "../car.module.css"
+import style from "../car.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addMaintenanceRecord} from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
@@ -64,7 +64,7 @@ export const AddMaintenanceRecord = (props) => {
                 </div>
             </div>
             <div className={!edit ? style.car_add_hidden : style.add_form}>
-                <div className={style.car_item_subheader}>
+                <div className={style.date_odometer_wrapper}>
                     <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
                            onChange={onDataChange} />
                     <input style={{width: 170, marginTop: 0}} value={data.odometer} placeholder="Пробег"

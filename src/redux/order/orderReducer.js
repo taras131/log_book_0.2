@@ -54,7 +54,7 @@ const orderReducer = (state = initialState, action) => {
 const setOrders = (payload) => {
     return {type: SET_ORDERS, payload}
 }
-const resetInputList = () => {
+export const resetInputList = () => {
     return {type: RESET_INPUT_LIST}
 }
 export const setNewInputBlock = () => {

@@ -1,5 +1,5 @@
 import {MaintenanceItem} from "./MaintenanceItem";
-import style from "../car.module.css"
+import style from "../car.Module.css"
 import {AddMaintenanceRecord} from "./AddMaintenanceRecord";
 
 export const MaintenanceRecord = (props) => {

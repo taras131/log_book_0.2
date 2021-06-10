@@ -1,4 +1,4 @@
-import style from "../car.module.css"
+import style from "../car.Module.css"
 import saveIcon from "../../../../icons/save.png";
 import deleteIcon from "../../../../icons/delete.png";
 import backIcon from "../../../../icons/back.png";

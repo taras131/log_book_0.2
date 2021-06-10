@@ -1,29 +1,20 @@
 .authentication_wrapper {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 350px);
     width: 100%;
-}
-
-.registration_wrapper {
     background-color: gray;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
-
-.entrance_wrapper {
-    height: 100%;
-    background-color: darkseagreen;
+.container{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 h2 {
-    margin-top: 150px;
     font-size: 25px;
     color: lightyellow;
 }
@@ -52,17 +43,4 @@ button {
     margin-top: 15px;
     color: red;
     font-size: 20px;
-}
-@media (orientation: portrait) {
-    /* При вертикальной ориентации фоновым цветом сайта будет чёрный */
-    input {
-        min-height: 50px;
-        font-size: 25px;
-    }
-    button{
-        margin-top: 40px;
-    }
-    h2{
-        font-size: 35px;
-    }
 }

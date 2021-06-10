@@ -1,4 +1,5 @@
 .car_menu_wrapper {
+
     background-color: #fff;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     display: flex;
@@ -44,36 +45,3 @@
     border-bottom: solid 1px #2d73bc;
 }
 
-@media (max-width: 1087px) {
-    .car_menu_item {
-        font-size: 24px;
-        height: 70px;
-    }
-
-    .car_menu_wrapper {
-        padding: 7px;
-    }
-}
-
-@media (max-width: 767px) {
-    .car_menu_item {
-        height: 65px;
-    }
-
-    .car_menu_wrapper {
-        padding: 3px;
-    }
-}
-
-@media (max-width: 500px) {
-    .car_menu_item {
-        font-size: 22px;
-    }
-}
-
-@media (max-width: 450px) {
-    .car_menu_item {
-        font-size: 20px;
-        height: 65px;
-    }
-}

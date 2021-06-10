@@ -2,11 +2,10 @@ import './App.css';
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
 import {Main} from "./components/main/Main";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCars} from "./redux/cars/carsReducer";
 import {Route} from "react-router-dom";
-import {Registration} from "./components/main/authentication/Registration";
 import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
 import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
@@ -21,6 +20,7 @@ import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
 import {Setting} from "./components/setting/Setting";
 import {getSetting} from "./redux/setting/settingReducer";
 import {getOrders} from "./redux/order/orderReducer";
+import {Authentication} from "./components/main/authentication/Registration";
 
 function App() {
     const dispatch = useDispatch()
@@ -40,6 +40,9 @@ function App() {
         const name = sessionStorage.getItem("userName")
         dispatch(setUser({id: id, name: name}))
     }
+    useEffect(()=>{
+
+    },[])
     useEffect(() => {
         if(isAuthentication){
             dispatch(getCars(userId))
@@ -57,9 +60,10 @@ function App() {
             <Header isAuthentication={isAuthentication} onBurgerClick={onBurgerClick}
                     isShowBurgerMenu={isShowBurgerMenu}/>
             <Route path="/" render={() => <Main isAuthentication={isAuthentication}/>}/>
+
             <Route exact path="/login"
-                   render={() => <Registration isEntrance={true} isAuthentication={isAuthentication}/>}/>
-            <Route exact path="/registration" render={() => <Registration/>}/>
+                   render={() => <Authentication isEntrance={true} isAuthentication={isAuthentication}/>}/>
+            <Route exact path="/registration" render={() => <Authentication/>}/>
             <Footer isAuthentication ={isAuthentication}/>
             <AnswerWindow/>
             <MessageInfo/>

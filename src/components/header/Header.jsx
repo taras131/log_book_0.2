@@ -1,4 +1,4 @@
-import style from "./header.module.css"
+import style from "./header.Module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../../redux/authentication/authenticationReducer";
 import {NavLink} from "react-router-dom";
@@ -36,6 +36,7 @@ export const Header = (props) => {
         <header>
             <div className={style.header_wrapper}>
                 <div className={style.container}>
+
                     <div className={style.first_header_section}>
                         <NavLink to="/" className={style.header_logo}>
                             <div className={style.icon_wrapper}>
@@ -53,11 +54,13 @@ export const Header = (props) => {
                         </div>
                         }
                     </div>
+
                     <div className={style.second_header_section}>
                         <NavLink to="/" style={{textDecoration: 'none'}}>
                             <h1>Бортовой журнал</h1>
                         </NavLink>
                     </div>
+
                     <div className={style.third_header_section}>
                         {props.isAuthentication &&
                         <div className={style.right_section}>

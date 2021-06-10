@@ -1,0 +1,290 @@
+.car_wrapper {
+    display: grid;
+    grid-template-columns: 3fr minmax(90px, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.car_section_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+    color: #2d73bc;
+}
+
+.car_item_wrapper {
+    background-color: #fff;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    color: #2d73bc;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.4s;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+    margin-bottom: 20px;
+    padding: 25px;
+}
+
+
+.car_item_wrapper:hover {
+    background-color: lightyellow;
+}
+
+.car_icon_wrapper {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.car_item_subheader {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    color: #2d73bc;
+}
+
+.car_item_subheader input {
+    width: 170px;
+    margin: 0;
+}
+
+
+.date_odometer_wrapper {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.car_item_info {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    min-height: 50px;
+}
+
+.car_add_new_record {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    color: #2d73bc;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #fff;
+    padding: 25px;
+    position: relative;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+}
+
+.car_add_hidden {
+    display: none;
+}
+
+textarea {
+    margin-top: 15px;
+    height: 75px;
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    resize: none;
+}
+
+textarea:focus {
+    border: 3px solid blue;
+    box-shadow: 1px 1px 2px 0 blue;
+}
+
+input {
+    height: 25px;
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 0px;
+}
+
+input:focus {
+    border: 3px solid blue;
+    box-shadow: 1px 1px 2px 0 blue;
+}
+
+.subtitle {
+    color: #007046;
+}
+
+h3 {
+    margin: 0 auto;
+}
+
+.car_description_wrapper {
+    padding-right: 15px;
+}
+
+.subtitle {
+    color: #007046;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.hr {
+    margin: 10px auto;
+    height: 2px;
+    width: 100%;
+    background-color: darkseagreen;
+}
+
+img {
+    width: 40px;
+    color: #157fc4;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+img:hover {
+    width: 45px;
+}
+
+.car_button_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.car_item_data {
+    display: flex;
+    align-items: center;
+    color: #2d73bc;
+    margin-left: 10px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.add_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.errormessage {
+    color: red;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin-top: 15px;
+}
+
+.car_description_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+}
+
+.car_description_section input {
+    max-width: 270px;
+}
+
+.car_description_item {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5px;
+}
+
+.input_block {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 5fr 1fr;
+    margin-top: 5px;
+}
+
+.input_block input {
+    height: 20px;
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+.homepage_wrapper {
+    min-height: 300px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+    padding: 30px;
+}
+
+.tab_wrapper {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: auto;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+table.tab_wrapper, table.tab_wrapper td, table.tab_wrapper th {
+    border: 1px solid #595959;
+}
+
+table.tab_wrapper td, table.tab_wrapper th {
+    min-height: 35px;
+    padding: 3px;
+    width: 30px;
+    height: 35px;
+}
+
+table.tab_wrapper th {
+    background: #347c99;
+    color: #fff;
+    font-weight: normal;
+}
+
+tr:hover {
+
+}
+
+
+.type_order {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+}
+
+.type_order select {
+    margin-left: 15px;
+}
+
+.edit_order_subheader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+

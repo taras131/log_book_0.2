@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import saveIcon from "../../../../icons/save.png";
 import deleteIcon from "../../../../icons/delete.png";
 import backIcon from "../../../../icons/back.png";
@@ -61,15 +61,15 @@ export const NoticeItem = (props) => {
                             : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
                     </div>
                     {edit
-                        ? <>
+                        ? <div className={style.date_odometer_wrapper}>
                             <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
                                    onChange={onDataChange}/>
-                            <input value={data.odometer} placeholder="Пробег"
+                            <input style ={{marginLeft: 45}} value={data.odometer} placeholder="Пробег"
                                    name="odometer" onChange={onDataChange}/>
-                        </>
+                        </div>
                         : <div className={style.date_odometer_wrapper}>
                             <div>Дата: {props.date}</div>
-                            <div>Пробег: {props.odometer}</div>
+                            <div style ={{marginLeft: 45}}>Пробег: {props.odometer}</div>
                         </div>}
                     <div className={style.car_icon_wrapper}>
                         {edit

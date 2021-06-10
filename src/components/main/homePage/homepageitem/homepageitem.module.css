@@ -33,6 +33,9 @@
 td {
     align: center;
 }
+tr{
+  width: 100%;
+ }
 
 tr:hover {
     background-color: lightgoldenrodyellow;

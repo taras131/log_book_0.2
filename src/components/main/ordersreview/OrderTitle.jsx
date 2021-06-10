@@ -1,4 +1,4 @@
-import style from "../car/car.module.css";
+import style from "../car/car.Module.css";
 
 export const OrderTitle = ({brand, num}) => {
     return (

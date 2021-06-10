@@ -1,4 +1,4 @@
-import style from "../car.module.css";
+import style from "../car.Module.css";
 import {useEffect, useState} from "react";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
 import {useDispatch} from "react-redux";
@@ -58,10 +58,10 @@ export const AddRepairRecord = (props) => {
                 </div>
             </div>
             <div className={!edit ? style.car_add_hidden : style.add_form}>
-                <div className={style.car_item_subheader}>
+                <div className={style.date_odometer_wrapper}>
                     <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
                            onChange={onDataChange}/>
-                    <input style={{width: 170, marginTop: 0}} value={data.odometer} placeholder="Пробег"
+                    <input style={{width: 170, marginTop: 0, marginLeft: 45}} value={data.odometer} placeholder="Пробег"
                            name="odometer" onChange={onDataChange} type="number"/>
                 </div>
                 <textarea value={data.reasonsRepairs} onChange={onDataChange}

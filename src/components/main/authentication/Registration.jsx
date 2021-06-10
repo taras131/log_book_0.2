@@ -5,7 +5,7 @@ import {authentication, registrationNewUser, setMessage} from "../../../redux/au
 import {getMessage} from "../../../redux/authentication/authenticationSelector";
 import {Redirect} from "react-router";
 
-export const Registration = (props) => {
+export const Authentication = (props) => {
     const dispatch = useDispatch()
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
@@ -37,7 +37,7 @@ export const Registration = (props) => {
     if(props.isAuthentication) {return <Redirect to="/"/>}
 
     return (
-        <div className={style.entrance_wrapper}>
+        <div className={style.authentication_wrapper}>
             {props.isEntrance
                 ? <h2>Вход</h2>
                 : <h2>Регистрация</h2>}

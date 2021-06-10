@@ -1,21 +1,29 @@
 .homepage_wrapper {
+    width: 100%;
     min-height: 400px;
     background-color: #fff;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     padding: 30px;
 }
-
+@media (max-width: 770px) {
+    .homepage_wrapper {
+        padding: 10px;
+    }
+}
+.homepage_menu{
+    width: 100%;
+}
+@media (max-width: 770px) {
+    .homepage_menu {
+       font-size: 10px;
+    }
+}
 .tab_wrapper {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     height: auto;
-}
-@media (orientation: portrait) {
-    .tab_wrapper {
-        font-size: 24px;
-    }
 }
 
 table.tab_wrapper, table.tab_wrapper td, table.tab_wrapper th {
@@ -39,23 +47,6 @@ tr:hover {
 
 }
 
-@media (max-width: 767px) {
-    .homepage_wrapper {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 500px) {
-    .homepage_wrapper {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 400px) {
-    .homepage_wrapper {
-        padding: 5px;
-    }
-}
 
 .help {
     margin-top: 10px;

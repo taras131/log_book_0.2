@@ -1,4 +1,4 @@
-import style from "./car.module.css"
+import style from "./car.Module.css"
 import {Redirect, Route, useLocation} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getCarById} from "../../../redux/cars/carsSelector";
