@@ -60,7 +60,7 @@ function App() {
             <Route exact path="/login"
                    render={() => <Registration isEntrance={true} isAuthentication={isAuthentication}/>}/>
             <Route exact path="/registration" render={() => <Registration/>}/>
-            <Footer/>
+            <Footer isAuthentication ={isAuthentication}/>
             <AnswerWindow/>
             <MessageInfo/>
             <Setting userId={userId}/>

@@ -1,4 +1,4 @@
-import style from "./authentication.module.css"
+import style from "./authentication.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authentication, registrationNewUser, setMessage} from "../../../redux/authentication/authenticationReducer";

@@ -1,5 +1,5 @@
 .homepage_wrapper {
-    min-height: 300px;
+    min-height: 400px;
     background-color: #fff;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
     padding: 30px;
@@ -11,6 +11,11 @@
     border-collapse: collapse;
     border-spacing: 0;
     height: auto;
+}
+@media (orientation: portrait) {
+    .tab_wrapper {
+        font-size: 24px;
+    }
 }
 
 table.tab_wrapper, table.tab_wrapper td, table.tab_wrapper th {

@@ -1,5 +1,5 @@
 .authentication_wrapper {
-
+    min-height: calc(100vh - 80px);
     width: 100%;
 }
 
@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-
+    min-height: 100vh;
 }
 
 .entrance_wrapper {
@@ -19,6 +19,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    min-height: 100vh;
 }
 
 h2 {
@@ -51,4 +52,17 @@ button {
     margin-top: 15px;
     color: red;
     font-size: 20px;
+}
+@media (orientation: portrait) {
+    /* При вертикальной ориентации фоновым цветом сайта будет чёрный */
+    input {
+        min-height: 50px;
+        font-size: 25px;
+    }
+    button{
+        margin-top: 40px;
+    }
+    h2{
+        font-size: 35px;
+    }
 }

@@ -42,6 +42,7 @@ export const Header = (props) => {
                                 <img src={icon} alt="open book"/>
                             </div>
                         </NavLink>
+                        {props.isAuthentication &&
                         <div onClick={props.onBurgerClick}
                              className={classNames(style.header_burger, {
                                  [style.burger_active]: props.isShowBurgerMenu
@@ -50,6 +51,7 @@ export const Header = (props) => {
                             <span className={style.child_2}></span>
                             <span className={style.child_3}></span>
                         </div>
+                        }
                     </div>
                     <div className={style.second_header_section}>
                         <NavLink to="/" style={{textDecoration: 'none'}}>
@@ -84,9 +86,7 @@ export const Header = (props) => {
                         }
                     </div>
                 </div>
-
             </div>
-
             {
                 props.isAuthentication &&
                 <div className={style.subheader_wrapper}>

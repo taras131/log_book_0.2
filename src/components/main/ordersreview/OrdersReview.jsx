@@ -7,8 +7,10 @@ import {AllOrders} from "./AllOrders";
 import {OrdersParts} from "./OrdersParts";
 import {OrdersTools} from "./OrdersTools";
 import {OrdersMaterial} from "./OrdersMaterial";
+import {getMyId} from "../../../redux/authentication/authenticationSelector";
 
 const OrdersReview = (props) => {
+    const userId = useSelector(state => getMyId(state))
     const carsOrdersList = useSelector(state=>getAllOrders(state))
     const partsOrdersList = useSelector(state => getPartsOrders(state))
     const toolsOrdersList = useSelector(state => getToolsOrders(state))
@@ -20,9 +22,12 @@ const OrdersReview = (props) => {
     return(
         <div className={style.order_review_wrapper}>
             <Route exact path = {patchAll} render={() => <AllOrders carsOrdersList = {carsOrdersList} />}/>
-            <Route exact path = {patchParts} render={() => <OrdersParts partsOrdersList ={partsOrdersList} />}/>
-            <Route exact path = {patchTools} render={() => <OrdersTools toolsOrdersList ={toolsOrdersList} />}/>
-            <Route exact path = {patchExpendableMaterial} render={() => <OrdersMaterial materialsOrdersList ={materialsOrdersList} />}/>
+            <Route exact path = {patchParts} render={() => <OrdersParts partsOrdersList ={partsOrdersList}
+                                                                        userId={userId}/>}/>
+            <Route exact path = {patchTools} render={() => <OrdersTools toolsOrdersList ={toolsOrdersList}
+                                                                        userId={userId}/>}/>
+            <Route exact path = {patchExpendableMaterial} render={() =>
+                <OrdersMaterial materialsOrdersList ={materialsOrdersList}  userId={userId}/>}/>
             <OrderNavigation patchAll ={patchAll} patchParts={patchParts} patchTools={patchTools}
                              patchExpendableMaterial ={patchExpendableMaterial}/>
         </div>

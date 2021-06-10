@@ -36,3 +36,8 @@
         padding: 5px;
     }
 }
+@media (orientation: portrait) {
+    .main_wrapper {
+        min-height: 800px;
+    }
+}

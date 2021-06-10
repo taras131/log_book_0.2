@@ -12,11 +12,11 @@ export const getAllOrders = (state) => {
     return [...state.orderInfo.orderList.reverse()]
 }
 export const getPartsOrders = (state) =>{
-    return [...state.orderInfo.orderList.reverse().filter(item => item.carId.length > 9)]
+    return [...state.orderInfo.orderList.reverse().filter(item => item.carId === "part")]
 }
 export const getToolsOrders = (state) =>{
-    return [...state.orderInfo.orderList.reverse().filter(item => item.carId === "tools")]
+    return [...state.orderInfo.orderList.reverse().filter(item => item.carId === "tool")]
 }
 export const getMaterialsOrders = (state) =>{
-    return [...state.orderInfo.orderList.reverse().filter(item => item.carId === "materials")]
+    return [...state.orderInfo.orderList.reverse().filter(item => item.carId === "material")]
 }

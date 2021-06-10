@@ -8,66 +8,55 @@ import {OrderInputBlock} from "./OrderInputBlock";
 import {addOrder, setNewInputBlock, updateOrder} from "../../../../../redux/order/orderReducer";
 import {getInputList} from "../../../../../redux/order/orderSelector";
 import {getCurrentDate} from "../../../../../common/getCurrentDate";
+import {OrderTitle} from "../../../ordersreview/OrderTitle";
 
-export const AddNewOrder = (props) => {
-    console.log(props)
+export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, setEdit}) => {
     const dispatch = useDispatch()
-    const [edit, setEdit] = useState(false)
+    const [editAdd, setEditAdd] = useState(false)
     useEffect(() => {
-        if (props.orderEdit) {
-            setEdit(true)
+        if (orderEdit) {
+            setEditAdd(true)
             dispatch(setNewInputBlock())
         }
-    }, [props.orderEdit])
+    }, [orderEdit])
     const [typeOrder, setTypeOrder] = useState("Плановый ремонт")
     const inputList = useSelector(state => getInputList(state))
     const inputs = inputList.map((item, index) => <OrderInputBlock key={index} {...item} index={index}/>)
     const onEditClick = () => {
-        setEdit(!edit)
+        setEditAdd(!editAdd)
     }
     const onAddClick = () => {
-        if (props.orderEdit) {
-            dispatch(updateOrder(props.orderId, props.userId, props.carId, inputList.filter(item => item.partName), typeOrder, "не отправлено", getCurrentDate()))
-            props.setEdit(false)
+        if (orderEdit) {
+            dispatch(updateOrder(orderId, userId, carId, inputList.filter(item => item.partName), typeOrder,
+                "не отправлено", getCurrentDate()))
+            setEdit(false)
         } else {
-            dispatch(addOrder(props.userId, props.id, inputList.filter(item => item.partName), typeOrder, "не отправлено", getCurrentDate()))
+            dispatch(addOrder(userId, id, inputList.filter(item => item.partName), typeOrder, "не отправлено",
+                getCurrentDate()))
         }
     }
     const onSelectCategory = (e) => {
         setTypeOrder(e.target.value)
     }
-    const onBackClick =() => {
-        props.setEdit(false)
+    const onBackClick = () => {
+        setEdit(false)
     }
     return (
         <div className={style.car_add_new_record}>
-            {!props.orderEdit &&
+            {!orderEdit &&
             <>
-                <div className={style.car_description_section}>
-                    <div className={style.car_description_item}>
-                        <div className={style.subtitle}>Марка:</div>
-                        <div className={style.car_item_data}>
-                            {props.brand}
-                        </div>
-                    </div>
-                    <div className={style.car_description_item}>
-                        <div className={style.subtitle}>Номер:</div>
-                        <div className={style.car_item_data}>
-                            {props.num}
-                        </div>
-                    </div>
-                </div>
+                <OrderTitle brand={brand} num = {num}/>
                 <div className={style.car_item_subheader}>
                     <h3 style={{marginTop: 10}}>Добавление новой заявки:</h3>
                     <div className={style.car_icon_wrapper}>
-                        {edit
+                        {editAdd
                             ? <img onClick={onEditClick} src={upIcon} alt="save"/>
                             : <img onClick={onEditClick} src={downIcon} alt="back"/>}
                     </div>
                 </div>
             </>
             }
-            <div className={!edit ? style.car_add_hidden : style.add_form}>
+            <div className={!editAdd ? style.car_add_hidden : style.add_form}>
                 <div className={style.edit_order_subheader}>
                     <div className={style.type_order}>
                         <div>Срочность выполнения:</div>

@@ -12,6 +12,7 @@ import {getEmailList} from "../../../../redux/setting/settingSelector";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
 import {getCarById} from "../../../../redux/cars/carsSelector";
 import {AddNewOrder} from "./add_new_order/AddNewOrder";
+import {OrderTitle} from "../../ordersreview/OrderTitle";
 
 export const OrderItem = (props) => {
     const emailList = useSelector(state => getEmailList(state))
@@ -48,8 +49,8 @@ export const OrderItem = (props) => {
                             : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
                     </div>}
                     <div className={style.date_odometer_wrapper}>
-                        <div>Дата: {props.date}</div>
-                        <div>Срочность: {props.typeOrder}</div>
+                        <div style={{color: "black"}}>Дата: {props.date}</div>
+                        <div style={{color: "black"}}>Срочность: {props.typeOrder}</div>
                     </div>
                     {!props.title &&
                     <div className={style.car_icon_wrapper}>
@@ -62,17 +63,17 @@ export const OrderItem = (props) => {
                     <table className={style.tab_wrapper}>
                         <tbody>
                         <tr>
-                            <td align="center">Пункт</td>
-                            <td align="center">Наименование</td>
-                            <td align="center">Кат номер</td>
-                            <td align="center">Кол-во</td>
+                            <td style={{color: "black"}} align="center">Пункт</td>
+                            <td style={{color: "black"}} align="center">Наименование</td>
+                            <td style={{color: "black"}} align="center">Кат номер</td>
+                            <td style={{color: "black"}} align="center">Кол-во</td>
                         </tr>
                         {orderItemBlocks}
                         </tbody>
                     </table>
 
                     <div className={style.date_odometer_wrapper}>
-                        <div>Статус: {props.statusOrder}</div>
+                        <div style={{color: "black"}}>Статус: {props.statusOrder}</div>
                         {props.statusOrder === "не отправлено" &&
                         <button onClick={onSendClick}>Отправить</button>}
                     </div>
