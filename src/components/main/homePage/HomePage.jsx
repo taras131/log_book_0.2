@@ -20,7 +20,7 @@ export const HomePage = (props) => {
                     <td align="center">Марка</td>
                     <td align="center">Номер</td>
                     <td align="center">ТО</td>
-                    <td align="center">Ремонт</td>
+                    <td align="center" className={style.repair_header}>Ремонт</td>
                     <td align="center">Тех осмотр до:</td>
                     <td align="center">Страховка до:</td>
                     <td align="center">Заметки</td>

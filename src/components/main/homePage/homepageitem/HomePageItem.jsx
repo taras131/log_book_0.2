@@ -52,7 +52,7 @@ export const HomePageItem = (props) => {
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center">
+            <td align="center" className={style.repair}>
                 <NavLink to={pathRepairs} className={classNames(style.just)}>
                     {lastRepairRecording.odometer
                         ? lastRepairRecording.odometer + " - " + lastRepairRecording.date

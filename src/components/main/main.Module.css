@@ -1,6 +1,6 @@
 .main_wrapper {
     width: 100%;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 320px);
     background: url("../../img/bg4.png") center center/cover repeat;
 }
 

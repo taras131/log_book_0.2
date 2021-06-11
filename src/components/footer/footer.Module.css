@@ -26,6 +26,11 @@
     cursor: pointer;
     text-decoration: none;
 }
+@media (max-width: 670px){
+    .footer_item{
+        font-size: 14px;
+    }
+}
 .footer_support{
     color: white;
     margin-top: 15px;
