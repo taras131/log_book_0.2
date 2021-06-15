@@ -6,7 +6,7 @@
 
 .container {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: start;
     width: 1170px;
     margin: 0 auto;
@@ -15,7 +15,8 @@
 
 @media (max-width: 1170px ) {
     .container {
-        width: 100%;
+        width: 98%;
+        padding: 10px;
     }
 }
 

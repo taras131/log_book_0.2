@@ -8,6 +8,10 @@ import icon from "../../icons/open-book.png"
 import exit from "../../icons/logout.png"
 import setting from "../../icons/setting.png"
 import cart from "../../icons/cart.png"
+import car from "../../icons/car.png"
+import truck from "../../icons/truck.png"
+import bulldozer from "../../icons/bulldozer.png"
+import add from "../../icons/add.png"
 import classNames from "classnames";
 import {setIsSettingShow} from "../../redux/setting/settingReducer";
 
@@ -36,7 +40,6 @@ export const Header = (props) => {
         <header>
             <div className={style.header_wrapper}>
                 <div className={style.container}>
-
                     <div className={style.first_header_section}>
                         <NavLink to="/" className={style.header_logo}>
                             <div className={style.icon_wrapper}>
@@ -64,17 +67,20 @@ export const Header = (props) => {
                     <div className={style.third_header_section}>
                         {props.isAuthentication &&
                         <div className={style.right_section}>
-                            <div className={style.right_section_mame}>{name}</div>
-                            <div className={style.icon_wrapper}>
-                                <NavLink to = "/orders_review">
-                                <img className={style.right_section_icon} src={cart} alt="cart"/>
-                                </NavLink>
+                            <div className={style.right_section_mame}>
+                                {name}
                             </div>
+                            <div className={style.icons_wrapper}>
+                            <NavLink className={style.icon_wrapper} to="/orders_review">
+                                <img className={style.right_section_icon} src={cart} alt="cart"/>
+                            </NavLink>
                             <div className={style.icon_wrapper}>
-                                <img onClick={onSettingClick} className={style.right_section_icon} src={setting} alt="setting"/>
+                                <img onClick={onSettingClick} className={style.right_section_icon} src={setting}
+                                     alt="setting"/>
                             </div>
                             <div className={style.icon_wrapper}>
                                 <img onClick={onExitClick} className={style.right_section_icon} src={exit} alt="exit"/>
+                            </div>
                             </div>
                         </div>
                         }
@@ -94,41 +100,35 @@ export const Header = (props) => {
                 props.isAuthentication &&
                 <div className={style.subheader_wrapper}>
                     <div className={style.subheader_container}>
-                        <div className={style.subheader_item}>
-                            <NavLink to="/" className={classNames(style.subheader_item, {
-                                [style.active]: path === ""
-                            })}>
-                                Список
-                            </NavLink>
-                        </div>
-                        <div className={style.subheader_item}>
-                            <NavLink to="/0" className={classNames(style.subheader_item, {
-                                [style.active]: path === "0"
-                            })}>
-                                Легковые
-                            </NavLink>
-                        </div>
-                        <div className={style.subheader_item}>
-                            <NavLink to="/1" className={classNames(style.subheader_item, {
-                                [style.active]: path === "1"
-                            })}>
-                                Грузовые
-                            </NavLink>
-                        </div>
-                        <div className={style.subheader_item}>
-                            <NavLink to="/2" className={classNames(style.subheader_item, {
-                                [style.active]: path === "2"
-                            })}>
-                                Спецтехника
-                            </NavLink>
-                        </div>
-                        <div>
-                            <NavLink to="/add_new_car" className={classNames(style.subheader_item, {
-                                [style.active]: path === "add_new_car"
-                            })}>
-                                Добавить
-                            </NavLink>
-                        </div>
+                        <NavLink to="/" className={classNames(style.subheader_item, {
+                            [style.active]: path === ""
+                        })}>
+                            Все
+                        </NavLink>
+                        <NavLink to="/0" className={classNames(style.subheader_item, {
+                            [style.active]: path === "0"
+                        })}>
+                            <p>Легковые</p>
+                            <img src={car} alt="car"/>
+                        </NavLink>
+                        <NavLink to="/1" className={classNames(style.subheader_item, {
+                            [style.active]: path === "1"
+                        })}>
+                            <p>Грузовые</p>
+                            <img src={truck} alt="truck"/>
+                        </NavLink>
+                        <NavLink to="/2" className={classNames(style.subheader_item, {
+                            [style.active]: path === "2"
+                        })}>
+                            <p>Спецтехника</p>
+                            <img src={bulldozer} alt="bulldozer"/>
+                        </NavLink>
+                        <NavLink to="/add_new_car" className={classNames(style.subheader_item, {
+                            [style.active]: path === "add_new_car"
+                        })}>
+                            <p>Добавить</p>
+                            <img src={add} alt="add"/>
+                        </NavLink>
                     </div>
                 </div>
             }

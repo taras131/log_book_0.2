@@ -76,7 +76,7 @@ export const CarDescription = (props) => {
                         <div className={style.subtitle}>Марка:</div>
                         <div className={style.car_item_data}>
                             {edit &&
-                            <input style={{marginTop: 0}} value={data.brand} type="text" name="brand"
+                            <input className={style.car_description_input} value={data.brand} type="text" name="brand"
                                    onChange={onDataChange}/>}
                             {props.brand && !edit && props.brand}
                             {!props.brand && !edit && "нет данных"}
@@ -86,7 +86,8 @@ export const CarDescription = (props) => {
                         <div className={style.subtitle}>Модель:</div>
                         <div className={style.car_item_data}>
                             {edit &&
-                            <input value={data.model} type="text" name="model" onChange={onDataChange}/>}
+                            <input className={style.car_description_input} value={data.model}
+                                   type="text" name="model" onChange={onDataChange}/>}
                             {props.model && !edit && props.model}
                             {!props.model && !edit && "нет данных"}
                         </div>
@@ -97,7 +98,8 @@ export const CarDescription = (props) => {
                         <div className={style.subtitle}>Номер:</div>
                         <div className={style.car_item_data}>
                             {edit &&
-                            <input style={{marginTop: 0}} value={data.num} type="text" name="num"
+                            <input className={style.car_description_input} style={{marginTop: 0}}
+                                   value={data.num} type="text" name="num"
                                    onChange={onDataChange}/>}
                             {props.num && !edit && props.num}
                             {!props.num && !edit && "нет данных"}
@@ -107,7 +109,8 @@ export const CarDescription = (props) => {
                         <div className={style.subtitle}>Год:</div>
                         <div className={style.car_item_data}>
                             {edit &&
-                            <input style={{marginTop: 0}} value={data.yearManufacture} type="text"
+                            <input className={style.car_description_input} style={{marginTop: 0}}
+                                   value={data.yearManufacture} type="text"
                                    name="yearManufacture"
                                    onChange={onDataChange}/>}
                             {props.yearManufacture && !edit && props.yearManufacture}
@@ -119,7 +122,8 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>VIN:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input style={{marginTop: 0, maxWidth:130}} value={data.vin} type="text" name="vin"
+                        <input className={style.car_description_input} style={{marginTop: 0, maxWidth: 130}}
+                               value={data.vin} type="text" name="vin"
                                onChange={onDataChange}/>}
                         {props.vin && !edit && props.vin}
                         {!props.vin && !edit && "нет данных"}
@@ -146,7 +150,7 @@ export const CarDescription = (props) => {
             {props.lastRecording
                 ? <MaintenanceItem {...props.lastRecording} title="Последнее ТО:"/>
                 : <div className={style.car_item_wrapper}>
-                    <h3>Последнее ТО:</h3>
+                    <h5>Последнее ТО:</h5>
                     <div className={style.hr}></div>
                     <div className={style.car_item_info}>
                         <div className={style.car_item_subheader}>

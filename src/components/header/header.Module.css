@@ -17,7 +17,7 @@ header {
     align-items: center;
 }
 
-.container{
+.container {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -26,13 +26,15 @@ header {
     padding-left: 20px;
     padding-right: 20px;
 }
-@media (max-width: 1170px ){
-    .container{
+
+@media (max-width: 1170px ) {
+    .container {
         width: 100%;
     }
 }
-@media (max-width: 670px ){
-    .container{
+
+@media (max-width: 670px ) {
+    .container {
         padding: 5px;
     }
 }
@@ -43,6 +45,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 }
 
 .header_logo {
@@ -57,39 +60,48 @@ header {
     align-items: center;
     margin-right: 25px;
 }
-.header_wrapper img {
+
+.container img {
     width: 50px;
+    height: 50px;
     filter: invert(100%);
     -webkit-filter: invert(100%);
 }
 
-.header_wrapper img:hover {
+.right_section img:hover {
     width: 55px;
+    height: 55px;
 }
-@media (max-width: 670px ){
-    .icon_wrapper{
+
+@media (max-width: 670px ) {
+    .icon_wrapper {
         width: 50px;
         height: 50px;
     }
-    img{
+
+    .container img {
         width: 45px;
         height: 45px;
     }
-    img:hover {
+
+    .container img:hover {
         width: 50px;
         height: 50px;
     }
 }
-@media (max-width: 470px ){
-    .icon_wrapper{
+
+@media (max-width: 470px ) {
+    .icon_wrapper {
         width: 40px;
         height: 40px;
     }
-    img{
+
+    .container img {
         width: 35px;
         height: 35px;
     }
-    img:hover {
+
+    .container img:hover {
         width: 40px;
         height: 40px;
     }
@@ -101,13 +113,15 @@ header {
     justify-content: center;
     align-items: center;
 }
-@media (max-width: 770px ){
-    h1{
+
+@media (max-width: 770px ) {
+    h1 {
         font-size: 18px;
     }
 }
-@media(max-width: 470px){
-    h1{
+
+@media (max-width: 570px) {
+    h1 {
         display: none;
     }
 }
@@ -119,7 +133,7 @@ header {
 .third_header_section {
     height: 100%;
     display: flex;
-    justify-content:space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -128,16 +142,39 @@ header {
     justify-content: center;
     align-items: center;
 }
-
+.icons_wrapper{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.icons_wrapper .icon_wrapper{
+    margin-right: 15px;
+}
+@media (max-width: 370px) {
+    .icons_wrapper .icon_wrapper{
+        margin-right: 5px;
+    }
+}
 .right_section_icon {
-    margin: 25px;
     cursor: pointer;
+}
+
+@media (max-width: 670px) {
+    .right_section_icon {
+        margin-right: 0;
+        margin-left: 0;
+    }
 }
 
 .right_section_mame {
     margin-right: 15px;
 }
 
+@media (max-width: 670px) {
+    .right_section_mame {
+        margin-right: 10px;
+    }
+}
 
 .header_burger {
     display: none;
@@ -161,15 +198,17 @@ header {
     text-decoration: none;
     transition: all 0.4s;
 }
-@media(max-width: 670px){
-    .header_button{
+
+@media (max-width: 670px) {
+    .header_button {
         width: 130px;
         height: 40px;
         font-size: 14px;
     }
 }
-@media(max-width: 470px){
-    .header_button{
+
+@media (max-width: 470px) {
+    .header_button {
         width: 90px;
         height: 40px;
         font-size: 12px;
@@ -198,8 +237,9 @@ header {
     justify-content: space-around;
     align-items: center;
 }
-@media (max-width: 1170px ){
-    .subheader_container{
+
+@media (max-width: 1170px ) {
+    .subheader_container {
         width: 100%;
     }
 }
@@ -209,10 +249,35 @@ header {
     cursor: pointer;
     text-decoration: none;
     font-size: 20px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-@media (max-width: 670px ){
-    .subheader_item{
+
+.subheader_item img {
+    display: none;
+    height: 35px;
+    width: 35px;
+}
+.subheader_item img:hover {
+    height: 40px;
+    width: 40px;
+}
+
+@media (max-width: 670px ) {
+    .subheader_item {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 570px ) {
+    .subheader_item p {
+        display: none;
+    }
+
+    .subheader_item img {
+        display: block;
     }
 }
 

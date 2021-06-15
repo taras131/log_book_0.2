@@ -1,7 +1,14 @@
 .car_wrapper {
-    display: grid;
-    grid-template-columns: 3fr minmax(90px, 1fr);
-    grid-template-rows: 1fr;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .car_wrapper {
+        flex-direction: column-reverse;
+    }
 }
 
 .car_section_wrapper {
@@ -9,6 +16,20 @@
     flex-direction: column;
     padding-right: 15px;
     color: #2d73bc;
+    width: 75%;
+}
+
+@media (max-width: 800px) {
+    .car_section_wrapper {
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .car_section_wrapper {
+        width: 100%;
+        padding-right: 0;
+    }
 }
 
 .car_item_wrapper {
@@ -26,6 +47,17 @@
     padding: 25px;
 }
 
+@media (max-width: 800px) {
+    .car_item_wrapper {
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+}
+
+.car_item_wrapper h5 {
+    margin: 5px;
+    padding: 0;
+}
 
 .car_item_wrapper:hover {
     background-color: lightyellow;
@@ -39,6 +71,20 @@
     align-items: center;
 }
 
+@media (max-width: 800px) {
+    .car_icon_wrapper {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    .car_icon_wrapper {
+        height: 40px;
+        width: 40px;
+    }
+}
+
 
 .car_item_subheader {
     display: flex;
@@ -47,6 +93,24 @@
     justify-content: space-between;
     align-items: center;
     color: #2d73bc;
+}
+
+@media (max-width: 600px) {
+    .car_item_subheader {
+        font-size: 12px;
+    }
+}
+
+.subheader_input_wrapper {
+
+}
+
+.subheader_input_date {
+    width: 70px;
+}
+
+.subheader_input_odometer {
+    margin-left: 15px;
 }
 
 .car_item_subheader input {
@@ -63,13 +127,26 @@
     align-items: center;
 }
 
+.date_odometer {
+    margin-left: 30px;
+}
+
 .car_item_info {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
     grid-template-rows: 1fr;
     width: 100%;
     min-height: 50px;
+}
+
+@media (max-width: 1020px) {
+    .car_item_info {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
 }
 
 .car_add_new_record {
@@ -111,7 +188,7 @@ input {
     width: 300px;
     padding: 5px;
     border-radius: 5px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 input:focus {
@@ -127,8 +204,30 @@ h3 {
     margin: 0 auto;
 }
 
-.car_description_wrapper {
-    padding-right: 15px;
+.car_description_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+}
+
+@media (max-width: 900px) {
+    .car_description_section {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+}
+
+.car_description_item {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5px;
+}
+
+.car_description_input {
+    width: 130px;
 }
 
 .subtitle {
@@ -156,6 +255,30 @@ img:hover {
     width: 45px;
 }
 
+@media (max-width: 800px) {
+    img {
+        height: 40px;
+        width: 40px;
+    }
+
+    img:hover {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    img {
+        height: 35px;
+        width: 35px;
+    }
+
+    img:hover {
+        height: 40px;
+        width: 40px;
+    }
+}
+
 .car_button_wrapper {
     display: flex;
     justify-content: center;
@@ -168,6 +291,12 @@ img:hover {
     align-items: center;
     color: #2d73bc;
     margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .car_item_data {
+        font-size: 12px;
+    }
 }
 
 button {
@@ -198,22 +327,6 @@ label {
     margin-top: 15px;
 }
 
-.car_description_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: 16px;
-}
-
-.car_description_section input {
-    max-width: 270px;
-}
-
-.car_description_item {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    padding: 5px;
-}
 
 .input_block {
     width: 100%;

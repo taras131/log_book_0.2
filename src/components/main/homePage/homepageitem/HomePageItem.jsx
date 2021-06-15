@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import style from "./homepageitem.module.css"
+import style from "../homepage.Module.css"
 import {getLastMaintenanceRecording,} from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceSelector";
 import {getInsuranceDateValidById} from "../../../../redux/insurance/insuranceSelector";
 import {getLastRepairsByCarId} from "../../../../redux/repairs/repairsSelector";
@@ -29,19 +29,19 @@ export const HomePageItem = (props) => {
     const pathNotice = `/car/notice/${props.id}`
     return (
         <tr>
-            <td align="center">
+            <td aria-label="Марка:" align="center">
                 <NavLink to={pathDescription} style={{textDecoration: 'none'}}>
                     {props.brand}
                 </NavLink>
             </td>
-            <td align="center">
+            <td aria-label="Номер:" align="center">
                 <NavLink to={pathDescription} style={{textDecoration: 'none'}}>
                     <div>
                         {props.num}
                     </div>
                 </NavLink>
             </td>
-            <td align="center" className={classNames(style.just, {
+            <td aria-label="Последнее ТО:" align="center" className={classNames(style.just, {
                 [style.ok]: maintenanceStatus === "ok",
                 [style.warning]: maintenanceStatus === "warning",
                 [style.danger]: maintenanceStatus === "danger",
@@ -52,14 +52,14 @@ export const HomePageItem = (props) => {
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center" className={style.repair}>
+            <td aria-label="Последний ремонт:" align="center" className={style.repair}>
                 <NavLink to={pathRepairs} className={classNames(style.just)}>
                     {lastRepairRecording.odometer
                         ? lastRepairRecording.odometer + " - " + lastRepairRecording.date
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center" className={classNames(style.just, {
+            <td aria-label="Техосмотр до:" align="center" className={classNames(style.just, {
                 [style.ok]: technicalInspectionStatus === "ok",
                 [style.warning]: technicalInspectionStatus === "warning",
                 [style.danger]: technicalInspectionStatus === "danger",
@@ -70,7 +70,7 @@ export const HomePageItem = (props) => {
                         : "нет данных"}
                 </NavLink>
             </td>
-            <td align="center" className={classNames(style.just, {
+            <td aria-label="Страховка до:" align="center" className={classNames(style.just, {
                 [style.ok]: insuranceStatus === "ok",
                 [style.warning]: insuranceStatus === "warning",
                 [style.danger]: insuranceStatus === "danger",
@@ -79,7 +79,7 @@ export const HomePageItem = (props) => {
                     {dateInsuranceIsValid}
                 </NavLink>
             </td>
-            <td align="center">
+            <td aria-label="Напоминания:" align="center">
                 <NavLink to={pathNotice} style={{textDecoration: 'none'}}>
                     {noticeCount}
                 </NavLink>

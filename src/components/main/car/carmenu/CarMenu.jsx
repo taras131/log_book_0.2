@@ -1,4 +1,4 @@
-import style from "./car_menu.module.css"
+import style from "./car_menu.Module.css"
 import {NavLink} from "react-router-dom";
 import classNames from 'classnames';
 import {useLocation} from "react-router";

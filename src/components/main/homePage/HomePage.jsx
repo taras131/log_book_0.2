@@ -8,14 +8,8 @@ export const HomePage = (props) => {
     const tabList = carsList.map(item => <HomePageItem key={item.id} {...item}/>)
     return (
         <div className={style.homepage_wrapper}>
-            <div className={style.homepage_menu}>
-                {props.category === "all" && <h3>Все:</h3>}
-                {props.category === "0" && <h3>Легковые:</h3>}
-                {props.category === "1" && <h3>Грузовые:</h3>}
-                {props.category === "2" && <h3>Спецтехника:</h3>}
-            </div>
             <table className={style.tab_wrapper}>
-                <tbody>
+                <thead>
                 <tr>
                     <td align="center">Марка</td>
                     <td align="center">Номер</td>
@@ -25,6 +19,8 @@ export const HomePage = (props) => {
                     <td align="center">Страховка до:</td>
                     <td align="center">Заметки</td>
                 </tr>
+                </thead>
+                <tbody>
                 {tabList}
                 </tbody>
             </table>

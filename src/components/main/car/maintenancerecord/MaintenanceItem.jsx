@@ -51,7 +51,7 @@ export const MaintenanceItem = (props) => {
     }
     return (
         <div className={style.car_item_wrapper}>
-            {props.title && <h3>{props.title}</h3>}
+            {props.title && <h5>{props.title}</h5>}
             <div className={style.car_item_subheader}>
                 {!props.title &&
                 <div className={style.car_icon_wrapper}>
@@ -60,15 +60,15 @@ export const MaintenanceItem = (props) => {
                         : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
                 </div>}
                 {edit
-                    ? <>
-                        <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
+                    ? <div className={style.subheader_input_wrapper}>
+                        <input className={style.subheader_input_date} value={data.date} placeholder="Дата" name="date"
                                onChange={onDataChange}/>
-                        <input value={data.odometer} placeholder="Пробег"
+                        <input className={style.subheader_input_odometer} value={data.odometer} placeholder="Пробег"
                                name="odometer" onChange={onDataChange}/>
-                    </>
+                    </div>
                     : <div className={style.date_odometer_wrapper}>
                         <div>Дата: {props.datecommission}</div>
-                        <div>Пробег: {props.odometer}</div>
+                        <div className={style.date_odometer}>Пробег: {props.odometer}</div>
                     </div>}
                 {!props.title &&
                 <div className={style.car_icon_wrapper}>
