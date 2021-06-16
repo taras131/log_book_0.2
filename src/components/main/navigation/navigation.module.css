@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
 }
-@media (max-width: 770px ) {
+@media (max-width: 1000px ) {
     .navigation_wrapper{
         display: none;
     }
@@ -21,7 +21,7 @@
 
 }
 .navigation_buttons{
-    padding-top: 55px;
+    padding-top: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;

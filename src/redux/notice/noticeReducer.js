@@ -57,6 +57,7 @@ export const deleteNoticeRecord = (id, userId) => async (dispatch) => {
 export const updateNoticeRecord = (newRecord) => async (dispatch) =>{
     dispatch(setPreloader(true))
     let response = await ApiNotice.updateNotice(newRecord)
+    console.log(response)
     if(response === "update notice record successfully"){
         dispatch(getNoticeRecords(newRecord.userId))
         dispatch(setMessageInfo("Напоминание успешно обновлено"))

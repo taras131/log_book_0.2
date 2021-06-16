@@ -1,14 +1,15 @@
-.setting_window_wrapper{
+.setting_window_wrapper {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(192,192,192, 0.9);
+    background-color: rgba(192, 192, 192, 0.9);
     position: fixed;
     z-index: 1;
 }
-.setting_window_content{
+
+.setting_window_content {
     width: 360px;
     min-height: 250px;
     background-color: white;
@@ -22,43 +23,54 @@
     font-size: 24px;
     font-weight: 700;
 }
-.setting_window_hidden{
+
+.setting_window_hidden {
     display: none;
 }
-.setting_header{
+
+.setting_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-.img_wrapper{
+
+.img_wrapper {
     width: 55px;
     height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-img{
+
+.img_wrapper img {
+    height: 45px;
     width: 45px;
 }
-img:hover {
+
+.img_wrapper img:hover {
+    height: 50px;
     width: 50px;
 }
-.hr{
+
+.hr {
     margin: 10px auto;
     height: 2px;
     width: 100%;
     background-color: darkseagreen;
 }
-h5{
+
+h5 {
     font-size: 14px;
     text-align: center;
 }
-h6{
+
+h6 {
     color: black;
     font-size: 12px;
 }
-.email_wrapper{
+
+.email_wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -68,25 +80,30 @@ h6{
     min-height: 150px;
     padding: 10px;
 }
-.email_item{
- display: flex;
+
+.email_item {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.setting_button_wrapper{
+
+.setting_button_wrapper {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.setting_window_wrapper button{
+
+.setting_window_wrapper button {
     width: 130px;
 }
-span{
+
+span {
 
     margin-left: 15px;
 }
-.email_item_input{
+
+.email_item_input {
     margin-left: 15px;
     width: 200px;
     margin-top: 0;

@@ -9,11 +9,15 @@ export const TechnicalInspectionWrapper = (props) => {
     const addNew = (insuranceIsValid, id, userId) => {
         dispatch(addTechnicalInspection(insuranceIsValid, id, userId))
     }
-    return(
-        <InsuranceAndInspection title ="Техосмотр действителен" startDateTitle = "Техосмотр проведён:" untilDateTitle = "Действителен до:"
-                                periodTitle = "Срок действия ТО:"
-                                dateIsValid = {dateInsuranceIsValid}
-                                addNew = {addNew}
-                                id ={props.id} userId ={props.userId} />
+    return (
+        <InsuranceAndInspection title="Техосмотр действителен" startDateTitle="Техосмотр проведён:"
+                                untilDateTitle="Действителен до:"
+                                periodTitle="Срок действия ТО:"
+                                dateIsValid={dateInsuranceIsValid}
+                                addNew={addNew}
+                                id={props.id}
+                                userId={props.userId}
+                                brand={props.brand}
+                                num={props.num}/>
     )
 }

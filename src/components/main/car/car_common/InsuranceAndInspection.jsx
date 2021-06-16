@@ -2,6 +2,7 @@ import style from "../car.Module.css"
 import {useState} from "react";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
 import {calculateDate} from "../../../../common/calculateDate";
+import {ItemTitle} from "./ItemTitle";
 
 export const InsuranceAndInspection = (props) => {
     const [startDate, setStartDate] = useState(getCurrentDate())
@@ -33,6 +34,7 @@ export const InsuranceAndInspection = (props) => {
     return (
         <div className={style.car_section_wrapper}>
                 <div className={style.car_add_new_record}>
+                    <ItemTitle brand={props.brand} num={props.num}/>
                     <div className={style.car_item_subheader}>{props.title} до: {props.dateIsValid}</div>
                     <div className={style.hr}></div>
                     <h4>Установить новую дату:</h4>
@@ -40,7 +42,7 @@ export const InsuranceAndInspection = (props) => {
                     <input className = {error ? style.input_error : ""} onChange={onChangeInsuranceDate}  type="text" name="date"
                            value={startDate}/>
                     <label htmlFor="date">{props.untilDateTitle}</label>
-                    <input className = {error ? style.input_error : ""} placeholder="действительна до" type="text" value={validUntil} readOnly/>
+                    <input disabled className = {error ? style.input_error : ""} placeholder="действительна до" type="text" value={validUntil} readOnly/>
                     <label htmlFor="date">{props.periodTitle}</label>
                     <select style={{height: 40, padding: 5, marginTop:10}} onChange={onSelectPeriod} id="period" name="period" value={period}>
                         <option style={{height: 40}} value="sixMonths">6 месяцев</option>

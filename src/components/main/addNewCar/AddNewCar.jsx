@@ -1,4 +1,4 @@
-import style from "./addNewCar.module.css"
+import style from "./addNewCar.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewCar} from "../../../redux/cars/carsReducer";

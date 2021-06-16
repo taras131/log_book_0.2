@@ -25,7 +25,7 @@ h2 {
     color: lightyellow;
 }
 
-input {
+.authentication_wrapper input {
     margin-top: 15px;
     height: 25px;
     width: 300px;
@@ -33,7 +33,7 @@ input {
     border-radius: 5px;
 }
 @media (max-width: 370px) {
-    input {
+    .authentication_wrapper input {
         width: 250px;
         height: 20px;
     }

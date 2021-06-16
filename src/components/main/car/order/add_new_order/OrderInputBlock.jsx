@@ -1,7 +1,9 @@
 import style from "../../car.Module.css";
 import {useState} from "react";
-import {inputBlockChangeName, setNewInputBlock} from "../../../../../redux/order/orderReducer";
+import {inputBlockChange, setNewInputBlock} from "../../../../../redux/order/orderReducer";
 import {useDispatch} from "react-redux";
+import plus from "../../../../../icons/plus.png"
+import minus from "../../../../../icons/minus.png"
 
 export const OrderInputBlock = (props) => {
     const [firstChange, setFirstChange] = useState(true)
@@ -11,17 +13,36 @@ export const OrderInputBlock = (props) => {
             dispatch(setNewInputBlock())
             setFirstChange(false)
         }
-        dispatch(inputBlockChangeName(e.target.name, e.target.value, props.index))
+        dispatch(inputBlockChange(e.target.name, e.target.value, props.index))
+    }
+    const onPlusClick = () => {
+        dispatch(inputBlockChange("partCount", +props.partCount + 1, props.index))
+    }
+    const onMinusClick = () => {
+        if (props.partCount > 1) {
+            dispatch(inputBlockChange("partCount", +props.partCount - 1, props.index))
+        }
     }
     return (
         <div className={style.input_block}>
-            <input style={{maxWidth: 15, marginTop: 0, textAlign:"center"}} value={props.index + 1} readOnly name="itemNumber"/>
-            <input style={{maxWidth: 270, marginTop: 0}} value={props.partName} placeholder="наименование"
-                   name="partName" onChange={onInputChange}/>
-            <input style={{maxWidth: 270, marginTop: 0}} value={props.catalogNumber} placeholder="каталожный номер"
-                   name="catalogNumber" onChange={onInputChange}/>
-            <input style={{maxWidth: 30, marginTop: 0, textAlign:"center" }} value={props.partCount} placeholder="к-во" name="partCount"
-                   onChange={onInputChange}/>
+            {props.index + 1}
+            <div className={style.name_number_input_section}>
+                <input value={props.partName} placeholder="наименование"
+                       name="partName" onChange={onInputChange}/>
+                <input value={props.catalogNumber}
+                       placeholder="каталожный номер"
+                       name="catalogNumber" onChange={onInputChange}/>
+            </div>
+            <div className={style.count_input_section}>
+                <img className={style.input_minus} onClick={onMinusClick}
+                     src={minus} alt="minus"/>
+                <input style={{width: 25,height: 15, margin: 2, textAlign: "center", marginLeft: 5, marginRight: 5}}
+                       value={props.partCount}
+                       placeholder="к-во" name="partCount"
+                       onChange={onInputChange}/>
+                <img className={style.input_plus} onClick={onPlusClick} src={plus} alt="plus"/>
+            </div>
+
         </div>
     )
 }

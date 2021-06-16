@@ -1,8 +1,4 @@
 import style from "../car.Module.css"
-import saveIcon from "../../../../icons/save.png";
-import deleteIcon from "../../../../icons/delete.png";
-import backIcon from "../../../../icons/back.png";
-import editIcon from "../../../../icons/edit.png";
 import {useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 import {setAnswer} from "../../../../redux/answerwindow/answerWindowReducer";
@@ -10,6 +6,7 @@ import {
     deleteMaintenanceRecord,
     updateMaintenanceRecord
 } from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceReducer";
+import {CarItemSubheader} from "../car_common/CarItemSubheader";
 
 export const MaintenanceItem = (props) => {
     const dispatch = useDispatch()
@@ -52,34 +49,12 @@ export const MaintenanceItem = (props) => {
     return (
         <div className={style.car_item_wrapper}>
             {props.title && <h5>{props.title}</h5>}
-            <div className={style.car_item_subheader}>
-                {!props.title &&
-                <div className={style.car_icon_wrapper}>
-                    {edit
-                        ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
-                        : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
-                </div>}
-                {edit
-                    ? <div className={style.subheader_input_wrapper}>
-                        <input className={style.subheader_input_date} value={data.date} placeholder="Дата" name="date"
-                               onChange={onDataChange}/>
-                        <input className={style.subheader_input_odometer} value={data.odometer} placeholder="Пробег"
-                               name="odometer" onChange={onDataChange}/>
-                    </div>
-                    : <div className={style.date_odometer_wrapper}>
-                        <div>Дата: {props.datecommission}</div>
-                        <div className={style.date_odometer}>Пробег: {props.odometer}</div>
-                    </div>}
-                {!props.title &&
-                <div className={style.car_icon_wrapper}>
-                    {edit
-                        ? <img onClick={onEditClick} src={backIcon} alt="edit"/>
-                        : <img onClick={onEditClick} src={editIcon} alt="back"/>}
-                </div>}
-            </div>
+            <CarItemSubheader  title = {props.title} onSaveClick = {onSaveClick} onDeleteRecordClick ={onDeleteRecordClick}
+                               data = {data} onDataChange = {onDataChange} edit = {edit} onEditClick={onEditClick} />
             <div className={style.hr}></div>
             <div className={style.car_item_info}>
                 <div className={style.subtitle}>Проведённые работы:</div>
+                <br/>
                 <div className={style.car_item_data}>
                     {edit &&
                     <textarea value={data.text} type="text" name="text"

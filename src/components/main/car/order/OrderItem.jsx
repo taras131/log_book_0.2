@@ -12,7 +12,7 @@ import {getEmailList} from "../../../../redux/setting/settingSelector";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
 import {getCarById} from "../../../../redux/cars/carsSelector";
 import {AddNewOrder} from "./add_new_order/AddNewOrder";
-import {OrderTitle} from "../../ordersreview/OrderTitle";
+import {ItemTitle} from "../car_common/ItemTitle";
 
 export const OrderItem = (props) => {
     const emailList = useSelector(state => getEmailList(state))
@@ -50,7 +50,7 @@ export const OrderItem = (props) => {
                     </div>}
                     <div className={style.date_odometer_wrapper}>
                         <div style={{color: "black"}}>Дата: {props.date}</div>
-                        <div style={{marginLeft: 45, color: "black"}}>Срочность: {props.typeOrder}</div>
+                        <div style={{color: "black"}}>{props.typeOrder}</div>
                     </div>
                     {!props.title &&
                     <div className={style.car_icon_wrapper}>
@@ -62,10 +62,10 @@ export const OrderItem = (props) => {
                     <table className={style.tab_wrapper}>
                         <tbody>
                         <tr>
-                            <td style={{color: "black"}} align="center">Пункт</td>
+                            <td style={{color: "black"}} align="center">№</td>
                             <td style={{color: "black"}} align="center">Наименование</td>
                             <td style={{color: "black"}} align="center">Кат номер</td>
-                            <td style={{color: "black"}} align="center">Кол-во</td>
+                            <td style={{color: "black"}} align="center">К - во</td>
                         </tr>
                         {orderItemBlocks}
                         </tbody>

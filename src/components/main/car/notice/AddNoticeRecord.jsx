@@ -5,6 +5,7 @@ import style from "../car.Module.css";
 import upIcon from "../../../../icons/up-arrow.png";
 import downIcon from "../../../../icons/down-arrow.png";
 import {addNewNoticeRecord} from "../../../../redux/notice/noticeReducer";
+import {ItemTitle} from "../car_common/ItemTitle";
 
 export const AddNoticeRecord = (props) => {
         const dispatch = useDispatch()
@@ -38,8 +39,9 @@ export const AddNoticeRecord = (props) => {
         }
     return(
         <div className={style.car_add_new_record}>
-            <div className={style.car_item_subheader}>
-                <h3>Добавление новой заметки:</h3>
+            <ItemTitle brand={props.brand} num={props.num}/>
+            <div className={style.new_record_header}>
+                <h4>Добавление новой заметки:</h4>
                 <div className={style.car_icon_wrapper}>
                     {edit
                         ? <img onClick={onEditClick} src={upIcon} alt="save"/>
@@ -50,7 +52,7 @@ export const AddNoticeRecord = (props) => {
                 <div className={style.date_odometer_wrapper}>
                     <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
                            onChange={onDataChange} />
-                    <input style={{width: 170, marginTop: 0, marginLeft: 45}} value={data.odometer} placeholder="Пробег"
+                    <input style={{width: 130, marginTop: 0, marginLeft: 45}} value={data.odometer} placeholder="Пробег"
                            name="odometer" onChange={onDataChange} type="number"/>
                 </div>
                 <textarea value={data.text} onChange={onDataChange}

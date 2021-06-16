@@ -8,7 +8,7 @@ import {OrderInputBlock} from "./OrderInputBlock";
 import {addOrder, resetInputList, setNewInputBlock, updateOrder} from "../../../../../redux/order/orderReducer";
 import {getInputList} from "../../../../../redux/order/orderSelector";
 import {getCurrentDate} from "../../../../../common/getCurrentDate";
-import {OrderTitle} from "../../../ordersreview/OrderTitle";
+import {ItemTitle} from "../../car_common/ItemTitle";
 
 export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, setEdit}) => {
     const dispatch = useDispatch()
@@ -46,9 +46,9 @@ export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, 
         <div className={style.car_add_new_record}>
             {!orderEdit &&
             <>
-                <OrderTitle brand={brand} num={num}/>
-                <div className={style.car_item_subheader}>
-                    <h3 style={{marginTop: 10}}>Добавление новой заявки:</h3>
+                <ItemTitle brand={brand} num={num}/>
+                <div className={style.new_record_header}>
+                    <h4>Добавление новой заявки:</h4>
                     <div className={style.car_icon_wrapper}>
                         {editAdd
                             ? <img onClick={onEditClick} src={upIcon} alt="save"/>
@@ -73,7 +73,8 @@ export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, 
                 </div>
                 {inputs}
                 <button onClick={onAddClick}>Сохранить запись</button>
-                <h6>После сохранения заявку можно будет отправить по указанным в настройках email</h6>
+                <h6>Поля с неуказанным наименованием не будут учтены при сохранении <br/>
+                   После сохранения заявку можно будет отправить по указанным в настройках email</h6>
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {deleteRepairRecord, updateRepairRecord} from "../../../../redux/repairs/repairsReducer";
 import {setAnswer} from "../../../../redux/answerwindow/answerWindowReducer";
 import {useDispatch} from "react-redux";
+import {CarItemSubheader} from "../car_common/CarItemSubheader";
 
 export const RepairItem = (props) => {
     const dispatch = useDispatch()
@@ -57,29 +58,8 @@ export const RepairItem = (props) => {
     }
     return (
         <div className={style.car_item_wrapper}>
-            <div className={style.car_item_subheader}>
-                <div className={style.car_icon_wrapper}>
-                    {edit
-                        ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
-                        : <img onClick={onDeleteRecordClick} src={deleteIcon} alt="back"/>}
-                </div>
-                {edit
-                    ? <div className={style.date_odometer_wrapper}>
-                        <input style={{width: 70, marginTop: 0}} value={data.date} placeholder="Дата" name="date"
-                               onChange={onDataChange}/>
-                        <input style ={{marginLeft: 45}} value={data.odometer} placeholder="Пробег"
-                               name="odometer" onChange={onDataChange}/>
-                    </div>
-                    : <div className={style.date_odometer_wrapper}>
-                        <div>Дата: {props.date}</div>
-                        <div style ={{marginLeft: 45}}>Пробег: {props.odometer}</div>
-                    </div>}
-                <div className={style.car_icon_wrapper}>
-                    {edit
-                        ? <img onClick={onEditClick} src={backIcon} alt="edit"/>
-                        : <img onClick={onEditClick} src={editIcon} alt="back"/>}
-                </div>
-            </div>
+            <CarItemSubheader  title = {props.title} onSaveClick = {onSaveClick} onDeleteRecordClick ={onDeleteRecordClick}
+                               data = {data} onDataChange = {onDataChange} edit = {edit} onEditClick={onEditClick} />
             <div className={style.hr}></div>
             <div className={style.car_item_info}>
                 <div className={style.subtitle}>Причина ремонта:</div>

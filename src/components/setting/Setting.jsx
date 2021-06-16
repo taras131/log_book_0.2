@@ -67,6 +67,7 @@ export const Setting = (props) => {
                             : <img onClick={onEditClick} src={editIcon} alt="editIcon"/>}
                     </div>
                 </div>
+
                 <div className={style.hr}></div>
                 <div>
                     <h5>Установите email для отправки заявок:</h5>

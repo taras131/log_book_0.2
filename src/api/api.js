@@ -1,7 +1,8 @@
 import axios from "axios";
 
-//const host = "http://localhost"
-const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+//const host = "http://localhost/php"
+//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
+const host = "http://carlogbook.top/php"
 
 export const APICars = {
     getCars(userId) {
@@ -12,7 +13,6 @@ export const APICars = {
         }).then(response => response.data)
     },
     addCar(newCar) {
-        console.log(newCar.vin)
         return axios.post(`${host}/cars.php`, {
             userId: newCar.userId,
             id: newCar.id,
@@ -88,7 +88,6 @@ export const APIMaintenanceRecord = {
         }).then(response => response.data)
     },
     updateMaintenance(maintenanceRecord) {
-        console.log(maintenanceRecord)
         return axios.post(`${host}/updatemaintenance.php`, {
             id: maintenanceRecord.id,
             carId: maintenanceRecord.carId,
@@ -173,7 +172,7 @@ export const ApiNotice = {
     },
     updateNotice(upRecord) {
         return axios.post(`${host}/updatenotice.php`, {
-            id: +upRecord.id,
+            id: upRecord.id,
             userId: upRecord.userId,
             carId: upRecord.carId,
             date: upRecord.date,

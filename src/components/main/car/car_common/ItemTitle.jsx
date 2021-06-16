@@ -1,9 +1,9 @@
-import style from "../car/car.Module.css";
+import style from "../car.Module.css";
 
-export const OrderTitle = ({brand, num}) => {
+export const ItemTitle = ({brand, num}) => {
     return (
         <>
-            <div className={style.car_description_section}>
+            <div className={style.car_item_subheader}>
                 {brand === "part" &&
                 <>
                     <div className={style.car_description_item}>

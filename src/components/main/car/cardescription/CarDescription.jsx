@@ -122,7 +122,7 @@ export const CarDescription = (props) => {
                     <div className={style.subtitle}>VIN:</div>
                     <div className={style.car_item_data}>
                         {edit &&
-                        <input className={style.car_description_input} style={{marginTop: 0, maxWidth: 130}}
+                        <input  className={style.car_description_input} style={{marginTop: 0, maxWidth: 150}}
                                value={data.vin} type="text" name="vin"
                                onChange={onDataChange}/>}
                         {props.vin && !edit && props.vin}

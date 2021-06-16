@@ -17,15 +17,16 @@ import {TechnicalInspectionWrapper} from "./technicalinspection/TechnicalInspect
 import {getInspectionDateValidById} from "../../../redux/technicalinspection/technicalInspectionSelector";
 import {Order} from "./order/Order";
 import {getOrdersByCarId} from "../../../redux/order/orderSelector";
+import {InsuranceAndInspection} from "./car_common/InsuranceAndInspection";
 
 export const Car = () => {
     const id = useLocation().pathname.split("/").pop()
     const car = useSelector(state => getCarById(state, id))
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state, id))
     const repairsList = useSelector(state => getRepairsByCarId(state, id))
-    const noticeList = useSelector(state => getNoticeRecordByCarId(state,id))
+    const noticeList = useSelector(state => getNoticeRecordByCarId(state, id))
     const lastRecording = maintenanceList[maintenanceList.length - 1]
-    const lastNoticeRecord =  useSelector(state =>getLastNoticeRecord(state,id))
+    const lastNoticeRecord = useSelector(state => getLastNoticeRecord(state, id))
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, id))
     const dateTechnicalInspectionValid = useSelector(state => getInspectionDateValidById(state, id))
     const userId = useSelector(state => getMyId(state))
@@ -47,21 +48,23 @@ export const Car = () => {
         <div className={style.car_wrapper}>
             <Route exact path={pathDescription} render={() => <CarDescription lastRecording={lastRecording}
                                                                               dateInsuranceIsValid={dateInsuranceIsValid}
-                                                                              {...car} lastNoticeRecord = {lastNoticeRecord}
+                                                                              {...car}
+                                                                              lastNoticeRecord={lastNoticeRecord}
                                                                               dateTechnicalInspectionValid={dateTechnicalInspectionValid}/>}/>
             <Route exact path={pathMaintenanceRecord} render={() => <MaintenanceRecord
-                maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId}/>}/>
+                maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId} brand={car.brand}
+                num={car.num}/>}/>
             <Route exact path={pathRepairs} render={() => <Repairs
                 carId={id} dispatch={dispatch} userId={userId}
-                repairsList={repairsList}/>}/>
+                repairsList={repairsList} brand={car.brand} num={car.num}/>}/>
             <Route exact path={pathInsurance} render={() => <InsuranceWrapper {...car} />}/>
             <Route exact path={pathTechnicalInspection} render={() => <TechnicalInspectionWrapper {...car} />}/>
-            <Route exact path={pathNotice} render={() => <Notice {...car} noticeList ={noticeList}/>}/>
-            <Route exact path={pathOrder} render={() => <Order {...car} carOrdersList = {carOrdersList}/>}/>
+            <Route exact path={pathNotice} render={() => <Notice {...car} noticeList={noticeList}/>}/>
+            <Route exact path={pathOrder} render={() => <Order {...car} carOrdersList={carOrdersList}/>}/>
             <CarMenu  {...car} pathMaintenanceRecord={pathMaintenanceRecord}
-                     pathInsurance={pathInsurance} pathNotice={pathNotice}
-                     pathTechnicalInspection={pathTechnicalInspection}
-                     pathRepairs={pathRepairs} pathOrder = {pathOrder}/>
+                      pathInsurance={pathInsurance} pathNotice={pathNotice}
+                      pathTechnicalInspection={pathTechnicalInspection}
+                      pathRepairs={pathRepairs} pathOrder={pathOrder}/>
         </div>
     )
 }

@@ -46,11 +46,16 @@
     margin-bottom: 20px;
     padding: 25px;
 }
+@media (max-width: 1000px) {
+    .car_item_wrapper {
+        padding: 10px;
+    }
+}
 
 @media (max-width: 800px) {
     .car_item_wrapper {
         margin-bottom: 10px;
-        padding: 10px;
+        padding: 5px;
     }
 }
 
@@ -61,74 +66,6 @@
 
 .car_item_wrapper:hover {
     background-color: lightyellow;
-}
-
-.car_icon_wrapper {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media (max-width: 800px) {
-    .car_icon_wrapper {
-        height: 45px;
-        width: 45px;
-    }
-}
-
-@media (max-width: 600px) {
-    .car_icon_wrapper {
-        height: 40px;
-        width: 40px;
-    }
-}
-
-
-.car_item_subheader {
-    display: flex;
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    color: #2d73bc;
-}
-
-@media (max-width: 600px) {
-    .car_item_subheader {
-        font-size: 12px;
-    }
-}
-
-.subheader_input_wrapper {
-
-}
-
-.subheader_input_date {
-    width: 70px;
-}
-
-.subheader_input_odometer {
-    margin-left: 15px;
-}
-
-.car_item_subheader input {
-    width: 170px;
-    margin: 0;
-}
-
-
-.date_odometer_wrapper {
-    margin-top: 15px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.date_odometer {
-    margin-left: 30px;
 }
 
 .car_item_info {
@@ -154,7 +91,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     color: #2d73bc;
     font-size: 20px;
     font-weight: 500;
@@ -164,15 +101,27 @@
     transition: all 0.3s;
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
 }
+@media (max-width: 1000px) {
+    .car_add_new_record {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 800px) {
+    .car_add_new_record {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+}
 
 .car_add_hidden {
     display: none;
 }
 
 textarea {
-    margin-top: 15px;
+    margin: 15px 25px 0 25px;
     height: 75px;
-    width: 300px;
+    width: 90%;
     padding: 5px;
     border-radius: 5px;
     resize: none;
@@ -181,14 +130,6 @@ textarea {
 textarea:focus {
     border: 3px solid blue;
     box-shadow: 1px 1px 2px 0 blue;
-}
-
-input {
-    height: 25px;
-    width: 300px;
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 0;
 }
 
 input:focus {
@@ -220,14 +161,14 @@ h3 {
 }
 
 .car_description_item {
-    margin-top: 15px;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 5px;
 }
 
 .car_description_input {
-    width: 130px;
+    width: 140px;
 }
 
 .subtitle {
@@ -235,6 +176,7 @@ h3 {
     margin-right: 10px;
     display: flex;
     align-items: center;
+
 }
 
 .hr {
@@ -244,40 +186,6 @@ h3 {
     background-color: darkseagreen;
 }
 
-img {
-    width: 40px;
-    color: #157fc4;
-    cursor: pointer;
-    transition: all 0.4s;
-}
-
-img:hover {
-    width: 45px;
-}
-
-@media (max-width: 800px) {
-    img {
-        height: 40px;
-        width: 40px;
-    }
-
-    img:hover {
-        height: 45px;
-        width: 45px;
-    }
-}
-
-@media (max-width: 600px) {
-    img {
-        height: 35px;
-        width: 35px;
-    }
-
-    img:hover {
-        height: 40px;
-        width: 40px;
-    }
-}
 
 .car_button_wrapper {
     display: flex;
@@ -330,15 +238,71 @@ label {
 
 .input_block {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 5fr 5fr 1fr;
-    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
 }
 
-.input_block input {
-    height: 20px;
-    font-size: 14px;
-    margin-left: 3px;
+@media (max-width: 680px) {
+    .input_block {
+        justify-content: space-around;
+    }
+}
+.name_number_input_section input{
+    max-width: 170px;
+    margin-top: 0;
+    margin-left: 5px;
+}
+@media (max-width: 860px) {
+    .name_number_input_section input {
+        width: 150px;
+    }
+}
+.name_number_input_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width: 680px){
+    .name_number_input_section{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+.count_input_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width: 450px){
+    .count_input_section{
+        flex-direction: column-reverse;
+    }
+}
+.input_minus{
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+@media(max-width: 600px){
+    .input_minus{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media(max-width: 500px){
+    .input_minus{
+        width: 30px;
+        height: 30px;
+        margin-left: 0;
+    }
+}
+.input_plus{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .homepage_wrapper {
@@ -379,7 +343,6 @@ tr:hover {
 
 }
 
-
 .type_order {
     height: 50px;
     display: flex;
@@ -394,10 +357,142 @@ tr:hover {
 
 .edit_order_subheader {
     width: 100%;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 15px;
+    color: #2d73bc;
 }
+
+@media (max-width: 900px) {
+    .edit_order_subheader {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .edit_order_subheader {
+        font-size: 10px;
+    }
+}
+
+.car_item_subheader {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    color: #2d73bc;
+}
+.new_record_header{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    color: #2d73bc;
+}
+
+@media (max-width: 900px) {
+    .car_item_subheader {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .car_item_subheader {
+        font-size: 12px;
+    }
+}
+
+.date_odometer_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.subheader_input_date {
+    width: 100px;
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .subheader_input_date {
+        width: 70px;
+    }
+}
+
+.subheader_input_odometer {
+    width: 130px;
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .subheader_input_odometer {
+        width: 70px;
+    }
+}
+
+.car_icon_wrapper {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .car_icon_wrapper {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    .car_icon_wrapper {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+img {
+    height: 40px;
+    width: 40px;
+    color: #157fc4;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+img:hover {
+    width: 45px;
+}
+
+@media (max-width: 800px) {
+    img {
+        height: 35px;
+        width: 35px;
+    }
+
+    img:hover {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    img {
+        height: 30px;
+        width: 30px;
+    }
+
+    img:hover {
+        height: 35px;
+        width: 35px;
+    }
+}
+
 
 

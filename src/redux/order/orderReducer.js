@@ -60,7 +60,7 @@ export const resetInputList = () => {
 export const setNewInputBlock = () => {
     return {type: SET_NEW_INPUT_BLOCK}
 }
-export const inputBlockChangeName = (name, value, index) => {
+export const inputBlockChange = (name, value, index) => {
     return {type: CHANGE_NAME, name, value, index}
 }
 export const setInputList = (payload) => {
