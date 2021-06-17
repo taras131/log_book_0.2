@@ -25,15 +25,9 @@ const authenticationReducer = (state = initialState, action) => {
             return state
     }
 }
-export const setIsLoading = (payload) => {
-    return {type: SET_IS_LOADING, payload}
-}
-export const setUser = (payload) => {
-    return {type: SET_USER, payload}
-}
-export const setMessage = (payload) => {
-    return {type: SET_MESSAGE, payload}
-}
+export const setIsLoading = (payload) =>({type: SET_IS_LOADING, payload})
+export const setUser = (payload) => ({type: SET_USER, payload})
+export const setMessage = (payload) => ({type: SET_MESSAGE, payload})
 export const registrationNewUser = (login, password) => async (dispatch) => {
     dispatch(setIsLoading(true))
     dispatch(setMessage(""))

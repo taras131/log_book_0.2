@@ -7,9 +7,7 @@ const ADD_CAR = "ADD_CAR",
     SET_CARS = "SET_CARS",
     UPDATE_CAR = "UPDATE_CAR"
 const initialState = {
-    carsList: [
-    ],
-    isLoading: false
+    carsList: [],
 }
 const carsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -20,26 +18,18 @@ const carsReducer = (state = initialState, action) => {
         case SET_CARS:
             return {...state, carsList: action.carsList}
         case UPDATE_CAR:
-            return {...state, carsList: [...state.carsList.filter(item=> item.id !== action.upCar.id),action.upCar]}
+            return {...state, carsList: [...state.carsList.filter(item => item.id !== action.upCar.id), action.upCar]}
         default:
             return state
     }
 }
-export const setCars = (carsList) => {
-    return {type: SET_CARS, carsList}
-}
-export const addCar = (car) => {
-    return {type: ADD_CAR, car}
-}
-export const deleteCar = (id) => {
-    return {type: DELETE_CAR, id}
-}
-const updateCar = (upCar) =>{
-    return({type: UPDATE_CAR, upCar})
-}
+export const setCars = (carsList) => ({type: SET_CARS, carsList})
+export const addCar = (car) => ({type: ADD_CAR, car})
+export const deleteCar = (id) => ({type: DELETE_CAR, id})
+export const updateCar = (upCar) => ({type: UPDATE_CAR, upCar})
 export const getCars = (userId) => async (dispatch) => {
     let response = await APICars.getCars(userId);
-    if(response.length>0){
+    if (response.length > 0) {
         dispatch(setCars(response));
     }
 }
@@ -68,7 +58,7 @@ export const deleteCarThunk = (id) => async (dispatch) => {
 export const updateCarThunk = (upCar) => async (dispatch) => {
     dispatch(setPreloader(true))
     let response = await APICars.updateCar(upCar);
-    if(response === "car update successfully"){
+    if (response === "car update successfully") {
         dispatch(updateCar(upCar))
         dispatch(setMessageInfo("Данные успешно обновлены"))
     } else {

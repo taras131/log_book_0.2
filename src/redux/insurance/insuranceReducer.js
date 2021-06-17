@@ -20,13 +20,8 @@ const InsuranceReducer = (state = initialState, action) => {
             return state
     }
 }
-export const setInsurance = (payload) => {
-    return {type: SET_INSURANCE, payload}
-}
-export const addInsurance = (newRecord) => {
-    return {type: ADD_INSURANCE, newRecord}
-}
-
+export const setInsurance = (payload) => ({type: SET_INSURANCE, payload})
+export const addInsurance = (newRecord) => ({type: ADD_INSURANCE, newRecord})
 export const getInsuranceDate = (userId) => async (dispatch) => {
     dispatch(setPreloader(true))
     const result = await APIInsurance.getInsurance(userId)
