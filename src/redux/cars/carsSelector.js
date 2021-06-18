@@ -13,5 +13,8 @@ export const getCarById = (state, id) => {
     if(id === 'material'){
         return {id: 'material',model: 'material', brand: 'material', num: 'material', yearManufacture: 'material'}
     }
+    if(id === 'part'){
+        return {id: 'part',model: 'part', brand: 'part', num: 'part', yearManufacture: 'part'}
+    }
     return (state.carsInfo.carsList.filter(item => item.id === id))[0]
 }

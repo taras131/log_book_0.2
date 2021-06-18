@@ -10,8 +10,6 @@ const SET_ORDERS = "SET_ORDERS"
 const RESET_INPUT_LIST = "RESET_INPUT_LIST"
 const SET_INPUT_LIST = "SET_INPUT_LIST"
 const initialState = {
-    userId: "",
-    carId: "",
     inputList: [
         {
             partName: "",
@@ -51,21 +49,11 @@ const orderReducer = (state = initialState, action) => {
             return state
     }
 }
-const setOrders = (payload) => {
-    return {type: SET_ORDERS, payload}
-}
-export const resetInputList = () => {
-    return {type: RESET_INPUT_LIST}
-}
-export const setNewInputBlock = () => {
-    return {type: SET_NEW_INPUT_BLOCK}
-}
-export const inputBlockChange = (name, value, index) => {
-    return {type: CHANGE_NAME, name, value, index}
-}
-export const setInputList = (payload) => {
-    return {type: SET_INPUT_LIST, payload}
-}
+export const setOrders = (payload) => ({type: SET_ORDERS, payload})
+export const resetInputList = () => ({type: RESET_INPUT_LIST})
+export const setNewInputBlock = () => ({type: SET_NEW_INPUT_BLOCK})
+export const inputBlockChange = (name, value, index) => ({type: CHANGE_NAME, name, value, index})
+export const setInputList = (payload) => ({type: SET_INPUT_LIST, payload})
 export const addOrder = (userId, carId, inputList, typeOrder, statusOrder, date) => async (dispatch) => {
     dispatch(setPreloader(true))
     const order = JSON.stringify(inputList)
@@ -88,7 +76,7 @@ export const getOrders = (userId) => async (dispatch) => {
         })
         dispatch(setOrders(deserializationResult))
     } else {
-        dispatch(setMessageInfo("Не удалось загрузить заявки ", "negative"))
+//        dispatch(setMessageInfo("Не удалось загрузить заявки ", "negative"))
     }
     dispatch(setPreloader(false))
 }

@@ -58,7 +58,7 @@ export const Setting = (props) => {
                     <div className={style.img_wrapper}>
                         {edit
                             ? <img onClick={onSaveClick} src={saveIcon} alt="save"/>
-                            : <img onClick={onExitClick} src={exitIcon} alt="exitIcon"/>}
+                            : <img onClick={onExitClick} src={backIcon} alt="exitIcon"/>}
                     </div>
                     <h3>Настройки</h3>
                     <div className={style.img_wrapper}>

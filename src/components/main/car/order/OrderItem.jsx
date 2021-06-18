@@ -1,12 +1,11 @@
 import style from "../car.Module.css";
 import saveIcon from "../../../../icons/save.png";
 import deleteIcon from "../../../../icons/delete.png";
-import backIcon from "../../../../icons/back.png";
 import editIcon from "../../../../icons/edit.png";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {setAnswer} from "../../../../redux/answerwindow/answerWindowReducer";
-import {deleteOrder, resetInputList, sendOrder, setInputList} from "../../../../redux/order/orderReducer";
+import {deleteOrder, sendOrder, setInputList} from "../../../../redux/order/orderReducer";
 import {OrderItemBlock} from "./OrderItemBlock";
 import {getEmailList} from "../../../../redux/setting/settingSelector";
 import {getCurrentDate} from "../../../../common/getCurrentDate";
