@@ -15,7 +15,7 @@ export const AddNewCar = () => {
     })
     const [category, setCategory] = useState("1")
     const onInputChange = (e) =>{
-        setData({...data,[e.target.name]: e.target.value})
+            setData({...data,[e.target.name]: e.target.value})
     }
     const onSelectCategory = (e) => {
         setCategory(e.target.value)

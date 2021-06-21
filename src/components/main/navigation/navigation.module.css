@@ -21,7 +21,8 @@
 
 }
 .navigation_buttons{
-    padding-top: 220px;
+    margin-top: 40px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

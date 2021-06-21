@@ -20,15 +20,9 @@ const technicalMaintenanceReducer = (state = initialState, action) => {
             return state
     }
 }
-export const setMaintenance = (payload) => {
-    return {type: SET_MAINTENANCE, payload}
-}
-export const addMaintenance = (payload) => {
-    return {type: ADD_RECORD, payload}
-}
-export const deleteMaintenance = (id) => {
-    return {type: DELETE_RECORD, id}
-}
+export const setMaintenance = (payload) => ({type: SET_MAINTENANCE, payload})
+export const addMaintenance = (payload) => ({type: ADD_RECORD, payload})
+export const deleteMaintenance = (id) => ({type: DELETE_RECORD, id})
 export const getMaintenanceRecord = (userId) => async (dispatch) => {
     dispatch(setPreloader(true))
     let response = await APIMaintenanceRecord.getMaintenance(userId)

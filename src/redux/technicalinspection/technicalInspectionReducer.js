@@ -20,12 +20,8 @@ const technicalInspectionReducer = (state = initialState, action) => {
             return state
     }
 }
-const setInspection = (payload) => {
-    return {type: SET_INSPECTION, payload}
-}
-const addInspection = (newRecord) => {
-    return {type: ADD_INSPECTION, newRecord}
-}
+export const setInspection = (payload) => ({type: SET_INSPECTION, payload})
+export const addInspection = (newRecord) => ({type: ADD_INSPECTION, newRecord})
 export const getTechnicalInspection = (userId) => async (dispatch) => {
     dispatch(setPreloader(true))
     const result = await APITechnicalInspection.getInspection(userId)

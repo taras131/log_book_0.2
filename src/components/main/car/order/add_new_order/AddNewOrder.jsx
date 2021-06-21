@@ -33,6 +33,7 @@ export const AddNewOrder = ({userId, carId, brand, num, id, orderId, orderEdit, 
         } else {
             dispatch(addOrder(userId, id, inputList.filter(item => item.partName), typeOrder, "не отправлено",
                 getCurrentDate()))
+
         }
     }
     const onSelectCategory = (e) => {

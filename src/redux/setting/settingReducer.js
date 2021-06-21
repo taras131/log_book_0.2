@@ -18,12 +18,8 @@ const settingReducer = (state = initialState, action) => {
             return state
     }
 }
-const setSetting = (payload) =>{
-    return {type: SET_SETTING, payload}
-}
-export const setIsSettingShow = (payload) => {
-    return {type: SET_IS_SHOW, payload}
-}
+export const setSetting = (payload) =>({type: SET_SETTING, payload})
+export const setIsSettingShow = (payload) => ({type: SET_IS_SHOW, payload})
 export const getSetting =(userId) => async (dispatch) =>{
     dispatch(setPreloader(true))
     let result = await APISetting.getSetting(userId)

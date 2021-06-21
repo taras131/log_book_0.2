@@ -1,4 +1,3 @@
-
 const SET_PRELOADER = "SET_PRELOADER"
 const initialState = {
     isLoading: false
@@ -11,8 +10,6 @@ const preloaderReducer = (state = initialState, action) => {
             return state
     }
 }
-export const setPreloader = (payload) => {
-    return {type: SET_PRELOADER, payload}
-}
+export const setPreloader = (payload) => ({type: SET_PRELOADER, payload})
 
 export default  preloaderReducer

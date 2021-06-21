@@ -17,9 +17,7 @@ const repairsReducer = (state = initialState, action) => {
             return state
     }
 }
-const setRepairs = (payload) => {
-    return ({type: SET_REPAIRS, payload})
-}
+export const setRepairs = (payload) => ({type: SET_REPAIRS, payload})
 export const addNewRepairRecord = (newRecord) => async (dispatch) => {
     dispatch(setPreloader(true))
     let response = await APIRepair.addRepair(newRecord)
