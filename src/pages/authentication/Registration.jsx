@@ -1,44 +1,54 @@
 import style from "./authentication.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {authentication, registrationNewUser, setMessage} from "../../../redux/authentication/authenticationReducer";
-import {getMessage} from "../../../redux/authentication/authenticationSelector";
-import {Redirect} from "react-router";
+import {authentication, registrationNewUser, setMessage} from "../../redux/authentication/authenticationReducer";
+import {getMessage} from "../../redux/authentication/authenticationSelector";
+import {useHistory, useLocation} from "react-router";
+import {HOME_PAGE, LOGIN_ROUTE,} from "../../utils/const";
 
-export const Authentication = (props) => {
+export const Authentication = () => {
     const dispatch = useDispatch()
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [repeatPassword, setRepeatPassword] = useState("")
+    const history = useHistory()
+    const location = useLocation()
+    const isLogin = location.pathname === LOGIN_ROUTE
     const onNameChange = (e) => {
         setName(e.target.value)
     }
-    const message = useSelector(state=> getMessage(state))
+    const message = useSelector(state => getMessage(state))
     const onPasswordChange = (e) => {
         setPassword(e.target.value)
     }
     const onRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value)
     }
-    const onEntranceClick = () => {
-    dispatch(authentication(name, password))
-    }
-    const onRegistranionClick = () =>{
-        dispatch(setMessage(""))
-        if(name.length<2 || password<3 || password !== repeatPassword){
+    const onAuthClick = async () => {
+        if (name.length < 2 || password < 3) {
             dispatch(setMessage("Введены некоректные данные"))
+            return
+        }
+        if (isLogin) {
+            const data = await dispatch(authentication(name, password))
+            console.log(data)
+            history.push(HOME_PAGE)
         } else {
-            dispatch(registrationNewUser(name,password))
+            if (password !== repeatPassword) {
+                dispatch(setMessage("Введены некоректные данные"))
+                return
+            }
+            dispatch(registrationNewUser(name, password))
             setName("")
             setPassword("")
             setRepeatPassword("")
+            history.push(HOME_PAGE)
         }
-    }
-    if(props.isAuthentication) {return <Redirect to="/"/>}
 
+    }
     return (
         <div className={style.authentication_wrapper}>
-            {props.isEntrance
+            {isLogin
                 ? <h2>Вход</h2>
                 : <h2>Регистрация</h2>}
 
@@ -46,14 +56,14 @@ export const Authentication = (props) => {
                    placeholder="Логин"/>
             <input type="password" value={password} onChange={onPasswordChange}
                    placeholder="Пароль"/>
-            {!props.isEntrance &&
+            {!isLogin &&
             <input type="password" value={repeatPassword} onChange={onRepeatPasswordChange}
                    placeholder="Повторите пароль"/>}
 
             <div className={style.errormessage}>{message}</div>
-            {props.isEntrance
-                ? <button onClick={onEntranceClick}>Войти</button>
-                : <button onClick={onRegistranionClick}>Заригистрироваться</button>}
+            {isLogin
+                ? <button onClick={onAuthClick}>Войти</button>
+                : <button onClick={onAuthClick}>Заригистрироваться</button>}
 
         </div>
     )

@@ -14,6 +14,7 @@ import bulldozer from "../../icons/bulldozer.png"
 import add from "../../icons/add.png"
 import classNames from "classnames";
 import {setIsSettingShow} from "../../redux/setting/settingReducer";
+import {ADD_NEW_CAR, HOME_PAGE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/const";
 
 export const Header = (props) => {
     const path = useLocation().pathname.split("/").pop()
@@ -85,11 +86,11 @@ export const Header = (props) => {
                         </div>
                         }
                         {isLogin &&
-                        <NavLink to="/login" className={style.header_button}>
+                        <NavLink to={LOGIN_ROUTE} className={style.header_button}>
                             Ввход
                         </NavLink>}
                         {isRegistration &&
-                        <NavLink to="/registration" className={style.header_button}>
+                        <NavLink to={REGISTRATION_ROUTE} className={style.header_button}>
                             Регистрация
                         </NavLink>
                         }
@@ -100,31 +101,31 @@ export const Header = (props) => {
                 props.isAuthentication &&
                 <div className={style.subheader_wrapper}>
                     <div className={style.subheader_container}>
-                        <NavLink to="/" className={classNames(style.subheader_item, {
+                        <NavLink to= {HOME_PAGE} className={classNames(style.subheader_item, {
                             [style.active]: path === ""
                         })}>
                             Все
                         </NavLink>
-                        <NavLink to="/0" className={classNames(style.subheader_item, {
+                        <NavLink to={HOME_PAGE+'0'} className={classNames(style.subheader_item, {
                             [style.active]: path === "0"
                         })}>
                             <p>Легковые</p>
                             <img src={car} alt="car"/>
                         </NavLink>
-                        <NavLink to="/1" className={classNames(style.subheader_item, {
+                        <NavLink to={HOME_PAGE+'1'} className={classNames(style.subheader_item, {
                             [style.active]: path === "1"
                         })}>
                             <p>Грузовые</p>
                             <img src={truck} alt="truck"/>
                         </NavLink>
-                        <NavLink to="/2" className={classNames(style.subheader_item, {
+                        <NavLink to={HOME_PAGE+'2'} className={classNames(style.subheader_item, {
                             [style.active]: path === "2"
                         })}>
                             <p>Спецтехника</p>
                             <img src={bulldozer} alt="bulldozer"/>
                         </NavLink>
-                        <NavLink to="/add_new_car" className={classNames(style.subheader_item, {
-                            [style.active]: path === "add_new_car"
+                        <NavLink to={ADD_NEW_CAR} className={classNames(style.subheader_item, {
+                            [style.active]: path === {ADD_NEW_CAR}
                         })}>
                             <p>Добавить</p>
                             <img src={add} alt="add"/>

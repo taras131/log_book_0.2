@@ -1,7 +1,7 @@
 import './App.css';
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
-import {Main} from "./components/main/Main";
+import {Main} from "./pages/main/Main";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCars} from "./redux/cars/carsReducer";
@@ -20,7 +20,9 @@ import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
 import {Setting} from "./components/setting/Setting";
 import {getSetting} from "./redux/setting/settingReducer";
 import {getOrders} from "./redux/order/orderReducer";
-import {Authentication} from "./components/main/authentication/Registration";
+import {Authentication} from "./pages/authentication/Registration";
+import {Switch} from "react-router";
+import AppRouter from "./components/AppRouter";
 
 function App() {
     const dispatch = useDispatch()
@@ -40,11 +42,11 @@ function App() {
         const name = sessionStorage.getItem("userName")
         dispatch(setUser({id: id, name: name}))
     }
-    useEffect(()=>{
-
-    },[])
     useEffect(() => {
-        if(isAuthentication){
+
+    }, [])
+    useEffect(() => {
+        if (isAuthentication) {
             dispatch(getCars(userId))
             dispatch(getMaintenanceRecord(userId))
             dispatch(getInsuranceDate(userId))
@@ -59,20 +61,17 @@ function App() {
         <div className="app_wrapper">
             <Header isAuthentication={isAuthentication} onBurgerClick={onBurgerClick}
                     isShowBurgerMenu={isShowBurgerMenu}/>
-            <Route path="/" render={() => <Main isAuthentication={isAuthentication}/>}/>
-
-            <Route exact path="/login"
-                   render={() => <Authentication isEntrance={true} isAuthentication={isAuthentication}/>}/>
-            <Route exact path="/registration" render={() => <Authentication/>}/>
-            <Footer isAuthentication ={isAuthentication}/>
+            <AppRouter isAuthentication={isAuthentication}/>
             <AnswerWindow/>
             <MessageInfo/>
             <Setting userId={userId}/>
             <Preloader/>
             <BurgerMenu onBurgerClick={onBurgerClick} isAuthentication={isAuthentication}
                         isShowBurgerMenu={isShowBurgerMenu}/>
+            <Footer/>
         </div>
     );
 }
 
 export default App;
+

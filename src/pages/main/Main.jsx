@@ -1,13 +1,13 @@
 import React, {Suspense, lazy} from 'react';
 import style from "./main.Module.css"
-import {Navigation} from "./navigation/Navigation";
+import {Navigation} from "../../components/main/navigation/Navigation";
 import {Redirect, Switch} from "react-router";
 import {Route} from "react-router-dom";
-import {HomePage} from "./homePage/HomePage";
-import {Car} from "./car/Car";
-import {AddNewCar} from "./addNewCar/AddNewCar";
-import {Preloader} from "../preloader/Preloader";
-const OrdersReview = lazy(() => import('./ordersreview/OrdersReview'))
+import {HomePage} from "../homePage/HomePage";
+import {Car} from "../../components/main/car/Car";
+import {AddNewCar} from "../addNewCar/AddNewCar";
+import {Preloader} from "../../components/preloader/Preloader";
+const OrdersReview = lazy(() => import('../../components/main/ordersreview/OrdersReview'))
 
 export const Main = (props) => {
     if (!props.isAuthentication) return <Redirect to="/login"/>
@@ -20,7 +20,7 @@ export const Main = (props) => {
                 <Route exact path="/1" render={() => <HomePage category="1"/>}/>
                 <Route exact path="/2" render={() => <HomePage category="2"/>}/>
                 <Route path="/car" component={Car}/>
-                <Route exact path="/add_new_car" component={AddNewCar}/>
+
                 <Suspense fallback={<Preloader/>}>
                     <Switch>
                         <Route path="/orders_review" render={() => <OrdersReview/>} />

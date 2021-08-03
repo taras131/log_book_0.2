@@ -1,10 +1,11 @@
 import style from "./addNewCar.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addNewCar} from "../../../redux/cars/carsReducer";
-import {getMyId} from "../../../redux/authentication/authenticationSelector";
+import {addNewCar} from "../../redux/cars/carsReducer";
+import {getMyId} from "../../redux/authentication/authenticationSelector";
 
 export const AddNewCar = () => {
+    console.log("AddNewCar")
     let [errorMessage, setErrorMessage] = useState("")
     const [data, setData] = useState({
         brandNewCar: '',

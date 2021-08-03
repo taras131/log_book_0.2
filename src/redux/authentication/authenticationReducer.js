@@ -44,8 +44,10 @@ export const authentication = (login, password) => async (dispatch) => {
     let response = await APIAuthentication.entrance(login, password)
     if (response === "Пользователя не существует") {
         dispatch(setMessageInfo(response, "negative"))
+        return 0
     } else {
         dispatch(setUser({id: response, name: login}))
+        return 1
     }
 }
 

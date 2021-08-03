@@ -1,10 +1,15 @@
 import style from "./homepage.Module.css";
-import {HomePageItem} from "./homepageitem/HomePageItem";
+import {HomePageItem} from "../../components/main/homePage/homepageitem/HomePageItem";
 import {useSelector} from "react-redux";
-import {getCars} from "../../../redux/cars/carsSelector";
+import {getCars} from "../../redux/cars/carsSelector";
+import {useParams} from "react-router-dom";
+import {useLocation} from "react-router";
 
-export const HomePage = (props) => {
-    const carsList = useSelector(state => getCars(state, props.category))
+export const HomePage = () => {
+
+    const category = useLocation().pathname.split("/").pop()
+    console.log(category)
+    const carsList = useSelector(state => getCars(state, category))
     const tabList = carsList.map(item => <HomePageItem key={item.id} {...item}/>)
     return (
         <div className={style.homepage_wrapper}>

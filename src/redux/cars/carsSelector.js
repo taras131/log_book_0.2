@@ -1,6 +1,6 @@
-export const getCars = (state, category = "all") => {
+export const getCars = (state, category) => {
     const allList = [...state.carsInfo.carsList]
-    if(category === "all"){
+    if(!category){
         return allList
     } else {
         return allList.filter(item => item.category === category)

@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import style from "../homepage.Module.css"
+import style from "../../../../pages/homePage/homepage.Module.css"
 import {getLastMaintenanceRecording,} from "../../../../redux/technicalmaintenancerecords/technicalMaintenanceSelector";
 import {getInsuranceDateValidById} from "../../../../redux/insurance/insuranceSelector";
 import {getLastRepairsByCarId} from "../../../../redux/repairs/repairsSelector";
