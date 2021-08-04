@@ -1,9 +1,9 @@
 export const getCars = (state, category) => {
-    const allList = [...state.carsInfo.carsList]
+    const allCarList = [...state.carsInfo.carsList]
     if(!category){
-        return allList
+        return allCarList
     } else {
-        return allList.filter(item => item.category === category)
+        return allCarList.filter(item => item.category === category)
     }
 }
 export const getCarById = (state, id) => {

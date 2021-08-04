@@ -1,6 +1,6 @@
-import style from "../car/car.Module.css";
-import {OrderItem} from "../car/order/OrderItem";
-import {AddNewOrder} from "../car/order/add_new_order/AddNewOrder";
+import style from "../../../pages/carPage/car.module.css";
+import {OrderItem} from "../../car/order/OrderItem";
+import {AddNewOrder} from "../../car/order/add_new_order/AddNewOrder";
 
 export const OrdersParts = (props) => {
     const partsOrders = props.partsOrdersList.map((item,index) => <OrderItem key={index} {...item}/>)

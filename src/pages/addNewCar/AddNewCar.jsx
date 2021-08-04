@@ -3,9 +3,11 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewCar} from "../../redux/cars/carsReducer";
 import {getMyId} from "../../redux/authentication/authenticationSelector";
+import {useHistory} from "react-router-dom";
+import {HOME_PAGE} from "../../utils/const";
 
 export const AddNewCar = () => {
-    console.log("AddNewCar")
+    const history = useHistory()
     let [errorMessage, setErrorMessage] = useState("")
     const [data, setData] = useState({
         brandNewCar: '',
@@ -37,6 +39,7 @@ export const AddNewCar = () => {
                 yearNewCar: '',
                 vin: '',
             })
+            history.push(HOME_PAGE)
         }
     }
     const validationForm = () => {
@@ -50,6 +53,7 @@ export const AddNewCar = () => {
     }
     return (
         <div className={style.addNewCar_wrapper}>
+            <div onClick={() => history.push(HOME_PAGE)}>назад</div>
             <h3>Добавление нового автомобиля:</h3>
             <input type="text" value={data.brandNewCar} onChange={onInputChange}
                    placeholder="Марка" name="brandNewCar"/>

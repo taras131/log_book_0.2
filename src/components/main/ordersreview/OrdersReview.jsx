@@ -1,4 +1,4 @@
-import style from "../car/car.Module.css"
+import style from "../../../pages/carPage/car.module.css"
 import {useSelector} from "react-redux";
 import {getAllOrders, getMaterialsOrders, getPartsOrders, getToolsOrders} from "../../../redux/order/orderSelector";
 import {OrderNavigation} from "./ordernavigation/OrderNavigation";

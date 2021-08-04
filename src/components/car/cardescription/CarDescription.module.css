@@ -1,0 +1,49 @@
+.car__description__wrapper {
+    width: 70%;
+    background-color: #fff;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    color: #2d73bc;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.4s;
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 10%);
+    margin-bottom: 20px;
+    padding: 25px;
+}
+
+@media (max-width: 600px) {
+    .car__description__wrapper {
+        width: 100%;
+    }
+}
+
+.car__description__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    border-bottom: 1px solid #ccc;
+}
+
+.car__content__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.car__description__item {
+    display: flex;
+    margin-top: 15px;
+}
+
+.item_title {
+    color: #151515;
+    font-weight: 700;
+}
+
+.item_content {
+    color: #cccccc;
+    font-weight: 200;
+    margin-left: 15px;
+}

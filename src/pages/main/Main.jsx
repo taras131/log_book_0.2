@@ -4,7 +4,7 @@ import {Navigation} from "../../components/main/navigation/Navigation";
 import {Redirect, Switch} from "react-router";
 import {Route} from "react-router-dom";
 import {HomePage} from "../homePage/HomePage";
-import {Car} from "../../components/main/car/Car";
+import {Car} from "../carPage/Car";
 import {AddNewCar} from "../addNewCar/AddNewCar";
 import {Preloader} from "../../components/preloader/Preloader";
 const OrdersReview = lazy(() => import('../../components/main/ordersreview/OrdersReview'))

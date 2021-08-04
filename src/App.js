@@ -1,11 +1,9 @@
 import './App.css';
 import {Header} from "./components/header/Header";
 import {Footer} from "./components/footer/Footer";
-import {Main} from "./pages/main/Main";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCars} from "./redux/cars/carsReducer";
-import {Route} from "react-router-dom";
 import {authMe, getMyId, getMyName} from "./redux/authentication/authenticationSelector";
 import {setUser} from "./redux/authentication/authenticationReducer";
 import {getMaintenanceRecord} from "./redux/technicalmaintenancerecords/technicalMaintenanceReducer";
@@ -20,8 +18,6 @@ import {BurgerMenu} from "./components/burgermenu/BurgerMenu";
 import {Setting} from "./components/setting/Setting";
 import {getSetting} from "./redux/setting/settingReducer";
 import {getOrders} from "./redux/order/orderReducer";
-import {Authentication} from "./pages/authentication/Registration";
-import {Switch} from "react-router";
 import AppRouter from "./components/AppRouter";
 
 function App() {

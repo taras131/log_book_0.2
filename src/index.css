@@ -2,3 +2,6 @@
 #root {
     font-family: 'PT Serif';
 }
+*{
+    box-sizing: border-box;
+}

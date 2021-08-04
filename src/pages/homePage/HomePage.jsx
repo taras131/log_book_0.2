@@ -2,17 +2,17 @@ import style from "./homepage.Module.css";
 import {HomePageItem} from "../../components/main/homePage/homepageitem/HomePageItem";
 import {useSelector} from "react-redux";
 import {getCars} from "../../redux/cars/carsSelector";
-import {useParams} from "react-router-dom";
 import {useLocation} from "react-router";
+import {useState} from "react";
+import HomePageNavigation from "../../components/main/homePage/HomePageNavigation";
 
 export const HomePage = () => {
-
-    const category = useLocation().pathname.split("/").pop()
-    console.log(category)
+    const[category, setCategory] = useState(useLocation().pathname.split("/").pop())
     const carsList = useSelector(state => getCars(state, category))
     const tabList = carsList.map(item => <HomePageItem key={item.id} {...item}/>)
     return (
         <div className={style.homepage_wrapper}>
+            <HomePageNavigation category ={category} setCategory ={setCategory}/>
             <table className={style.tab_wrapper}>
                 <thead>
                 <tr>

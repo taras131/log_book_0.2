@@ -8,13 +8,9 @@ import icon from "../../icons/open-book.png"
 import exit from "../../icons/logout.png"
 import setting from "../../icons/setting.png"
 import cart from "../../icons/cart.png"
-import car from "../../icons/car.png"
-import truck from "../../icons/truck.png"
-import bulldozer from "../../icons/bulldozer.png"
-import add from "../../icons/add.png"
 import classNames from "classnames";
 import {setIsSettingShow} from "../../redux/setting/settingReducer";
-import {ADD_NEW_CAR, HOME_PAGE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/const";
+import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/const";
 
 export const Header = (props) => {
     const path = useLocation().pathname.split("/").pop()
@@ -97,42 +93,6 @@ export const Header = (props) => {
                     </div>
                 </div>
             </div>
-            {
-                props.isAuthentication &&
-                <div className={style.subheader_wrapper}>
-                    <div className={style.subheader_container}>
-                        <NavLink to= {HOME_PAGE} className={classNames(style.subheader_item, {
-                            [style.active]: path === ""
-                        })}>
-                            Все
-                        </NavLink>
-                        <NavLink to={HOME_PAGE+'0'} className={classNames(style.subheader_item, {
-                            [style.active]: path === "0"
-                        })}>
-                            <p>Легковые</p>
-                            <img src={car} alt="car"/>
-                        </NavLink>
-                        <NavLink to={HOME_PAGE+'1'} className={classNames(style.subheader_item, {
-                            [style.active]: path === "1"
-                        })}>
-                            <p>Грузовые</p>
-                            <img src={truck} alt="truck"/>
-                        </NavLink>
-                        <NavLink to={HOME_PAGE+'2'} className={classNames(style.subheader_item, {
-                            [style.active]: path === "2"
-                        })}>
-                            <p>Спецтехника</p>
-                            <img src={bulldozer} alt="bulldozer"/>
-                        </NavLink>
-                        <NavLink to={ADD_NEW_CAR} className={classNames(style.subheader_item, {
-                            [style.active]: path === {ADD_NEW_CAR}
-                        })}>
-                            <p>Добавить</p>
-                            <img src={add} alt="add"/>
-                        </NavLink>
-                    </div>
-                </div>
-            }
         </header>
     )
 }
