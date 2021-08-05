@@ -18,6 +18,12 @@
         width: 100%;
     }
 }
+@media (max-width: 460px) {
+    .car__description__wrapper {
+        font-size: 12px;
+    }
+}
+
 
 .car__description__header {
     display: flex;
@@ -36,6 +42,11 @@
     display: flex;
     margin-top: 15px;
 }
+@media(max-width: 830px) {
+    .car__description__item {
+        flex-direction: column;
+    }
+}
 
 .item_title {
     color: #151515;
@@ -43,7 +54,35 @@
 }
 
 .item_content {
-    color: #cccccc;
+    color: #a3a3a3;
     font-weight: 200;
     margin-left: 15px;
+}
+.description__details{
+
+}
+.car__details__item{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+@media(max-width: 830px) {
+    .car__details__item {
+        grid-template-columns: 1fr;
+    }
+}
+.img__container{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    width: 40px;
+    height: 40px;
+}
+img:hover {
+    width: 45px;
+    height: 45px;
 }

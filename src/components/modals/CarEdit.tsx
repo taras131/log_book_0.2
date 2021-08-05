@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import classNames from "classnames";
 import style from './Modal.module.css'
 import backIcon from "../../icons/back.png"
@@ -14,9 +14,11 @@ interface CarEditProps {
     setIsShowModal: (isShowModal: boolean) => void
 }
 
-const CarEdit: FC<CarEditProps> = ({
-                                       isShowModal,car , setIsShowModal
-                                   }) => {
+const CarEdit: FC<CarEditProps> = ({isShowModal, car, setIsShowModal}) => {
+    useEffect(() => {
+        const body: any = document.querySelector('body');
+        body.style.overflow = isShowModal ? 'hidden' : 'auto';
+    }, [isShowModal])
     const dispatch = useDispatch()
     const [data, setData] = useState({
         brand: car.brand,
@@ -25,7 +27,7 @@ const CarEdit: FC<CarEditProps> = ({
         yearManufacture: car.yearManufacture,
         vin: car.vin
     })
-    const onDataChange = (e:any) => {
+    const onDataChange = (e: any) => {
         setData({...data, [e.target.name]: e.target.value})
     }
     const onSaveClick = () => {
@@ -49,35 +51,39 @@ const CarEdit: FC<CarEditProps> = ({
                 [style.modal__dialog__active]: isShowModal
             })}>
                 <div className={style.modal__dialog__header}>
-                    <img src={backIcon} onClick={() => setIsShowModal(false)} alt="back"/>
+                    <div className={style.img__container}>
+                        <img src={backIcon} onClick={() => setIsShowModal(false)} alt="back"/>
+                    </div>
                     Внесение правок
-                    <img src={saveIcon} onClick={onSaveClick} alt=""/>
+                    <div className={style.img__container}>
+                        <img src={saveIcon} onClick={onSaveClick} alt=""/>
+                    </div>
                 </div>
                 <div className={style.modal__dialog__content}>
                     <div className={style.modal__dialog__content__item}>
                         <span className={style.content__item__subtitle}>Марка</span>
                         <input className={style.dialog__input} type="text" onChange={onDataChange} name="brand"
-                        value = {data.brand}/>
+                               value={data.brand}/>
                     </div>
                     <div className={style.modal__dialog__content__item}>
                         <span className={style.content__item__subtitle}>Модель</span>
                         <input className={style.dialog__input} type="text" onChange={onDataChange} name="model"
-                        value = {data.model}/>
+                               value={data.model}/>
                     </div>
                     <div className={style.modal__dialog__content__item}>
-                        <span className={style.content__item__subtitle}>Год выпуска</span>
+                        <span className={style.content__item__subtitle}>Год</span>
                         <input className={style.dialog__input} type="text" onChange={onDataChange}
                                name="yearManufacture" value={data.yearManufacture}/>
                     </div>
                     <div className={style.modal__dialog__content__item}>
                         <span className={style.content__item__subtitle}>Номер</span>
                         <input className={style.dialog__input} type="text" onChange={onDataChange} name="num"
-                        value = {data.num}/>
+                               value={data.num}/>
                     </div>
                     <div className={style.modal__dialog__content__item}>
                         <span className={style.content__item__subtitle}>VIN</span>
                         <input className={style.dialog__input} type="text" onChange={onDataChange} name="vin"
-                        value = {data.vin}/>
+                               value={data.vin}/>
                     </div>
                 </div>
             </div>

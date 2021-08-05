@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,7 @@
 .modal__wrapper__active {
     visibility: visible;
     opacity: 1;
+    overflow-y: hidden;
 }
 
 .modal__dialog {
@@ -32,6 +33,7 @@
 
 .modal__dialog__active {
     transform: translateY(0);
+    overflow: hidden;
 }
 
 .modal__dialog__header {
@@ -40,6 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: #cccccc solid 1px;
 }
 
 .modal__dialog__header__content {
@@ -59,9 +62,36 @@
 
 .content__item__subtitle {
     margin-top: 10px;
+    color: black;
+    font-size: 16px;
 }
 
 .dialog__input {
     width: 200px;
+    height: 40px;
+    padding: 5px;
     margin: 0;
+    font-size: 14px;
+    color: #a3a3a3;
+}
+@media(max-width: 420px){
+    .dialog__input {
+        width: 150px;
+        font-size: 12px;
+    }
+}
+.img__container{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    width: 40px;
+    height: 40px;
+}
+img:hover {
+    width: 45px;
+    height: 45px;
 }

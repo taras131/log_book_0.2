@@ -23,6 +23,7 @@ export const Car = () => {
     const car = useSelector(state => getCarById(state, id))
     const maintenanceList = useSelector(state => getMaintenanceRecordList(state, id))
     const repairsList = useSelector(state => getRepairsByCarId(state, id))
+    const lastRepairRecord = repairsList[repairsList.length - 1]
     const noticeList = useSelector(state => getNoticeRecordByCarId(state, id))
     const lastRecording = maintenanceList[maintenanceList.length - 1]
     const lastNoticeRecord = useSelector(state => getLastNoticeRecord(state, id))
@@ -39,7 +40,8 @@ export const Car = () => {
             {activeCategory === "description" &&
             <CarDescription lastRecording={lastRecording}
                             car = {car}
-                            lastNoticeRecord={lastNoticeRecord}/>}
+                            lastNoticeRecord={lastNoticeRecord}
+                            lastRepairRecord = {lastRepairRecord}/>}
             {activeCategory === "maintenanceRecord" &&
             <MaintenanceRecord
                 maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId} brand={car.brand}

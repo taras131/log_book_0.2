@@ -7,3 +7,31 @@ export type CarType = {
         num: string,
         vin: string
 }
+export type MaintenanceRecordType = {
+        carId: string,
+        datecommission: string,
+        id: string,
+        odometer: string,
+        text: string,
+        userId: string,
+
+}
+export type NoticeRecordType = {
+        carId: string,
+        date: string,
+        id: string,
+        odometer: string,
+        text: string,
+        userId: string
+}
+export type RepairRecordType = {
+        accomplishedWork: string,
+        carId: string,
+        date: string,
+        id: string,
+        odometer: string,
+        reasonsRepair: string,
+        result: string,
+        usedParts: string,
+        userId: string
+}

@@ -1,18 +1,24 @@
 import style from './CarDescription.module.css';
 import editIcon from "../../../icons/edit.png"
 import deleteIcon from "../../../icons/delete.png"
-import {useState} from "react";
+import React, {FC, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteCarThunk, updateCarThunk} from "../../../redux/cars/carsReducer";
 import {setAnswer} from "../../../redux/answerwindow/answerWindowReducer";
-import {MaintenanceItem} from "../maintenancerecord/MaintenanceItem";
-import {NoticeItem} from "../notice/NoticeItem";
 import {getInsuranceDateValidById} from "../../../redux/insurance/insuranceSelector";
 import {getInspectionDateValidById} from "../../../redux/technicalinspection/technicalInspectionSelector";
 import CarEdit from "../../modals/CarEdit";
+import {CarType, MaintenanceRecordType, NoticeRecordType, RepairRecordType} from "../../../types/types";
 
-export const CarDescription = ({lastRecording, lastNoticeRecord, car}) => {
-    console.log(lastNoticeRecord)
+interface CarDescriptionProps{
+    lastRecording: MaintenanceRecordType,
+    lastNoticeRecord: NoticeRecordType,
+    lastRepairRecord: RepairRecordType,
+    car: CarType
+}
+
+export const CarDescription: FC<CarDescriptionProps> = ({lastRecording, lastNoticeRecord,lastRepairRecord, car}) => {
+    console.log(lastRepairRecord)
     const dispatch = useDispatch()
     const [isShowModal, setIsShowModal] = useState(false)
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, car.id))
@@ -27,9 +33,13 @@ export const CarDescription = ({lastRecording, lastNoticeRecord, car}) => {
     return (
         <div className={style.car__description__wrapper}>
             <div className={style.car__description__header}>
-                <img onClick={onDeleteCarClick} src={deleteIcon} alt="back"/>
+                <div className={style.img__container}>
+                    <img onClick={onDeleteCarClick} src={deleteIcon} alt="back"/>
+                </div>
                 <h3>Общие свединия:</h3>
-                <img onClick={onEditClick} src={editIcon} alt="back"/>
+                <div className={style.img__container}>
+                    <img onClick={onEditClick} src={editIcon} alt="back"/>
+                </div>
             </div>
             <div className={style.car__content__wrapper}>
                 <div className={style.car__description__item}>
@@ -68,39 +78,43 @@ export const CarDescription = ({lastRecording, lastNoticeRecord, car}) => {
                         {car.vin}
                     </div>
                 </div>
-                <div className={style.car__description__item}>
+            </div>
+            <div className={style.description__details}>
+                <div className={style.car__details__item}>
                     <div className={style.item_title}>Страховка до:</div>
                     <div className={style.item_content}>
                         {dateInsuranceIsValid}
                     </div>
                 </div>
-                <div className={style.car__description__item}>
+                <div className={style.car__details__item}>
                     <div className={style.item_title}>Техосмотр до:</div>
                     <div className={style.item_content}>
                         {dateTechnicalInspectionValid}
                     </div>
                 </div>
-                <div className={style.car__description__item}>
+                <div className={style.car__details__item}>
                     <div className={style.item_title}>Последнее ТО:</div>
                     <div className={style.item_content}>
                         {lastRecording
                             ? lastRecording.datecommission + " " + lastRecording.odometer
+                            +"   "+lastRecording.text
                             : "нет данных"}
                     </div>
                 </div>
-                <div className={style.car__description__item}>
+                <div className={style.car__details__item}>
                     <div className={style.item_title}>Последний ремонт:</div>
                     <div className={style.item_content}>
-                        {lastRecording
-                            ? lastRecording.datecommission + " " + lastRecording.odometer
+                        {lastRepairRecord
+                            ? lastRepairRecord.date + " " + lastRepairRecord.odometer
+                            + "   " +lastRepairRecord.accomplishedWork
                             : "нет данных"}
                     </div>
                 </div>
-                <div className={style.car__description__item}>
+                <div className={style.car__details__item}>
                     <div className={style.item_title}>Последняя заметка:</div>
                     <div className={style.item_content}>
                         {lastNoticeRecord
-                            ? lastNoticeRecord.date + " " + lastNoticeRecord.text
+                            ? lastNoticeRecord.date + "    " + lastNoticeRecord.text
                             : "нет данных"}
                     </div>
                 </div>
