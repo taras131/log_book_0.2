@@ -20,13 +20,19 @@ const repairsReducer = (state = initialState, action) => {
 export const setRepairs = (payload) => ({type: SET_REPAIRS, payload})
 export const addNewRepairRecord = (newRecord) => async (dispatch) => {
     dispatch(setPreloader(true))
-    let response = await APIRepair.addRepair(newRecord)
-    if (response === "New date created successfully") {
-        dispatch(getRepairRecord(newRecord.data.userId))
-        dispatch(setMessageInfo("Новая запись успешно добавлена"))
-    } else {
-        dispatch(setMessageInfo("Не удалось добавить новую запись, попробуйте позже", "negative"))
+    console.log(newRecord)
+    try{
+        let response = await APIRepair.addRepair(newRecord)
+        if (response === "New date created successfully") {
+            dispatch(getRepairRecord(newRecord.userId))
+            dispatch(setMessageInfo("Новая запись успешно добавлена"))
+        } else {
+            dispatch(setMessageInfo("Не удалось добавить новую запись, попробуйте позже", "negative"))
+        }
+    } catch (e) {
+        console.log(e)
     }
+
     dispatch(setPreloader(false))
 }
 export const getRepairRecord = (userId) => async (dispatch) => {

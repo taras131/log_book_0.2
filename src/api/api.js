@@ -1,7 +1,6 @@
 import axios from "axios";
 
 //const host = "http://localhost/php"
-//const host = "http://mossnabitkana1792.ru.fozzyhost.com"
 const host = "http://carlogbook.top/php"
 
 export const APICars = {
@@ -116,15 +115,23 @@ export const APIInsurance = {
 }
 export const APIRepair = {
     addRepair(newRecord) {
+        console.log(newRecord.carId)
+        console.log(newRecord.userId)
+        console.log(newRecord.odometer)
+        console.log(newRecord.date)
+        console.log(newRecord.reasonsRepair)
+        console.log(newRecord.usedParts)
+        console.log(newRecord.accomplishedWork)
+        console.log(newRecord.result)
         return axios.post(`${host}/repairs.php`, {
-            carId: newRecord.data.carId,
-            userId: newRecord.data.userId,
-            odometer: newRecord.data.odometer,
-            date: newRecord.data.date,
-            reasonsRepairs: newRecord.data.reasonsRepairs,
-            usedParts: newRecord.data.usedParts,
-            accomplishedWork: newRecord.data.accomplishedWork,
-            result: newRecord.data.result
+            userId: newRecord.userId,
+            carId: newRecord.carId,
+            date: newRecord.date,
+            odometer: newRecord.odometer,
+            reasonsRepair: newRecord.reasonsRepair,
+            usedParts: newRecord.usedParts,
+            accomplishedWork: newRecord.accomplishedWork,
+            result: newRecord.result
         }).then(response => response.data)
     },
     getRepairs(userId) {
@@ -138,7 +145,7 @@ export const APIRepair = {
         return axios.post(`${host}/updaterepair.php`, {
             userId: newRecord.userId,
             carId: newRecord.carId,
-            id: newRecord.id,
+            id: +newRecord.id,
             date: newRecord.date,
             odometer: newRecord.odometer,
             reasonsRepair: newRecord.reasonsRepair,

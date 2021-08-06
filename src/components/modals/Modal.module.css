@@ -37,7 +37,7 @@
 }
 
 .modal__dialog__header {
-    padding: 20px 40px;
+    padding: 20px;
     transition: .2s;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
 }
 
 .modal__dialog__content {
-    padding: 20px 40px;
+    padding: 20px;
 }
 
 .modal__dialog__content__item {
@@ -67,7 +67,7 @@
 }
 
 .dialog__input {
-    width: 200px;
+    width: 250px;
     height: 40px;
     padding: 5px;
     margin: 0;
@@ -94,4 +94,12 @@ img {
 img:hover {
     width: 45px;
     height: 45px;
+}
+.dialog__textarea{
+    width: 250px;
+    height: 200px;
+    padding: 5px;
+    margin: 0;
+    font-size: 14px;
+    color: #a3a3a3;
 }

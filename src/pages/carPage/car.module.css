@@ -273,7 +273,7 @@ label {
     justify-content: center;
     align-items: center;
 }
-@media(max-width: 450px){
+@media(max-width: 680px){
     .count_input_section{
         flex-direction: column-reverse;
     }
@@ -403,13 +403,18 @@ tr:hover {
         font-size: 12px;
     }
 }
-
+.repair__record__header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+}
 .date_odometer_wrapper {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10px;
+
 }
 
 .subheader_input_date {
@@ -456,41 +461,7 @@ tr:hover {
     }
 }
 
-img {
-    height: 40px;
-    width: 40px;
-    color: #157fc4;
-    cursor: pointer;
-    transition: all 0.4s;
-}
 
-img:hover {
-    width: 45px;
-}
-
-@media (max-width: 800px) {
-    img {
-        height: 35px;
-        width: 35px;
-    }
-
-    img:hover {
-        height: 40px;
-        width: 40px;
-    }
-}
-
-@media (max-width: 600px) {
-    img {
-        height: 30px;
-        width: 30px;
-    }
-
-    img:hover {
-        height: 35px;
-        width: 35px;
-    }
-}
 
 
 

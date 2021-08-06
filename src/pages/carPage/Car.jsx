@@ -44,13 +44,9 @@ export const Car = () => {
                             lastRepairRecord = {lastRepairRecord}/>}
             {activeCategory === "maintenanceRecord" &&
             <MaintenanceRecord
-                maintenanceList={maintenanceList} dispatch={dispatch} carId={id} userId={userId} brand={car.brand}
-                num={car.num}/>}
+                maintenanceList={maintenanceList}  car = {car}/>}
             {activeCategory === "repairs" &&
-            <Repairs
-                carId={id} dispatch={dispatch} userId={userId}
-                repairsList={repairsList} brand={car.brand} num={car.num}/>
-            }
+            <Repairs car = {car} repairsList={repairsList} />}
             {activeCategory === "insurance" &&
             <InsuranceWrapper {...car} />
             }

@@ -31,7 +31,6 @@ export const Authentication = () => {
         }
         if (isLogin) {
             const data = await dispatch(authentication(name, password))
-            console.log(data)
             history.push(HOME_PAGE)
         } else {
             if (password !== repeatPassword) {

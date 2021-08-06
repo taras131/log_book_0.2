@@ -3,7 +3,7 @@ import editIcon from "../../../icons/edit.png"
 import deleteIcon from "../../../icons/delete.png"
 import React, {FC, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteCarThunk, updateCarThunk} from "../../../redux/cars/carsReducer";
+import {deleteCarThunk} from "../../../redux/cars/carsReducer";
 import {setAnswer} from "../../../redux/answerwindow/answerWindowReducer";
 import {getInsuranceDateValidById} from "../../../redux/insurance/insuranceSelector";
 import {getInspectionDateValidById} from "../../../redux/technicalinspection/technicalInspectionSelector";
@@ -17,8 +17,10 @@ interface CarDescriptionProps{
     car: CarType
 }
 
-export const CarDescription: FC<CarDescriptionProps> = ({lastRecording, lastNoticeRecord,lastRepairRecord, car}) => {
-    console.log(lastRepairRecord)
+export const CarDescription: FC<CarDescriptionProps> = ({lastRecording,
+                                                            lastNoticeRecord,
+                                                            lastRepairRecord,
+                                                            car}) => {
     const dispatch = useDispatch()
     const [isShowModal, setIsShowModal] = useState(false)
     const dateInsuranceIsValid = useSelector(state => getInsuranceDateValidById(state, car.id))
@@ -38,7 +40,7 @@ export const CarDescription: FC<CarDescriptionProps> = ({lastRecording, lastNoti
                 </div>
                 <h3>Общие свединия:</h3>
                 <div className={style.img__container}>
-                    <img onClick={onEditClick} src={editIcon} alt="back"/>
+                    <img onClick={onEditClick} src={editIcon} alt="edit"/>
                 </div>
             </div>
             <div className={style.car__content__wrapper}>
