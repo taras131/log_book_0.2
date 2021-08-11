@@ -1,7 +1,7 @@
 import style from "./authentication.Module.css"
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {authentication, registrationNewUser, setMessage} from "../../redux/authentication/authenticationReducer";
+import {login, registrationNewUser, setMessage} from "../../redux/authentication/authenticationReducer";
 import {getMessage} from "../../redux/authentication/authenticationSelector";
 import {useHistory, useLocation} from "react-router";
 import {HOME_PAGE, LOGIN_ROUTE,} from "../../utils/const";
@@ -24,13 +24,13 @@ export const Authentication = () => {
     const onRepeatPasswordChange = (e) => {
         setRepeatPassword(e.target.value)
     }
-    const onAuthClick = async () => {
+    const onAuthClick =  () => {
         if (name.length < 2 || password < 3) {
             dispatch(setMessage("Введены некоректные данные"))
             return
         }
         if (isLogin) {
-            const data = await dispatch(authentication(name, password))
+            const data =  dispatch(login(name, password))
             history.push(HOME_PAGE)
         } else {
             if (password !== repeatPassword) {

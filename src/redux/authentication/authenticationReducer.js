@@ -1,15 +1,16 @@
-import {APIAuthentication} from "../../api/api";
 import {setMessageInfo} from "../messageinfo/MessageInfoReducer";
+import {APIAuthentication} from "../../api/userApi";
 
 const SET_IS_LOADING = "SET_IS_LOADING"
 const SET_MESSAGE = "SET_MESSAGE"
 const SET_USER = "SET_USER"
+const LOG_OUT = "LOG_OUT"
 const initialState = {
     user: {
         id: "",
         name: ""
     },
-    isAuthentication: true,
+    isAuthentication: false,
     message: "",
     isLoading: false,
 }
@@ -20,35 +21,43 @@ const authenticationReducer = (state = initialState, action) => {
         case SET_MESSAGE:
             return {...state, message: action.payload}
         case SET_USER:
-            return {...state, user: action.payload}
+            return {...state, user: action.payload, isAuthentication: true}
+        case LOG_OUT:
+            localStorage.removeItem("token")
+            return {...state, user: {}, isAuthentication: false}
         default:
             return state
     }
 }
-export const setIsLoading = (payload) =>({type: SET_IS_LOADING, payload})
+export const setIsLoading = (payload) => ({type: SET_IS_LOADING, payload})
 export const setUser = (payload) => ({type: SET_USER, payload})
 export const setMessage = (payload) => ({type: SET_MESSAGE, payload})
+export const logOut = () => ({type: LOG_OUT})
 export const registrationNewUser = (login, password) => async (dispatch) => {
     dispatch(setIsLoading(true))
-    dispatch(setMessage(""))
-    let response = await APIAuthentication.registration(login, password)
-    if (response) {
-        dispatch(setMessageInfo("Вы успешно зарегистрированы"))
-    } else {
-        dispatch(setMessageInfo("Пользователь с таким именем уже существует", "negative"))
+    try {
+        dispatch(setMessage(""))
+        let response = await APIAuthentication.registration(login, password)
+        if (response) {
+            dispatch(setMessageInfo("Вы успешно зарегистрированы"))
+        } else {
+            dispatch(setMessageInfo("Пользователь с таким именем уже существует", "negative"))
+        }
+    } catch (e) {
+        console.log(e)
     }
+
     dispatch(setIsLoading(false))
 }
-export const authentication = (login, password) => async (dispatch) => {
+export const login = (login, password) => async (dispatch) => {
+    dispatch(setIsLoading(true))
     dispatch(setMessage(""))
-    let response = await APIAuthentication.entrance(login, password)
-    if (response === "Пользователя не существует") {
-        dispatch(setMessageInfo(response, "negative"))
-        return 0
-    } else {
-        dispatch(setUser({id: response, name: login}))
-        return 1
-    }
+    let response = await APIAuthentication.login(login, password)
+    console.log(response)
+    dispatch(setUser({id: response.user.id, name: response.user.email}))
+    localStorage.setItem("token", response.token)
+    dispatch(setIsLoading(false))
 }
+
 
 export default authenticationReducer

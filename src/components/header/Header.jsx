@@ -1,6 +1,6 @@
 import style from "./header.Module.css"
 import {useDispatch, useSelector} from "react-redux";
-import {setUser} from "../../redux/authentication/authenticationReducer";
+import {logOut, setUser} from "../../redux/authentication/authenticationReducer";
 import {NavLink} from "react-router-dom";
 import {useLocation} from "react-router";
 import {getMyName} from "../../redux/authentication/authenticationSelector";
@@ -13,8 +13,10 @@ import {setIsSettingShow} from "../../redux/setting/settingReducer";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/const";
 
 export const Header = (props) => {
+    console.log(props.isAuthentication)
     const path = useLocation().pathname.split("/").pop()
-    const name = useSelector(state => getMyName(state))
+    const name = useSelector(state => state.authInfo.user.name)
+    console.log(name)
     let isRegistration = false
     let isLogin = false
     if (path === "registration" && !props.isAuthentication) {
@@ -28,9 +30,7 @@ export const Header = (props) => {
         dispatch(setIsSettingShow(true))
     }
     const onExitClick = () => {
-        sessionStorage.setItem("userId", '')
-        sessionStorage.setItem("userName", '')
-        dispatch(setUser({id: "", name: ""}))
+        dispatch(logOut())
     }
 
     return (

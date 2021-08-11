@@ -1,7 +1,8 @@
 import axios from "axios";
 
 //const host = "http://localhost/php"
-const host = "http://carlogbook.top/php"
+//const host = "http://carlogbook.top/php"
+export const host = "http://localhost:5000/"
 
 export const APICars = {
     getCars(userId) {
@@ -40,24 +41,6 @@ export const APICars = {
             vin: updateCar.vin,
             category: updateCar.category,
         }).then(response => response.data)
-    }
-}
-
-export const APIAuthentication = {
-    registration(login, password) {
-        return (axios.post(`${host}/registration.php`, {
-            login: login,
-            password: password,
-        })
-            .then(response => response.data))
-    },
-    entrance(login, password) {
-        return (axios.post(`${host}/entrence.php`, {
-                login: login,
-                password: password,
-            })
-                .then(response => response.data)
-        )
     }
 }
 

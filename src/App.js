@@ -23,34 +23,22 @@ import AppRouter from "./components/AppRouter";
 function App() {
     const dispatch = useDispatch()
     const isAuthentication = useSelector(state => authMe(state))
+    console.log(isAuthentication)
     const userId = useSelector(state => getMyId(state))
-    const userName = useSelector(state => getMyName(state))
     const [isShowBurgerMenu, setIsShowBurgerMenu] = useState(false)
     const onBurgerClick = () => {
         setIsShowBurgerMenu(!isShowBurgerMenu)
     }
-    if (isAuthentication) {
-        sessionStorage.setItem("userId", userId)
-        sessionStorage.setItem("userName", userName)
-    }
-    if (!isAuthentication) {
-        const id = sessionStorage.getItem("userId")
-        const name = sessionStorage.getItem("userName")
-        dispatch(setUser({id: id, name: name}))
-    }
-    useEffect(() => {
 
-    }, [])
     useEffect(() => {
         if (isAuthentication) {
-            dispatch(getCars(userId))
-            dispatch(getMaintenanceRecord(userId))
-            dispatch(getInsuranceDate(userId))
-            dispatch(getRepairRecord(userId))
-            dispatch(getNoticeRecords(userId))
-            dispatch(getTechnicalInspection(userId))
-            dispatch(getSetting(userId))
-            dispatch(getOrders(userId))
+     //       dispatch(getCars(userId))
+//            dispatch(getInsuranceDate(userId))
+ //           dispatch(getRepairRecord(userId))
+//            dispatch(getNoticeRecords(userId))
+ //           dispatch(getTechnicalInspection(userId))
+ //           dispatch(getSetting(userId))
+ //           dispatch(getOrders(userId))
         }
     }, [isAuthentication])
     return (
